@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="CX Team">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Task 4 - Full Mesh - LTRCRS-2123</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Task 4 - Full Mesh";
+    var mkdocs_page_input_path = "Task4-Full-Mesh.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> LTRCRS-2123</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Task1-Connect/">Remote Connection</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Task3-vEdge/">vEdge Onboarding</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LTRCRS-2123</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Task 4 - Full Mesh</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="task-4-full-mesh">Task 4 - Full Mesh</h1>
+<p>This task will walk through the steps to verify the full mesh VPN topology on the SD-WAN Fabric.  As per previous steps of onboarding the vEdges has been performed.  By default all the vEdges in SD-WAN Fabric will create a full mesh IPSec tunnels.</p>
+<p><strong>Pre-requisite:</strong>  SDWAN controllers and 3 vEdges (in Branches &amp; DC) must be fully operational.  If those are not installed (or not operational) then please complete the previous Tasks first.</p>
+<h2 id="step-1-verify-ipsec-tunnels-on-br1">Step 1: Verify IPSec tunnels on BR1</h2>
+<ul>
+<li>
+<p>You can launch SSH to vEdge in Branch-1 by using <strong>MPutty</strong> client on the Remote Desktop: </p>
+<ul>
+<li><strong>SSH</strong> to OOB Management IP address of <strong>BR1-vEdge</strong>:  <code>198.18.134.105</code></li>
+<li>Use credentials of <code>admin</code> and <code>admin</code> for  authentication</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> if <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></p>
+</blockquote>
+</li>
+<li>
+<p>On the SSH connection to vEdge, execute the below commands to verify that OMP routes have been received by this vEdge:</p>
+<p>~~~
+show omp routes
+show ip route
+~~~</p>
+</li>
+<li>
+<p>On the SSH connection to vEdge, execute the below commands to verify that IPSec tunnels are setup to remote vEdges.   BFD is enabled by default on the IPSec tunnels:</p>
+<p>~~~
+show bfd session
+show bfd session | tab
+~~~</p>
+</li>
+</ul>
+<p>Below screenshot shows the output of above command confirming that IPSec tunnels on both WAN links are setup to DC and BR2:</p>
+<p><img alt="VPN traffic" src="../pics/t4-br1-show_bfd_sess.png" /></p>
+<h2 id="step-2-verify-ipsec-tunnels-on-br2">Step 2: Verify IPSec tunnels on BR2</h2>
+<ul>
+<li>
+<p>You can launch SSH to vEdge in Branch-2 by using <strong>MPutty</strong> client on the Remote Desktop: </p>
+<ul>
+<li><strong>SSH</strong> to OOB Management IP address of <strong>BR2-vEdge</strong>:  <code>198.18.134.106</code></li>
+<li>Use credentials of <code>admin</code> and <code>admin</code> for  authentication</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> if <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></p>
+</blockquote>
+</li>
+<li>
+<p>On the SSH connection to vEdge, execute the below commands to verify that OMP routes have been received by this vEdge:</p>
+<p>~~~
+show omp routes
+show ip route
+~~~</p>
+</li>
+<li>
+<p>On the SSH connection to vEdge, execute the below commands to verify that IPSec tunnels are setup to remote vEdges.   BFD is enabled by default on the IPSec tunnels:</p>
+<p>~~~
+show bfd session 
+show bfd session | tab
+~~~</p>
+</li>
+</ul>
+<p>Below screenshot shows the output of above command confirming that IPSec tunnels on both WAN links are setup to DC and BR1:</p>
+<p><img alt="VPN traffic" src="../pics/t4-br2-show_bfd_sess.png" /></p>
+<h2 id="step-1-verify-ipsec-tunnels-on-dc">Step 1: Verify IPSec tunnels on DC</h2>
+<ul>
+<li>
+<p>You can launch SSH to vEdge in Branch-1 by using <strong>MPutty</strong> client on the Remote Desktop: </p>
+<ul>
+<li><strong>SSH</strong> to OOB Management IP address of <strong>BR1-vEdge</strong>:  <code>198.18.134.100</code></li>
+<li>Use credentials of <code>admin</code> and <code>admin</code> for  authentication</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> if <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></p>
+</blockquote>
+</li>
+<li>
+<p>On the SSH connection to vEdge, execute the below commands to verify that OMP routes have been received by this vEdge:</p>
+<p>~~~
+show omp routes
+show ip route
+~~~</p>
+</li>
+<li>
+<p>On the SSH connection to vEdge, execute the below commands to verify that IPSec tunnels are setup to remote vEdges.   BFD is enabled by default on the IPSec tunnels:</p>
+<p>~~~
+show bfd session
+show bfd session | tab
+~~~</p>
+</li>
+</ul>
+<p>Below screenshot shows the output of above command confirming that IPSec tunnels on both WAN links are setup to BR1 and BR2:</p>
+<p><img alt="BFD" src="../pics/t4-dc-show_bfd_sess.png" /></p>
+<p>--
+This concludes this task to verify the full mesh topology</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://wwwin-github.cisco.com/fchaudhr/CL_LTRCRS_2123.git" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
