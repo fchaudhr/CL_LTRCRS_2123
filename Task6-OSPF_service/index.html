@@ -8,7 +8,7 @@
   
   <meta name="author" content="CX Team">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Task 6 - OSPF Peering - LTRCRS-2123</title>
+  <title>Task 7 Establish OSPF connectivity - LTRCRS-2123</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Task 6 - OSPF Peering";
+    var mkdocs_page_name = "Task 7 Establish OSPF connectivity";
     var mkdocs_page_input_path = "Task6-OSPF_service.md";
     var mkdocs_page_url = null;
   </script>
@@ -55,7 +55,47 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../Task3-vEdge/">Task 2 vEdge Onboarding</a>
+    <a class="" href="../.md">Task 2 Control Plane</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Task3-vEdge/">Task 3 vEdge on internal networks</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Task4-Full-Mesh/">Task 4 Full-Mesh Data Plane on internal networks</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Task5-VPN creations/">Task 5 Establish VPN connectivity on Fabric</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="./">Task 6 Establish OSPF connectivity</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Task 7 Establish OSPF connectivity</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#sdwan-lab-topology">SDWAN Lab Topology</a></li>
+    
+
+    <li class="toctree-l2"><a href="#step-1-adding-ospf-config-in-br2">Step 1: Adding OSPF config in BR2</a></li>
+    
+
+    <li class="toctree-l2"><a href="#step-2-validate-ospf-in-br2">Step 2: Validate OSPF in BR2</a></li>
+    
+
+    <li class="toctree-l2"><a href="#step-3-verify-ospf-routes-redistribution">Step 3: Verify OSPF routes redistribution</a></li>
+    
+
+    </ul>
 	    </li>
           
         </ul>
@@ -80,7 +120,7 @@
     
       
     
-    <li>Task 6 - OSPF Peering</li>
+    <li>Task 7 Establish OSPF connectivity</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/fchaudhr/CL_LTRCRS_2123.git/edit/master/docs/Task6-OSPF_service.md"
@@ -93,12 +133,11 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="task-6-ospf-peering">Task 6 - OSPF Peering</h1>
-<p>This Task will walk through the steps to perform OSPF peering of the vEdge in Branch 2 on the LAN.  The traffic on the LAN is referred to as Service Side on vEdge.  The OSPF peering will be done for VPN 10 in this exercise.  VPN 10 already exists in BR1 and BR2.</p>
+                <p>This Task will walk through the steps to perform OSPF peering of the vEdge in Branch 2 on the LAN.  The traffic on the LAN is referred to as Service Side on vEdge.  The OSPF peering will be done for VPN 10 in this exercise.  VPN 10 already exists in BR1 and BR2.</p>
 <p>Cisco CSRv exists on the LAN side of BR2 and this CSRv has already been configured with appropriate configurations for OSPF peering.</p>
 <h4 id="sdwan-lab-topology">SDWAN Lab Topology</h4>
 <p>The logical topology of this branch is shown in below figure:</p>
-<p><img alt="OSPF Peering" src="pics/task6-ospf-topology.png" /></p>
+<p><img alt="OSPF Peering" src="../pics/t6-ospf-topology.png" /></p>
 <p><strong>Pre-requisite:</strong></p>
 <p>SDWAN controllers and vEdges (in Branches &amp; DC) must be fully operational.  If those are not installed (or not operational) then please complete the previous Tasks first.</p>
 <h2 id="step-1-adding-ospf-config-in-br2">Step 1: Adding OSPF config in BR2</h2>
@@ -274,6 +313,13 @@ show omp routes vpn 10 10.4.254.0/24 detail
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="./" class="btn btn-neutral" title="Task 6 Establish OSPF connectivity"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
@@ -297,6 +343,8 @@ show omp routes vpn 10 10.4.254.0/24 detail
       
           <a href="https://github.com/fchaudhr/CL_LTRCRS_2123.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
+      
+        <span><a href="./" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>

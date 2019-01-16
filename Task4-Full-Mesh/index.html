@@ -8,7 +8,7 @@
   
   <meta name="author" content="CX Team">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Task 4 - Full Mesh - LTRCRS-2123</title>
+  <title>Task 4 Full-Mesh Data Plane on internal networks - LTRCRS-2123</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Task 4 - Full Mesh";
+    var mkdocs_page_name = "Task 4 Full-Mesh Data Plane on internal networks";
     var mkdocs_page_input_path = "Task4-Full-Mesh.md";
     var mkdocs_page_url = null;
   </script>
@@ -55,7 +55,44 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../Task3-vEdge/">Task 2 vEdge Onboarding</a>
+    <a class="" href="../.md">Task 2 Control Plane</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Task3-vEdge/">Task 3 vEdge on internal networks</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Task 4 Full-Mesh Data Plane on internal networks</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#step-1-verify-ipsec-tunnels-on-br1">Step 1: Verify IPSec tunnels on BR1</a></li>
+    
+
+    <li class="toctree-l2"><a href="#step-2-verify-ipsec-tunnels-on-br2">Step 2: Verify IPSec tunnels on BR2</a></li>
+    
+
+    <li class="toctree-l2"><a href="#step-3-verify-ipsec-tunnels-on-dc">Step 3: Verify IPSec tunnels on DC</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Task5-VPN creations/">Task 5 Establish VPN connectivity on Fabric</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Task6-OSPF_service/">Task 6 Establish OSPF connectivity</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Task6-OSPF_service/">Task 7 Establish OSPF connectivity</a>
 	    </li>
           
         </ul>
@@ -80,7 +117,7 @@
     
       
     
-    <li>Task 4 - Full Mesh</li>
+    <li>Task 4 Full-Mesh Data Plane on internal networks</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/fchaudhr/CL_LTRCRS_2123.git/edit/master/docs/Task4-Full-Mesh.md"
@@ -93,8 +130,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="task-4-full-mesh">Task 4 - Full Mesh</h1>
-<p>This task will walk through the steps to verify the full mesh VPN topology on the SD-WAN Fabric.  As per previous steps of onboarding the vEdges has been performed.  By default all the vEdges in SD-WAN Fabric will create a full mesh IPSec tunnels.</p>
+                <p>This task will walk through the steps to verify the full mesh VPN topology on the SD-WAN Fabric.  As per previous steps of onboarding the vEdges has been performed.  By default all the vEdges in SD-WAN Fabric will create a full mesh IPSec tunnels.</p>
 <p><strong>Pre-requisite:</strong>  SDWAN controllers and 3 vEdges (in Branches &amp; DC) must be fully operational.  If those are not installed (or not operational) then please complete the previous Tasks first.</p>
 <h2 id="step-1-verify-ipsec-tunnels-on-br1">Step 1: Verify IPSec tunnels on BR1</h2>
 <ul>
@@ -154,12 +190,12 @@ show bfd session | tab
 </ul>
 <p>Below screenshot shows the output of above command confirming that IPSec tunnels on both WAN links are setup to DC and BR1:</p>
 <p><img alt="VPN traffic" src="../pics/t4-br2-show_bfd_sess.png" /></p>
-<h2 id="step-1-verify-ipsec-tunnels-on-dc">Step 1: Verify IPSec tunnels on DC</h2>
+<h2 id="step-3-verify-ipsec-tunnels-on-dc">Step 3: Verify IPSec tunnels on DC</h2>
 <ul>
 <li>
-<p>You can launch SSH to vEdge in Branch-1 by using <strong>MPutty</strong> client on the Remote Desktop: </p>
+<p>You can launch SSH to vEdge in Branch-1 by using <strong>MTPutty</strong> client on the Remote Desktop: </p>
 <ul>
-<li><strong>SSH</strong> to OOB Management IP address of <strong>BR1-vEdge</strong>:  <code>198.18.134.100</code></li>
+<li><strong>SSH</strong> to OOB Management IP address of <strong>DC1-VEDGE</strong>:  <code>198.18.134.100</code></li>
 <li>Use credentials of <code>admin</code> and <code>admin</code> for  authentication</li>
 </ul>
 <blockquote>
@@ -190,6 +226,15 @@ This concludes this task to verify the full mesh topology</p>
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Task5-VPN creations/" class="btn btn-neutral float-right" title="Task 5 Establish VPN connectivity on Fabric">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Task3-vEdge/" class="btn btn-neutral" title="Task 3 vEdge on internal networks"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
@@ -214,6 +259,10 @@ This concludes this task to verify the full mesh topology</p>
           <a href="https://github.com/fchaudhr/CL_LTRCRS_2123.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
+        <span><a href="../Task3-vEdge/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Task5-VPN creations/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
