@@ -171,13 +171,13 @@
 <li>If prompted for "Putty Security Alert" then Trust the host by clicking "Yes" on dialog box.  </li>
 <li>The <strong>SSH credentials</strong> (username and password) are <code>admin</code> and <code>admin</code> respectively</li>
 </ul>
+</li>
+</ul>
 <blockquote>
 <p><strong>Note:</strong> if <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></p>
 </blockquote>
-</li>
-<li>
-<p>On the <strong>SSH</strong> connection, <strong>execute</strong> the below <strong>command</strong> to view the Out-of-Band (OOB) management VPN 512 related configurations on this vEdge: </p>
-</li>
+<ul>
+<li>On the <strong>SSH</strong> connection, <strong>execute</strong> the below <strong>command</strong> to view the Out-of-Band (OOB) management VPN 512 related configurations on this vEdge: </li>
 </ul>
 <pre><code>show run vpn 512
 </code></pre>
@@ -265,8 +265,9 @@ show certificate installed
 <ul>
 <li>Log on to the <strong>vManage</strong> GUI using a web browser (if not already open) and use credentials of <code>admin</code> and <code>admin</code> for authentication:</li>
 </ul>
-<p><code>textfile
-  https://198.18.1.10</code></p>
+<pre><code class="textfile">https://198.18.1.10
+</code></pre>
+
 <ul>
 <li>
 <p>On the <strong>vManage GUI</strong>, navigate to <strong>Configuration &gt;  Devices &gt; WAN Edge List</strong>.  Here you will see a WAN Edge device with <code>Chassis Number</code> of <code>ddd801b2-8cbe-4394-abd1-3b71e39886e3</code>.  This vEdge will be configured as a WAN Edge for Branch #2. </p>
@@ -288,16 +289,16 @@ show certificate installed
 </li>
 <li>
 <p>Using <strong>MPutty</strong> on your Remote Desktop session, initiate a <strong>SSH</strong> session to the <strong>IP address</strong> of <strong>198.18.134.106</strong> this vEdge (<strong>BR2-vEdge1</strong>).  You can use credentials of <code>admin</code> and <code>admin</code> for  authentication.</p>
+</li>
+</ul>
 <blockquote>
 <p><strong>Note:</strong> if admin/admin credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></p>
 <p>As mentioned earlier the OOB management (VPN 512) has been already configured on this vEdge.</p>
 </blockquote>
-</li>
-<li>
-<p>On the <strong>SSH</strong> connection of vEdge: <strong>configure</strong> the below commands - you can copy and paste the below:</p>
-</li>
+<ul>
+<li>On the <strong>SSH</strong> connection of vEdge: <strong>configure</strong> the below commands - you can copy and paste the below:</li>
 </ul>
-<pre><code class="textfile">conf t
+<pre><code>conf t
 system
  host-name               BR2-vEdge
  gps-location latitude 32.79
@@ -333,9 +334,11 @@ vpn 0
 
 <p>Make sure the <strong>commit</strong> is done successfully on the vEdge</p>
 <ul>
-<li>On the <strong>SSH</strong> connection to vEdge: <strong>execute</strong> the below command:
-    &gt; <strong>Note:</strong> you must <strong>replace</strong> the <code>{otp}</code> with the OTP that you copied in previous step of <code>Generate Bootstrap Configuration</code></li>
+<li>On the <strong>SSH</strong> connection to vEdge: <strong>execute</strong> the below command:</li>
 </ul>
+<blockquote>
+<p><strong>Note:</strong> you must <strong>replace</strong> the <code>{otp}</code> with the OTP that you copied in previous step of <code>Generate Bootstrap Configuration</code></p>
+</blockquote>
 <pre><code>request vedge-cloud activate chassis-number ddd801b2-8cbe-4394-abd1-3b71e39886e3 token token {otp}
 </code></pre>
 
@@ -347,8 +350,8 @@ vpn 0
 <pre><code>show certificate serial
 </code></pre>
 
-<p>Below screenshot shows the output of above command confirming that a valid serial is now installed on vEdge:
-<img alt="show cert" src="../pics/t3-br2-show-cert.png" /></p>
+<p>Below screenshot shows the output of above command confirming that a valid serial is now installed on vEdge:</p>
+<p><img alt="show cert" src="../pics/t3-br2-show-cert.png" /></p>
 <blockquote>
 <p><strong>Note:</strong> If the output of above command does not show any serial number, or it gives a message such as '<em>Certificate not yet installed ... giving up</em>' then you can re-enter the above <code>request vedge-cloud activate chassis-number ddd801b2-8cbe-4394-abd1-3b71e39886e3 token token {otp}</code> command</p>
 </blockquote>
@@ -757,12 +760,16 @@ vpn 512
 <li><strong>Enter</strong> the <strong>Public IP address</strong> of vBond in your specific pod in the field named <code>vbond-public-ip</code>.  </li>
 <li><strong>Click</strong> on the <code>Next</code> button</li>
 </ul>
+</li>
+</ul>
 <blockquote>
 <p><strong>Note:</strong> it's important to enter the respective Public IP address of vBond of your pod in this field.  You may ask instructor if you are unsure about this:</p>
 </blockquote>
-<p>Below screenshot shows this for one of the reference pod:</p>
-<p><img alt="CLI Template" src="../pics/t3-dc-clitemplate-attach2.png" /></p>
-</li>
+<pre><code>Below screenshot shows this for one of the reference pod:
+
+![CLI Template](pics/t3-dc-clitemplate-attach2.png)
+</code></pre>
+<ul>
 <li>
 <p>On the next screen, <strong>Click</strong> on <code>DC1-VEDGE1</code> (with <em>uuid</em> of <code>ebdc8bd9-17e5-4eb3-a5e0-f438403a83de</code>) on left section and <strong>Click</strong> on <code>Config Preview</code> and <code>Config Diff</code> options on the right side of window to confirm correct configurations are pushed to this DC1-VEDGE1.  </p>
 <p>Below screenshot shows "Config Preview" confirming that correct VPN 512 configs are being pushed to DC1-VEDGE1:</p>
@@ -773,11 +780,11 @@ vpn 512
 <p><strong>Important Note</strong>: Be very careful in making configuration changes on vEdge.  <strong>Do NOT change</strong> any <strong>configuration</strong> of VPN 512 as it can result in loss of connectivity to the vEdge - which can not be restored.   You will have to start the lab again from Task #1 if you loose network connectivity to a vEdge.</p>
 </blockquote>
 <ul>
-<li>Next <strong>Click</strong> on the <code>Configure Devices</code> button on bottom of the screen.  On the subsequent screen verify that the template is attached successfully to DC1-vEdge<blockquote>
+<li>Next <strong>Click</strong> on the <code>Configure Devices</code> button on bottom of the screen.  On the subsequent screen verify that the template is attached successfully to DC1-vEdge</li>
+</ul>
+<blockquote>
 <p><strong>Note</strong>: you may get a message that Device is offline.  You can ignore this for now and proceed further</p>
 </blockquote>
-</li>
-</ul>
 <h2 id="step-5-verify-vedge-in-data-center-dc">Step 5: Verify vEdge in Data Center (DC)</h2>
 <p>DC1-vEdge may not be successfully registered to control plane device due to incorrect Public IP address.  Hence in execution of last bullet in the previous step the "Device is offline" message may be shown by vManage.  You can go through below steps to bring it online and/or to verify that it is registered to controllers:</p>
 <ul>
@@ -800,7 +807,7 @@ show control connections
 </code></pre>
 
 <ul>
-<li>If the output shows that vEdge control <strong>State</strong> is <strong>connect</strong> for vBond then execute the below commands after the <code>{PUBLIC IP of vBOND}</code> with the actual Public IP address of vBond in your pod:</li>
+<li>If the output shows that vEdge control <strong>State</strong> is <strong>connect</strong> for vBond then execute the below commands after replacing the <code>{PUBLIC IP of vBOND}</code> with the actual Public IP address of vBond in your pod:</li>
 </ul>
 <pre><code>conf t
 vpn 0 
@@ -812,12 +819,16 @@ commit
 <p><strong>Note:</strong> you must replace with actual <code>{PUBLIC IP of vBOND}</code> with the actual Public IP address of vBond such as this command: <code>host vbond.cisco.com ip 128.107.222.47</code></p>
 </blockquote>
 <p>Make sure that <strong>commit</strong> is done <strong>successfully</strong> on vEdge.  </p>
-<p>You can then <strong>execute</strong> below <strong>commands</strong>:</p>
+<ul>
+<li>You can then <strong>execute</strong> below <strong>commands</strong>:</li>
+</ul>
 <pre><code>clear control connections
 show control connections
 </code></pre>
 
-<p>Wait for few seconds and <strong>execute</strong> below <strong>command</strong> multiple times to check the status of control plane connections:</p>
+<ul>
+<li>Wait for few seconds and <strong>execute</strong> below <strong>command</strong> multiple times to check the status of control plane connections:</li>
+</ul>
 <pre><code>show control connections
 </code></pre>
 
@@ -828,7 +839,7 @@ show control connections
 <p><strong>Note:</strong> that DC-vEdge will have only one (1) control connnection (as shown by <code>show control connections</code> command) over private1 color to vSmart, vBond and vManage.  This is expected as control connection to vBond Public IP address is allowed only on the private1 link.</p>
 </blockquote>
 <ul>
-<li>As per previous bullet control connections to vManage should be up.  To verify that CLI template (configured in previous steps) is successfully attached to this vEdge you may issue below command:</li>
+<li>As per previous bullet control connections to vManage should be up.  To <strong>verify</strong> that CLI template (configured in previous steps) is successfully attached to this vEdge you may execute below <strong>command</strong>:</li>
 </ul>
 <pre><code>show system status
 </code></pre>
