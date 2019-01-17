@@ -179,7 +179,7 @@
 <p>On the <strong>SSH</strong> connection, <strong>execute</strong> the below <strong>command</strong> to view the Out-of-Band (OOB) management VPN 512 related configurations on this vEdge: </p>
 </li>
 </ul>
-<pre><code class="textfile">show run vpn 512
+<pre><code class="python">show run vpn 512
 </code></pre>
 
 <p>Below screenshot shows VPN 512 configs:</p>
@@ -187,7 +187,7 @@
 <ul>
 <li>
 <p><strong>Execute</strong> the below <strong>command</strong> to verify that system related configurations on this vEdge: </p>
-<p><code>textile
+<p><code>python
 show run system</code></p>
 <p>As shown in the partial output in the below screenshot, the vEdge has been pre-configured with below system related configurations:
 <em>  hostname
@@ -202,7 +202,7 @@ show run system</code></p>
 </li>
 <li>
 <p><strong>Execute</strong> the below <strong>command</strong> to see the configuration related to WAN connections or Transport connections on this vEdge.  In Cisco SD-WAN, VPN 0 is allocated for Transport/WAN links:</p>
-<p><code>textile
+<p><code>textfile
 show run vpn 0</code></p>
 <p>Below screenshot shows the partial output of this command.  This command will confirm that:
 <em> vEdge has two WAN links (under VPN 0) as per interface ge0/0 &amp;  ge0/2 configurations,
@@ -218,7 +218,7 @@ show run vpn 0</code></p>
 </li>
 <li>
 <p><strong>Run</strong> the below <strong>commands</strong> to verify that certificate has been installed and view the details of certificate respectively  </p>
-<p><code>textile
+<p><code>textfile
 show certificate serial
 show certificate installed</code></p>
 <p>Below screenshot shows the partial output of the above command.  Note that Issuer of the certificate is vManage</p>
@@ -226,7 +226,7 @@ show certificate installed</code></p>
 </li>
 <li>
 <p><strong>Run</strong> the below <strong>command</strong> to see the list of control connections of this vEdge to the Control Plane (vManage, vSmart)</p>
-<p><code>textile
+<p><code>textfile
 show control connections</code></p>
 <p>Below screenshot shows the output of this command.  Note it validates that vEdge has:
 <em> Two (2) control connections established to vSmart Controller
@@ -238,7 +238,7 @@ show control connections</code></p>
 <ul>
 <li>
 <p>On the <strong>Mputty</strong> client with <strong>SSH</strong> session to <code>BR1-vEdge</code> verify that template is successfully attached by running below <strong>command</strong>:</p>
-<p><code>textile
+<p><code>textfile
 show system status</code> </p>
 <p>The output of above command should show that it is is centrally configured by vManage and also provides the name of Template:</p>
 <ul>
@@ -258,7 +258,7 @@ show system status</code> </p>
 <ul>
 <li>Log on to the <strong>vManage</strong> GUI using a web browser (if not already open) and use credentials of <code>admin</code> and <code>admin</code> for authentication:</li>
 </ul>
-<p><code>textile
+<p><code>textfile
   https://198.18.1.10</code></p>
 <ul>
 <li>
@@ -288,7 +288,7 @@ show system status</code> </p>
 </li>
 <li>
 <p>On the <strong>SSH</strong> connection of vEdge: <strong>configure</strong> the below commands - you can copy and paste the below:</p>
-<p><code>textile
+<p><code>textfile
 conf t
 system
  host-name               BR2-vEdge
