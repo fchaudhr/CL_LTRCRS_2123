@@ -185,10 +185,11 @@
 <p>Below screenshot shows VPN 512 configs:</p>
 <p><img alt="VPN 512" src="../pics/t3-br1-showvpn512.png" /></p>
 <ul>
-<li>
-<p><strong>Execute</strong> the below <strong>command</strong> to verify that system related configurations on this vEdge: </p>
-<p><code>python
-show run system</code></p>
+<li><strong>Execute</strong> the below <strong>command</strong> to verify that system related configurations on this vEdge: </li>
+</ul>
+<pre><code class="python">show run system
+</code></pre>
+
 <p>As shown in the partial output in the below screenshot, the vEdge has been pre-configured with below system related configurations:
 <em>  hostname
 </em>  system-id 
@@ -199,10 +200,8 @@ show run system</code></p>
 <blockquote>
 <p><strong>Note:</strong> A static DNS entry for the hostname <strong><em>vbond.cisco.com</em></strong> has been configured under <code>vpn 0</code> (it will be visible in subsequent bullet)</p>
 </blockquote>
-</li>
-<li>
-<p><strong>Execute</strong> the below <strong>command</strong> to see the configuration related to WAN connections or Transport connections on this vEdge.  In Cisco SD-WAN, VPN 0 is allocated for Transport/WAN links:</p>
-</li>
+<ul>
+<li><strong>Execute</strong> the below <strong>command</strong> to see the configuration related to WAN connections or Transport connections on this vEdge.  In Cisco SD-WAN, VPN 0 is allocated for Transport/WAN links:</li>
 </ul>
 <pre><code class="textfile">show run vpn 0 
 </code></pre>
