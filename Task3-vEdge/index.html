@@ -179,7 +179,7 @@
 <p>On the <strong>SSH</strong> connection, <strong>execute</strong> the below <strong>command</strong> to view the Out-of-Band (OOB) management VPN 512 related configurations on this vEdge: </p>
 </li>
 </ul>
-<pre><code class="python">show run vpn 512
+<pre><code>show run vpn 512
 </code></pre>
 
 <p>Below screenshot shows VPN 512 configs:</p>
@@ -202,44 +202,54 @@ show run system</code></p>
 </li>
 <li>
 <p><strong>Execute</strong> the below <strong>command</strong> to see the configuration related to WAN connections or Transport connections on this vEdge.  In Cisco SD-WAN, VPN 0 is allocated for Transport/WAN links:</p>
-<p><code>textfile
-show run vpn 0</code></p>
-<p>Below screenshot shows the partial output of this command.  This command will confirm that:
-<em> vEdge has two WAN links (under VPN 0) as per interface ge0/0 &amp;  ge0/2 configurations,
-</em> default routes are configured for both links,
-* Each WAN link is also configured with appropriate <code>color</code> tag:</p>
+</li>
+</ul>
+<pre><code class="textfile">show run vpn 0 
+</code></pre>
+
+<p>Below screenshot shows the partial output of this command.  This command will confirm that:</p>
+<ul>
+<li>vEdge has two WAN links (under VPN 0) as per interface ge0/0 &amp;  ge0/2 configurations,</li>
+<li>default routes are configured for both links,</li>
+<li>Each WAN link is also configured with appropriate <code>color</code> tag:</li>
+</ul>
 <p><img alt="VPN 0" src="../pics/t3-br1-showvpn0.png" /></p>
 <blockquote>
 <p>Note: this <strong><em>color</em></strong> tag is used to set up the appropriate IPSec tunnels.   With <strong><em>restrict</em></strong> option, IPSec tunnels between vEdges that have MPLS color will be created.</p>
 </blockquote>
-</li>
+<ul>
 <li>
 <p>You many also execute <code>show run</code> command to view the full configuration of this vEdge</p>
 </li>
 <li>
 <p><strong>Run</strong> the below <strong>commands</strong> to verify that certificate has been installed and view the details of certificate respectively  </p>
-<p><code>textfile
-show certificate serial
-show certificate installed</code></p>
-<p>Below screenshot shows the partial output of the above command.  Note that Issuer of the certificate is vManage</p>
-<p><img alt="VPN 0" src="../pics/t3-br1-showcert.png" /></p>
-</li>
-<li>
-<p><strong>Run</strong> the below <strong>command</strong> to see the list of control connections of this vEdge to the Control Plane (vManage, vSmart)</p>
-<p><code>textfile
-show control connections</code></p>
-<p>Below screenshot shows the output of this command.  Note it validates that vEdge has:
-<em> Two (2) control connections established to vSmart Controller
-</em> One (1) control connection established to vManage</p>
-<p><img alt="Control on vEdge" src="../pics/t3-br1-controlconnection.png" /></p>
 </li>
 </ul>
+<pre><code class="textfile">show certificate serial
+show certificate installed  
+</code></pre>
+
+<p>Below screenshot shows the partial output of the above command.  Note that Issuer of the certificate is vManage</p>
+<p><img alt="VPN 0" src="../pics/t3-br1-showcert.png" /></p>
+<ul>
+<li><strong>Run</strong> the below <strong>command</strong> to see the list of control connections of this vEdge to the Control Plane (vManage, vSmart)</li>
+</ul>
+<pre><code class="textfile">show control connections
+</code></pre>
+
+<p>Below screenshot shows the output of this command.  Note it validates that vEdge has:</p>
+<ul>
+<li>Two (2) control connections established to vSmart Controller</li>
+<li>One (1) control connection established to vManage</li>
+</ul>
+<p><img alt="Control on vEdge" src="../pics/t3-br1-controlconnection.png" /></p>
 <p>In addition to option of configuring a vEdge using local CLI, centralized configuration/management of vEdges can be done from the vManage using "CLI Template" or "Feature Template".  In this lab, "CLI Template" has already been configured for BR1-vEdge2 (i.e. vEdge in Branch-1).  Hence this vEdge is managed/provisioned centrally via vManage.</p>
 <ul>
-<li>
-<p>On the <strong>Mputty</strong> client with <strong>SSH</strong> session to <code>BR1-vEdge</code> verify that template is successfully attached by running below <strong>command</strong>:</p>
-<p><code>textfile
-show system status</code> </p>
+<li>On the <strong>Mputty</strong> client with <strong>SSH</strong> session to <code>BR1-vEdge</code> verify that template is successfully attached by running below <strong>command</strong>:</li>
+</ul>
+<pre><code class="textfile">show system status
+</code></pre>
+
 <p>The output of above command should show that it is is centrally configured by vManage and also provides the name of Template:</p>
 <ul>
 <li><code>vManaged: true</code></li>
@@ -248,8 +258,6 @@ show system status</code> </p>
 <p>Below screenshot shows the partial output of above command:
 <img alt="CLI Template" src="../pics/t3-br1-show-system-status.png" /></p>
 <p><strong>Note:</strong> you can also verify the Mode (vManaged or CLI) on vManage GUI by navigating to <strong>Configuration &gt; Devices</strong> and under <strong>WAN Edge List</strong> tab scrolling to the right will show the <code>Mode</code> option for each device.  If there are any discrepancies then refer to the instructor.</p>
-</li>
-</ul>
 <h2 id="step-2-add-a-new-vedge-in-branch-2">Step 2: Add a new vEdge in Branch-2</h2>
 <p>In this step, we will add a vEdge-Cloud in Branch-2 (BR2) to the SD-WAN Fabric.  The vEdge has already been configured for the Out-of-Band Management (i.e. VPN 512) so there is network connectivity to this vEdge</p>
 <blockquote>
@@ -288,15 +296,16 @@ show system status</code> </p>
 </li>
 <li>
 <p>On the <strong>SSH</strong> connection of vEdge: <strong>configure</strong> the below commands - you can copy and paste the below:</p>
-<p><code>textfile
-conf t
+</li>
+</ul>
+<pre><code class="textfile">conf t
 system
  host-name               BR2-vEdge
  gps-location latitude 32.79
  gps-location longitude -96.77
  system-ip               10.4.0.1
  site-id                 400
- organization-name       "Cisco Sy1 - 19968"
+ organization-name       &quot;Cisco Sy1 - 19968&quot;
  vbond vbond.cisco.com
 vpn 0
   host vbond.cisco.com ip 198.18.1.11 
@@ -320,31 +329,37 @@ vpn 0
  !
  ip route 0.0.0.0/0 172.16.4.1
  !
- commit</code></p>
+ commit
+</code></pre>
+
 <p>Make sure the <strong>commit</strong> is done successfully on the vEdge</p>
-</li>
-<li>
-<p>On the <strong>SSH</strong> connection to vEdge: <strong>execute</strong> the below command:
-    &gt; <strong>Note:</strong> you must <strong>replace</strong> the <code>{otp}</code> with the OTP that you copied in previous step of <code>Generate Bootstrap Configuration</code></p>
-<p><code>request vedge-cloud activate chassis-number ddd801b2-8cbe-4394-abd1-3b71e39886e3 token token {otp}</code></p>
+<ul>
+<li>On the <strong>SSH</strong> connection to vEdge: <strong>execute</strong> the below command:
+    &gt; <strong>Note:</strong> you must <strong>replace</strong> the <code>{otp}</code> with the OTP that you copied in previous step of <code>Generate Bootstrap Configuration</code></li>
+</ul>
+<pre><code>request vedge-cloud activate chassis-number ddd801b2-8cbe-4394-abd1-3b71e39886e3 token token {otp}
+</code></pre>
+
 <p>Below screenshot gives an example of executing this command:</p>
 <p><img alt="OTP" src="../pics/t3-br2-requestcertcli.png" /></p>
-</li>
-<li>
-<p>On the <strong>SSH</strong> connection to vEdge, <strong>execute</strong> the below command to verify that a valid serial number is generated </p>
-<p><code>show certificate serial</code></p>
+<ul>
+<li>On the <strong>SSH</strong> connection to vEdge, <strong>execute</strong> the below command to verify that a valid serial number is generated </li>
+</ul>
+<pre><code>show certificate serial
+</code></pre>
+
 <p>Below screenshot shows the output of above command confirming that a valid serial is now installed on vEdge:
-  <img alt="show cert" src="../pics/t3-br2-show-cert.png" /></p>
+<img alt="show cert" src="../pics/t3-br2-show-cert.png" /></p>
 <blockquote>
 <p><strong>Note:</strong> If the output of above command does not show any serial number, or it gives a message such as '<em>Certificate not yet installed ... giving up</em>' then you can re-enter the above <code>request vedge-cloud activate chassis-number ddd801b2-8cbe-4394-abd1-3b71e39886e3 token token {otp}</code> command</p>
 </blockquote>
-</li>
-<li>
-<p>On the <strong>SSH</strong> connection to vEdge: <strong>execute</strong> the below commands to verify control plane connectivity of this vEdge to the controllers (vManage, vSmart)</p>
-<p><code>show control connections</code></p>
-<p>Below screenshot shows the output of above command:</p>
-</li>
+<ul>
+<li>On the <strong>SSH</strong> connection to vEdge: <strong>execute</strong> the below commands to verify control plane connectivity of this vEdge to the controllers (vManage, vSmart)</li>
 </ul>
+<pre><code>show control connections
+</code></pre>
+
+<p>Below screenshot shows the output of above command:</p>
 <p><img alt="show control" src="../pics/t3-br2-show-control-connections.png" /></p>
 <p>From the above output you can:</p>
 <ul>
@@ -370,10 +385,9 @@ vpn 0
 </li>
 <li>Enter <strong>Template Name</strong> of <code>CL-BR2-vEdge1</code></li>
 <li>Enter <strong>Description</strong> of <code>Branch2 vEdge1 configs</code></li>
-<li>
-<p>In the <strong>CLI Configuration</strong> section copy and paste the  below configs:</p>
-<p>```
-system
+<li>In the <strong>CLI Configuration</strong> section copy and paste the  below configs:</li>
+</ul>
+<pre><code>system
  host-name               BR2-vEdge
  gps-location latitude 32.79
  gps-location longitude -96.77
@@ -381,7 +395,7 @@ system
  site-id                 400
  admin-tech-on-failure
  no route-consistency-check
- organization-name       "Cisco Sy1 - 19968"
+ organization-name       &quot;Cisco Sy1 - 19968&quot;
  vbond vbond.cisco.com
  aaa
   auth-order local radius tacacs
@@ -442,7 +456,7 @@ snmp
  !
 !
 banner
- login "CL SDWAN - Branch2 vEdge"
+ login &quot;CL SDWAN - Branch2 vEdge&quot;
 !
 vpn 0
  dns 198.18.1.1 secondary
@@ -492,9 +506,11 @@ vpn 512
   no shutdown
  !
  ip route 0.0.0.0/0 198.18.128.1
-!</p>
-<p>```</p>
-</li>
+!
+
+</code></pre>
+
+<ul>
 <li>
 <p>Next <strong>Click</strong> the <code>Add</code> button at the bottom of page as shown in the below screenshot:</p>
 <p><img alt="BR2 Template" src="../pics/t3-br2-clitemplate.png" /></p>
@@ -536,7 +552,11 @@ vpn 512
 </li>
 <li>
 <p>From the <strong>Mputty</strong> client initiate <strong>SSH</strong> session to <code>BR2-vEdge</code> and verify that template is successfully attached by issuing below command:</p>
-<p><code>show system status</code> </p>
+</li>
+</ul>
+<pre><code>show system status
+</code></pre>
+
 <p>The output of above command should show:</p>
 <ul>
 <li><code>vManaged = true</code></li>
@@ -545,16 +565,16 @@ vpn 512
 <p>Below screenshot shows the output of above command confirming that template is attached successfully:
 <img alt="CLI Template" src="../pics/t3-br2-show-system-status.png" /></p>
 <p><strong>Note:</strong> you can verify the Mode (vManaged or CLI) on vManage GUI by navigating to <strong>Configuration &gt; Devices</strong>.  Then under <strong>WAN Edge List</strong> tab scroll to the right you can view the <code>Mode</code> option for each device.</p>
-</li>
-<li>
-<p>On the <strong>SSH</strong> connection, you can <strong>execute</strong> below commands to verify the updated configurations (such as DHCP on interface ge0/0, control connections to Controllers on this new interface etc)  as reflected in "CLI Template":</p>
-<p><code>show dhcp interface
+<ul>
+<li>On the <strong>SSH</strong> connection, you can <strong>execute</strong> below commands to verify the updated configurations (such as DHCP on interface ge0/0, control connections to Controllers on this new interface etc)  as reflected in "CLI Template":</li>
+</ul>
+<pre><code>show dhcp interface
 show interface 
 show ip route
 show control connections
-show run</code></p>
-</li>
-</ul>
+show run
+</code></pre>
+
 <h2 id="step-4-add-cli-template-for-vedge-in-data-center-dc">Step 4: Add CLI Template for vEdge in Data Center (DC)</h2>
 <p>Next a CLI Template will be added so configurations of vEdge in Data Center (DC) will be done via vManage directly.   These configurations will be done by using "CLI Template" from the vManage.  Use of "Feature Templates" on vManage is an alternate mechanism for centralization configurations from vManage, but it will not be used in this lab. </p>
 <blockquote>
@@ -770,36 +790,50 @@ vpn 512
 </li>
 <li>
 <p>DC1-vEdge may not be successfully registered to control plane device due to incorrect Public IP address.  On the <strong>SSH</strong> connection, <strong>execute</strong> the below commands to verify it's status of control connections:</p>
-<p><code>clear control connections
-show control connections</code></p>
-<p>Wait for few seconds and execute below command multiple times to check the control status:</p>
-<p><code>show control connections</code></p>
 </li>
-<li>
-<p>If the output shows that vEdge control <strong>State</strong> is <strong>connect</strong> for vBond then execute the below commands after the <code>{PUBLIC IP of vBOND}</code> with the actual Public IP address of vBond in your pod:</p>
-<p><code>conf t
+</ul>
+<pre><code>clear control connections
+show control connections
+</code></pre>
+
+<p>Wait for few seconds and execute below command multiple times to check the control status:</p>
+<pre><code>show control connections
+</code></pre>
+
+<ul>
+<li>If the output shows that vEdge control <strong>State</strong> is <strong>connect</strong> for vBond then execute the below commands after the <code>{PUBLIC IP of vBOND}</code> with the actual Public IP address of vBond in your pod:</li>
+</ul>
+<pre><code>conf t
 vpn 0 
  host vbond.cisco.com ip {PUBLIC IP of vBOND}
-commit</code></p>
+commit
+</code></pre>
+
 <blockquote>
 <p><strong>Note:</strong> you must replace with actual <code>{PUBLIC IP of vBOND}</code> with the actual Public IP address of vBond such as this command: <code>host vbond.cisco.com ip 128.107.222.47</code></p>
 </blockquote>
 <p>Make sure that <strong>commit</strong> is done <strong>successfully</strong> on vEdge.  </p>
 <p>You can then <strong>execute</strong> below <strong>commands</strong>:</p>
-<p><code>clear control connections
-show control connections</code></p>
+<pre><code>clear control connections
+show control connections
+</code></pre>
+
 <p>Wait for few seconds and <strong>execute</strong> below <strong>command</strong> multiple times to check the status of control plane connections:</p>
-<p><code>show control connections</code></p>
+<pre><code>show control connections
+</code></pre>
+
 <p>Below screenshot shows the working state of this vEdge:</p>
 <p><img alt="DC control" src="../pics/t3-dc-show-control-connect.png" /></p>
 <blockquote>
 <p><strong>Note:</strong> above screenshot shows the Public IP address of the vBond for a reference pod.  It will be different for your pod.  The Private IP addresses for vManage and vSmart should be same.</p>
 <p><strong>Note:</strong> that DC-vEdge will have only one (1) control connnection (as shown by <code>show control connections</code> command) over private1 color to vSmart, vBond and vManage.  This is expected as control connection to vBond Public IP address is allowed only on the private1 link.</p>
 </blockquote>
-</li>
-<li>
-<p>As per previous bullet control connections to vManage should be up.  To verify that CLI template (configured in previous steps) is successfully attached to this vEdge you may issue below command:</p>
-<p><code>show system status</code> </p>
+<ul>
+<li>As per previous bullet control connections to vManage should be up.  To verify that CLI template (configured in previous steps) is successfully attached to this vEdge you may issue below command:</li>
+</ul>
+<pre><code>show system status
+</code></pre>
+
 <p>The output of above command should show (at the end):</p>
 <ul>
 <li><code>vManaged = true</code></li>
@@ -808,16 +842,16 @@ show control connections</code></p>
 <p>Below screenshot shows the output of above command:</p>
 <p><img alt="CLI Template" src="../pics/t3-dc-show-system-status.png" /></p>
 <p><strong>Note:</strong> you can verify the Mode (vManaged or CLI) on vManage GUI by navigating to <strong>Configuration &gt; Devices</strong> and under <strong>WAN Edge List</strong> tab scrolling to the right will show the <code>Mode</code> option for each device.</p>
-</li>
-<li>
-<p>You can run various other commands to verify the updated configurations (such as DHCP on interface ge0/0, control connections to Controllers on this new interface etc)  as reflected in "CLI Template":</p>
-<p><code>show interface 
+<ul>
+<li>You can run various other commands to verify the updated configurations (such as DHCP on interface ge0/0, control connections to Controllers on this new interface etc)  as reflected in "CLI Template":</li>
+</ul>
+<pre><code>show interface 
 show ip route
 show control connections
-show run</code></p>
-</li>
-</ul>
-<p>--</p>
+show run
+</code></pre>
+
+<hr />
 <p>This concludes the process to onboard the three (3) vEdge-Cloud devices in SDWAN Fabric</p>
               
             </div>
