@@ -166,13 +166,16 @@
 <p><img alt="Mputty" src="../pics/t3-mputty.png" /></p>
 </li>
 <li>
-<p>Using <strong>MPutty</strong> on your Remote Desktop session, initiate a <strong>SSH</strong> session to the BR1-vEdge with <strong>IP address</strong> of <strong>198.18.134.105</strong> this vEdge (<strong>BR1-vEdge</strong>).  You can use credentials of <code>admin</code> and <code>admin</code> for  authentication.</p>
+<p>Using <strong>MTPutty</strong> on your Remote Desktop session, initiate a <strong>SSH</strong> session to the BR1-vEdge with <strong>IP address</strong> of <strong>198.18.134.105</strong> this vEdge (<strong>BR1-vEdge</strong>).  You can use credentials of <code>admin</code> and <code>admin</code> for  authentication.</p>
 <ul>
 <li>If prompted for "Putty Security Alert" then Trust the host by clicking "Yes" on dialog box.  </li>
 <li>The <strong>SSH credentials</strong> (username and password) are <code>admin</code> and <code>admin</code> respectively</li>
 </ul>
 </li>
 </ul>
+<p>!!!note "Telnet minimum configuration"
+    Any extra configuration required to be able to connect via telnet MUST be configured as well (e.g. for ios - default 
+    username and password as per the template <code>cisco/cisco</code>, vty with <code>login local</code> and <code>transport input all</code>)</p>
 <p>!!!note "Caution" if <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></p>
 <p><strong>Note:</strong> if <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></p>
 <ul>
