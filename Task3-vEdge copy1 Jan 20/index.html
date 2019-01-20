@@ -8,7 +8,7 @@
   
   <meta name="author" content="CX Team">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Task 3 vEdge on internal networks - LTRCRS-2123</title>
+  <title>Task3 vEdge copy1 Jan 20 - LTRCRS-2123</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Task 3 vEdge on internal networks";
-    var mkdocs_page_input_path = "Task3-vEdge.md";
+    var mkdocs_page_name = "Task3 vEdge copy1 Jan 20";
+    var mkdocs_page_input_path = "Task3-vEdge copy1 Jan 20.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -58,27 +58,9 @@
     <a class="" href="../.md">Task 2 Control Plane</a>
 	    </li>
           
-            <li class="toctree-l1 current">
+            <li class="toctree-l1">
 		
-    <a class="current" href="./">Task 3 vEdge on internal networks</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#step-1-verify-vedge-in-branch-1">Step 1: Verify vEdge in Branch-1</a></li>
-    
-
-    <li class="toctree-l2"><a href="#step-2-add-a-new-vedge-in-branch-2">Step 2: Add a new vEdge in Branch-2</a></li>
-    
-
-    <li class="toctree-l2"><a href="#step-3-add-a-cli-template-for-vedge-in-br2">Step 3: Add a CLI Template for vEdge in BR2</a></li>
-    
-
-    <li class="toctree-l2"><a href="#step-4-add-cli-template-for-vedge-in-data-center-dc">Step 4: Add CLI Template for vEdge in Data Center (DC)</a></li>
-    
-
-    <li class="toctree-l2"><a href="#step-5-verify-vedge-in-data-center-dc">Step 5: Verify vEdge in Data Center (DC)</a></li>
-    
-
-    </ul>
+    <a class="" href="../Task3-vEdge/">Task 3 vEdge on internal networks</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -143,10 +125,10 @@
     
       
     
-    <li>Task 3 vEdge on internal networks</li>
+    <li>Task3 vEdge copy1 Jan 20</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/fchaudhr/CL_LTRCRS_2123.git/edit/master/docs/Task3-vEdge.md"
+        <a href="https://github.com/fchaudhr/CL_LTRCRS_2123.git/edit/master/docs/Task3-vEdge copy1 Jan 20.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -174,7 +156,7 @@
 <table>
 <thead>
 <tr>
-<th align="left">Note:</th>
+<th align="left">NOTE:</th>
 </tr>
 </thead>
 <tbody>
@@ -211,15 +193,17 @@
 <table>
 <thead>
 <tr>
-<th align="left">Note:</th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">A static DNS entry for the hostname <strong><em>vbond.cisco.com</em></strong> has been configured under <code>vpn 0</code> (it will be visible in subsequent bullet)</td>
+<td><strong>Note:</strong> A static DNS entry for the hostname <strong><em>vbond.cisco.com</em></strong> has been configured under <code>vpn 0</code> (it will be visible in subsequent bullet)</td>
 </tr>
 </tbody>
 </table>
+<p><span style="background-color:lightgrey">
+<strong>Note:</strong> A static DNS entry for the hostname <strong><em>vbond.cisco.com</em></strong> has been configured under <code>vpn 0</code> (it will be visible in subsequent bullet)</p>
 <ul>
 <li><strong>Execute</strong> the below <strong>command</strong> to see the configuration related to WAN connections or Transport connections on this vEdge.  In Cisco SD-WAN, VPN 0 is allocated for Transport/WAN links:</li>
 </ul>
@@ -236,12 +220,24 @@
 <table>
 <thead>
 <tr>
-<th align="left">Note:</th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">This <code>color</code> tag is used to set up the appropriate IPSec tunnels.   With restrict option, IPSec tunnels between vEdges that have MPLS color will be created.</td>
+<td><strong>Note</strong>: This <code>color</code> tag is used to set up the appropriate IPSec tunnels.   With restrict option, IPSec tunnels between vEdges that have MPLS color will be created.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">Note: This <code>color</code> tag is used to set up the appropriate IPSec tunnels.   With restrict option, IPSec tunnels between vEdges that have MPLS color will be created.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -897,15 +893,6 @@ show run
           </div>
           <footer>
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../Task4-Full-Mesh/" class="btn btn-neutral float-right" title="Task 4 Full-Mesh Data Plane on internal networks">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../Task1-Connect/" class="btn btn-neutral" title="Task 1 Remote Connection"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
-  
 
   <hr/>
 
@@ -930,10 +917,6 @@ show run
           <a href="https://github.com/fchaudhr/CL_LTRCRS_2123.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../Task1-Connect/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../Task4-Full-Mesh/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
