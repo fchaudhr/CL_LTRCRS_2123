@@ -245,7 +245,6 @@
 </tr>
 </tbody>
 </table>
-<p><span style="background-color:lightgrey"><strong>Note:</strong> this <strong><em>color</em></strong> tag is used to set up the appropriate IPSec tunnels.   With <strong><em>restrict</em></strong> option, IPSec tunnels between vEdges that have MPLS color will be created.</p>
 <ul>
 <li>
 <p>You many also execute <code>show run</code> command to view the full configuration of this vEdge</p>
@@ -286,18 +285,39 @@ show certificate installed
 </ul>
 <p>Below screenshot shows the partial output of above command:
 <img alt="CLI Template" src="../pics/t3-br1-show-system-status.png" /></p>
-<p><span style="background-color:lightgrey">
-<strong>Note:</strong> you can also verify the Mode (vManaged or CLI) on vManage GUI by navigating to <strong>Configuration &gt; Devices</strong> and under <strong>WAN Edge List</strong> tab scrolling to the right will show the <code>Mode</code> option for each device.  If there are any discrepancies then refer to the instructor.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">You can also verify the Mode (vManaged or CLI) on vManage GUI by navigating to <strong>Configuration &gt; Devices</strong> and under <strong>WAN Edge List</strong> tab scrolling to the right will show the <code>Mode</code> option for each device.</td>
+</tr>
+<tr>
+<td align="left">If there are any discrepancies then refer to the instructor.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="step-2-add-a-new-vedge-in-branch-2">Step 2: Add a new vEdge in Branch-2</h2>
 <p>In this step, we will add a vEdge-Cloud in Branch-2 (BR2) to the SD-WAN Fabric.  The vEdge has already been configured for the Out-of-Band Management (i.e. VPN 512) so there is network connectivity to this vEdge</p>
-<p><span style="background-color:lightgrey"></p>
-<blockquote>
-<p><strong>Important Note</strong>: Be very careful in making configuration changes on vEdge.  <strong>Do NOT change</strong> any <strong>configuration</strong> of VPN 512 as it can result in loss of connectivity to the vEdge - which can not be restored.   You will have to start the lab again from Task #1 if you loose network connectivity to a vEdge.</p>
-</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Important Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Be very careful in making configuration changes on vEdge.  <strong>Do NOT change</strong> any <strong>configuration</strong> of VPN 512 as it can result in loss of connectivity to the vEdge - which can not be restored.   You will have to start the lab again from Task #1 if you loose network connectivity to a vEdge.</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>Log on to the <strong>vManage</strong> GUI using a web browser (if not already open) and use credentials of <code>admin</code> and <code>admin</code> for authentication:</li>
 </ul>
-<pre><code class="textfile">https://198.18.1.10
+<pre><code>https://198.18.1.10
 </code></pre>
 
 <ul>
@@ -312,21 +332,39 @@ show certificate installed
 <li>
 <p>This will result in generation of a new One-Time-Password (OTP) as shown in below screenshot.  <strong>Copy</strong>  the <code>otp</code> and <code>uuid</code> fields from this pop-up window.  </p>
 <p><img alt="OTP" src="../pics/t3-br2-cert-otp-data.png" /></p>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">A new OTP is generated everytime. Hence the OTP data on your pop-up window will not be the same as above screenshot</td>
+</tr>
+</tbody>
+</table>
 </li>
-</ul>
-<blockquote>
-<p><strong>Note</strong>: A new OTP is generated everytime. Hence the OTP data on your pop-up window will not be the same as above screenshot</p>
-</blockquote>
-<ul>
 <li>
 <p><strong>Click</strong> on the <code>Close</code> button of this pop-up window to proceed further</p>
 </li>
 <li>
 <p>Using <strong>MPutty</strong> on your Remote Desktop session, initiate a <strong>SSH</strong> session to the <strong>IP address</strong> of <strong>198.18.134.106</strong> this vEdge (<strong>BR2-vEdge1</strong>).  You can use credentials of <code>admin</code> and <code>admin</code> for  authentication.</p>
-<p><span style="background-color:lightgrey">
-<strong>Note:</strong> If <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></span></p>
-<p><span style="background-color:lightgrey">
- <strong>Note:</strong> As mentioned earlier the OOB management (VPN 512) has been already configured on this vEdge.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></td>
+</tr>
+<tr>
+<td align="left">As mentioned earlier the OOB management (<code>vpn 512</code>) has been already configured on this vEdge.</td>
+</tr>
+</tbody>
+</table>
 </li>
 <li>
 <p>On the <strong>SSH</strong> connection of vEdge: <strong>configure</strong> the below commands - you can copy and paste the below:</p>
@@ -366,13 +404,26 @@ vpn 0
  commit
 </code></pre>
 
-<p>Make sure the <strong>commit</strong> is done successfully on the vEdge</p>
 <ul>
-<li>On the <strong>SSH</strong> connection to vEdge: <strong>execute</strong> the below command:</li>
+<li>
+<p>Make sure the <strong>commit</strong> is done successfully on the vEdge</p>
+</li>
+<li>
+<p>On the <strong>SSH</strong> connection to vEdge: <strong>execute</strong> the below command:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">In below command you must <strong>replace</strong> the <code>{otp}</code> with the OTP that you copied in previous step of <code>Generate Bootstrap Configuration</code></td>
+</tr>
+</tbody>
+</table>
+</li>
 </ul>
-<blockquote>
-<p><strong>Note:</strong> you must <strong>replace</strong> the <code>{otp}</code> with the OTP that you copied in previous step of <code>Generate Bootstrap Configuration</code></p>
-</blockquote>
 <pre><code>request vedge-cloud activate chassis-number ddd801b2-8cbe-4394-abd1-3b71e39886e3 token token {otp}
 </code></pre>
 
@@ -386,8 +437,18 @@ vpn 0
 
 <p>Below screenshot shows the output of above command confirming that a valid serial is now installed on vEdge:</p>
 <p><img alt="show cert" src="../pics/t3-br2-show-cert.png" /></p>
-<p><span style="background-color:lightgrey">
-<strong>Note:</strong> If the output of above command does not show any serial number, or it gives a message such as '<em>Certificate not yet installed ... giving up</em>' then you can re-enter the above <code>request vedge-cloud activate chassis-number ddd801b2-8cbe-4394-abd1-3b71e39886e3 token token {otp}</code> command</p>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If the output of above command does not show any serial number, or it gives a message such as '<em>Certificate not yet installed ... giving up</em>' then you can re-enter the above <code>request vedge-cloud activate chassis-number ddd801b2-8cbe-4394-abd1-3b71e39886e3 token token {otp}</code> command</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>On the <strong>SSH</strong> connection to vEdge: <strong>execute</strong> the below commands to verify control plane connectivity of this vEdge to the controllers (vManage, vSmart)</li>
 </ul>
@@ -400,14 +461,36 @@ vpn 0
 <ul>
 <li>confirm that <strong>State</strong> of control plane connection to vManage is <strong>up</strong></li>
 <li>confirm that <strong>State</strong> of control plane connections to vSmart are <strong>up</strong></li>
-<li>confirm that valid Private, Public, System IP addresses, Protcols etc of vSmart, vManage and vEdge are shown</li>
+<li>
+<p>confirm that valid Private, Public, System IP addresses, Protcols etc of vSmart, vManage and vEdge are shown</p>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If the <strong>State</strong> of any control connection is <strong>down</strong>, then you can try to issue <code>clear control connections</code> command.  And check the status again.  If still there are issues then kindly check with Lab instructor</td>
+</tr>
+</tbody>
+</table>
+</li>
 </ul>
-<p><span style="background-color:lightgrey">
-<strong>Note</strong>: If the <strong>State</strong> of any control connection is <strong>down</strong>, then you can try to issue <code>clear control connections</code> command.  And check the status again.  If still there are issues then kindly check with Lab instructor.</p>
 <h2 id="step-3-add-a-cli-template-for-vedge-in-br2">Step 3: Add a CLI Template for vEdge in BR2</h2>
 <p>Next a CLI Template will be added so future configurations of vEdge in Branch number 2 will be done via vManage directly.   These configurations will be done by using "CLI Template" from the vManage.  Use of "Feature Templates" on vManage is an alternate mechanism for centralization configurations from vManage, but it will not be used in this lab. </p>
-<p><span style="background-color:lightgrey">
-<strong>Important Note</strong>: Be very careful in making configuration changes on vEdge.  <strong>Do NOT change</strong> any <strong>configuration</strong> of VPN 512 as it can result in loss of connectivity to the vEdge - which can not be restored.   You will have to start the lab again from Task #1 if you loose network connectivity to a vEdge. </p>
+<table>
+<thead>
+<tr>
+<th align="left">Important Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Be very careful in making configuration changes on vEdge.  <strong>Do NOT change</strong> any <strong>configuration</strong> of VPN 512 as it can result in loss of connectivity to the vEdge - which can not be restored.   You will have to start the lab again from Task #1 if you loose network connectivity to a vEdge.</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>
 <p>On the vManage GUI, navigate to <strong>Configuration &gt; Templates</strong>.  Under <strong>Devices</strong> tab click <strong>Create Template</strong> and then select <strong>CLI Template</strong> as shown in the below screenshot:</p>
@@ -597,7 +680,18 @@ vpn 512
 </ul>
 <p>Below screenshot shows the output of above command confirming that template is attached successfully:
 <img alt="CLI Template" src="../pics/t3-br2-show-system-status.png" /></p>
-<p><strong>Note:</strong> you can verify the Mode (vManaged or CLI) on vManage GUI by navigating to <strong>Configuration &gt; Devices</strong>.  Then under <strong>WAN Edge List</strong> tab scroll to the right you can view the <code>Mode</code> option for each device.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">You can also verify the Mode (vManaged or CLI) on vManage GUI by navigating to <strong>Configuration &gt; Devices</strong> and under <strong>WAN Edge List</strong> tab scrolling to the right will show the <code>Mode</code> option for each device.</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>On the <strong>SSH</strong> connection, you can <strong>execute</strong> below commands to verify the updated configurations (such as DHCP on interface ge0/0, control connections to Controllers on this new interface etc)  as reflected in "CLI Template":</li>
 </ul>
@@ -610,8 +704,18 @@ show run
 
 <h2 id="step-4-add-cli-template-for-vedge-in-data-center-dc">Step 4: Add CLI Template for vEdge in Data Center (DC)</h2>
 <p>Next a CLI Template will be added so configurations of vEdge in Data Center (DC) will be done via vManage directly.   These configurations will be done by using "CLI Template" from the vManage.  Use of "Feature Templates" on vManage is an alternate mechanism for centralization configurations from vManage, but it will not be used in this lab. </p>
-<p><span style="background-color:lightgrey">
-<strong>Important Note</strong>: Be very careful in making configuration changes on vEdge.  <strong>Do NOT change</strong> any <strong>configuration</strong> of VPN 512 as it can result in loss of connectivity to the vEdge - which can not be restored.   You will have to start the lab again from Task #1 if you loose network connectivity to a vEdge. </p>
+<table>
+<thead>
+<tr>
+<th align="left">Important Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Be very careful in making configuration changes on vEdge.  <strong>Do NOT change</strong> any <strong>configuration</strong> of VPN 512 as it can result in loss of connectivity to the vEdge - which can not be restored.   You will have to start the lab again from Task #1 if you loose network connectivity to a vEdge.</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>
 <p>On the vManage GUI, navigate to <strong>Configuration &gt; Templates</strong>.  Under <strong>Devices</strong> tab click <strong>Create Template</strong> and then select <strong>CLI Template</strong> as shown in the below screenshot:</p>
@@ -749,8 +853,18 @@ vpn 512
 
 </code></pre>
 
-<p><span style="background-color:lightgrey">
-<strong>Note:</strong> Double curly brackets with <code>{{vbond-public-ip}}</code> must be entered as above.  Double curly brackets are interpreted as a variable by vManage and the appropirate IP address of vbond for your pod must be configured in subsequent bullets </p>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Double curly brackets with <code>{{vbond-public-ip}}</code> must be entered as above.  Double curly brackets are interpreted as a variable by vManage and the appropirate IP address of vbond for your pod will be configured in subsequent bullets</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>
 <p>Next <strong>Click</strong> the <code>Add</code> button as shown in the below screenshot:</p>
@@ -787,12 +901,24 @@ vpn 512
 <p>On the next screen, </p>
 <ul>
 <li><strong>Enter</strong> the <strong>Public IP address</strong> of vBond in your specific pod in the field named <code>vbond-public-ip</code>.  </li>
-<li><strong>Click</strong> on the <code>Next</code> button</li>
+<li>
+<p><strong>Click</strong> on the <code>Next</code> button</p>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">it's important to enter the respective Public IP address of vBond of your pod in this field.  You may ask instructor if you are unsure about this</td>
+</tr>
+</tbody>
+</table>
+</li>
 </ul>
 </li>
 </ul>
-<p><span style="background-color:lightgrey">
-<strong>Note:</strong> it's important to enter the respective Public IP address of vBond of your pod in this field.  You may ask instructor if you are unsure about this</p>
 <p>Below screenshot shows this for one of the reference pod:</p>
 <p><img alt="CLI Template" src="../pics/t3-dc-clitemplate-attach2.png" /></p>
 <ul>
@@ -800,13 +926,35 @@ vpn 512
 <p>On the next screen, <strong>Click</strong> on <code>DC1-VEDGE1</code> (with <em>uuid</em> of <code>ebdc8bd9-17e5-4eb3-a5e0-f438403a83de</code>) on left section and <strong>Click</strong> on <code>Config Preview</code> and <code>Config Diff</code> options on the right side of window to confirm correct configurations are pushed to this DC1-VEDGE1.  </p>
 <p>Below screenshot shows "Config Preview" confirming that correct VPN 512 configs are being pushed to DC1-VEDGE1:</p>
 <p><img alt="CLI Template" src="../pics/t3-dc-clitemplate-attach3.png" /></p>
-<p><span style="background-color:lightgrey">
-<strong>Important Note</strong>: Be very careful in making configuration changes on vEdge.  <strong>Do NOT change</strong> any <strong>configuration</strong> of VPN 512 as it can result in loss of connectivity to the vEdge - which can not be restored.   You will have to start the lab again from Task #1 if you loose network connectivity to a vEdge.</p>
 </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Important Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Be very careful in making configuration changes on vEdge.  <strong>Do NOT change</strong> any <strong>configuration</strong> of VPN 512 as it can result in loss of connectivity to the vEdge - which can not be restored.   You will have to start the lab again from Task #1 if you loose network connectivity to a vEdge.</td>
+</tr>
+</tbody>
+</table>
+<ul>
 <li>
 <p>Next <strong>Click</strong> on the <code>Configure Devices</code> button on bottom of the screen.  On the subsequent screen verify that the template is attached successfully to DC1-vEdge</p>
-<p><span style="background-color:lightgrey">
-<strong>Note</strong>: you may get a message that Device is offline.  You can ignore this for now and proceed further</p>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">you may get a message that Device is offline.  You can ignore this for now and proceed further</td>
+</tr>
+</tbody>
+</table>
 </li>
 </ul>
 <h2 id="step-5-verify-vedge-in-data-center-dc">Step 5: Verify vEdge in Data Center (DC)</h2>
@@ -814,8 +962,18 @@ vpn 512
 <ul>
 <li>
 <p>On the <strong>Mputty</strong> client in your Remote desktop, initiate a SSH session to <strong>DC1-VEDGE1</strong> with OOB management IP address of <strong>198.18.134.100</strong> and use credentials of <code>admin/admin</code></p>
-<p><span style="background-color:lightgrey">
-<strong>Note:</strong> if <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></p>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></td>
+</tr>
+</tbody>
+</table>
 </li>
 <li>
 <p>DC1-vEdge may not be successfully registered to control plane device due to incorrect Public IP address.  On the <strong>SSH</strong> connection, <strong>execute</strong> the below commands to verify it's status of control connections:</p>
@@ -840,8 +998,18 @@ vpn 0
 commit
 </code></pre>
 
-<p><span style="background-color:lightgrey">
-<strong>Note:</strong> you must replace with actual <code>{PUBLIC IP of vBOND}</code> with the actual Public IP address of vBond such as this command: <code>host vbond.cisco.com ip 128.107.222.47</code></p>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">In the above command you must replace with actual <code>{PUBLIC IP of vBOND}</code> with the actual Public IP address of vBond such as this command: <code>host vbond.cisco.com ip 128.107.222.47</code></td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>
 <p>Make sure that <strong>commit</strong> is done <strong>successfully</strong> on vEdge.  </p>
@@ -862,12 +1030,23 @@ show control connections
 
 <p>Below screenshot shows the working state of this vEdge:</p>
 <p><img alt="DC control" src="../pics/t3-dc-show-control-connect.png" /></p>
-<p><span style="background-color:lightgrey">
-<strong>Note:</strong> above screenshot shows the Public IP address of the vBond for a reference pod.  It will be different for your pod.  The Private IP addresses for vManage and vSmart should be same.</p>
-<p><span style="background-color:lightgrey">
-<strong>Note:</strong> that DC-vEdge will have only one (1) control connnection (as shown by <code>show control connections</code> command) over private1 color to vSmart, vBond and vManage.  This is expected as control connection to vBond Public IP address is allowed only on the private1 link.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Above screenshot shows the Public IP address of the vBond for a reference pod.  It will be different for your pod.  The Private IP addresses for vManage and vSmart should be same.</td>
+</tr>
+<tr>
+<td align="left">DC-vEdge will have only one (1) control connnection (as shown by <code>show control connections</code> command) over private1 color to vSmart, vBond and vManage.  This is expected as control connection to vBond Public IP address is allowed only on the private1 link.</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li>As per previous bullet control connections to vManage should be up.  To <strong>verify</strong> that CLI template (configured in previous steps) is successfully attached to this vEdge you may execute below <strong>command</strong>:</li>
+<li>As per previous bullet control connections to vManage should be up.  To <strong>verify</strong> that CLI template (configured in previous steps) is successfully attached to this vEdge you may <strong>execute</strong> below <strong>command</strong>:</li>
 </ul>
 <pre><code>show system status
 </code></pre>
@@ -879,8 +1058,18 @@ show control connections
 </ul>
 <p>Below screenshot shows the output of above command:</p>
 <p><img alt="CLI Template" src="../pics/t3-dc-show-system-status.png" /></p>
-<p><span style="background-color:lightgrey">
-<strong>Note:</strong> you can verify the Mode (vManaged or CLI) on vManage GUI by navigating to <strong>Configuration &gt; Devices</strong> and under <strong>WAN Edge List</strong> tab scrolling to the right will show the <code>Mode</code> option for each device.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">You can also verify the Mode (vManaged or CLI) on vManage GUI by navigating to <strong>Configuration &gt; Devices</strong> and under <strong>WAN Edge List</strong> tab scrolling to the right will show the <code>Mode</code> option for each device.</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>You can run various other commands to verify the updated configurations (such as DHCP on interface ge0/0, control connections to Controllers on this new interface etc)  as reflected in "CLI Template":</li>
 </ul>
