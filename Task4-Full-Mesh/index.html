@@ -158,27 +158,38 @@
 <p>You can launch SSH to vEdge in Branch-1 by using <strong>MPutty</strong> client on the Remote Desktop: </p>
 <ul>
 <li><strong>SSH</strong> to OOB Management IP address of <strong>BR1-vEdge</strong>:  <code>198.18.134.105</code></li>
-<li>Use credentials of <code>admin</code> and <code>admin</code> for  authentication</li>
+<li>
+<p>Use credentials of <code>admin</code> and <code>admin</code> for  authentication</p>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></td>
+</tr>
+</tbody>
+</table>
+</li>
 </ul>
-<blockquote>
-<p><strong>Note:</strong> if <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></p>
-</blockquote>
 </li>
 <li>
 <p>On the SSH connection to vEdge, execute the below commands to verify that OMP routes have been received by this vEdge:</p>
-<p>~~~
-show omp routes
-show ip route
-~~~</p>
-</li>
-<li>
-<p>On the SSH connection to vEdge, execute the below commands to verify that IPSec tunnels are setup to remote vEdges.   BFD is enabled by default on the IPSec tunnels:</p>
-<p>~~~
-show bfd session
-show bfd session | tab
-~~~</p>
 </li>
 </ul>
+<pre><code>show omp routes
+show ip route
+</code></pre>
+
+<ul>
+<li>On the SSH connection to vEdge, execute the below commands to verify that IPSec tunnels are setup to remote vEdges.   BFD is enabled by default on the IPSec tunnels:</li>
+</ul>
+<pre><code>show bfd session
+show bfd session | tab
+</code></pre>
+
 <p>Below screenshot shows the output of above command confirming that IPSec tunnels on both WAN links are setup to DC and BR2:</p>
 <p><img alt="VPN traffic" src="../pics/t4-br1-show_bfd_sess.png" /></p>
 <h2 id="step-2-verify-ipsec-tunnels-on-br2">Step 2: Verify IPSec tunnels on BR2</h2>
@@ -187,27 +198,38 @@ show bfd session | tab
 <p>You can launch SSH to vEdge in Branch-2 by using <strong>MPutty</strong> client on the Remote Desktop: </p>
 <ul>
 <li><strong>SSH</strong> to OOB Management IP address of <strong>BR2-vEdge</strong>:  <code>198.18.134.106</code></li>
-<li>Use credentials of <code>admin</code> and <code>admin</code> for  authentication</li>
+<li>
+<p>Use credentials of <code>admin</code> and <code>admin</code> for  authentication</p>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></td>
+</tr>
+</tbody>
+</table>
+</li>
 </ul>
-<blockquote>
-<p><strong>Note:</strong> if <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></p>
-</blockquote>
 </li>
 <li>
 <p>On the SSH connection to vEdge, execute the below commands to verify that OMP routes have been received by this vEdge:</p>
-<p>~~~
-show omp routes
-show ip route
-~~~</p>
-</li>
-<li>
-<p>On the SSH connection to vEdge, execute the below commands to verify that IPSec tunnels are setup to remote vEdges.   BFD is enabled by default on the IPSec tunnels:</p>
-<p>~~~
-show bfd session 
-show bfd session | tab
-~~~</p>
 </li>
 </ul>
+<pre><code>show omp routes
+show ip route
+</code></pre>
+
+<ul>
+<li>On the SSH connection to vEdge, execute the below commands to verify that IPSec tunnels are setup to remote vEdges.   BFD is enabled by default on the IPSec tunnels:</li>
+</ul>
+<pre><code>show bfd session 
+show bfd session | tab
+</code></pre>
+
 <p>Below screenshot shows the output of above command confirming that IPSec tunnels on both WAN links are setup to DC and BR1:</p>
 <p><img alt="VPN traffic" src="../pics/t4-br2-show_bfd_sess.png" /></p>
 <h2 id="step-3-verify-ipsec-tunnels-on-dc">Step 3: Verify IPSec tunnels on DC</h2>
@@ -216,31 +238,42 @@ show bfd session | tab
 <p>You can launch SSH to vEdge in Branch-1 by using <strong>MTPutty</strong> client on the Remote Desktop: </p>
 <ul>
 <li><strong>SSH</strong> to OOB Management IP address of <strong>DC1-VEDGE</strong>:  <code>198.18.134.100</code></li>
-<li>Use credentials of <code>admin</code> and <code>admin</code> for  authentication</li>
+<li>
+<p>Use credentials of <code>admin</code> and <code>admin</code> for  authentication</p>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></td>
+</tr>
+</tbody>
+</table>
+</li>
 </ul>
-<blockquote>
-<p><strong>Note:</strong> if <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></p>
-</blockquote>
 </li>
 <li>
 <p>On the SSH connection to vEdge, execute the below commands to verify that OMP routes have been received by this vEdge:</p>
-<p>~~~
-show omp routes
-show ip route
-~~~</p>
-</li>
-<li>
-<p>On the SSH connection to vEdge, execute the below commands to verify that IPSec tunnels are setup to remote vEdges.   BFD is enabled by default on the IPSec tunnels:</p>
-<p>~~~
-show bfd session
-show bfd session | tab
-~~~</p>
 </li>
 </ul>
+<pre><code>show omp routes
+show ip route
+</code></pre>
+
+<ul>
+<li>On the SSH connection to vEdge, execute the below commands to verify that IPSec tunnels are setup to remote vEdges.   BFD is enabled by default on the IPSec tunnels:</li>
+</ul>
+<pre><code>show bfd session
+show bfd session | tab
+</code></pre>
+
 <p>Below screenshot shows the output of above command confirming that IPSec tunnels on both WAN links are setup to BR1 and BR2:</p>
 <p><img alt="BFD" src="../pics/t4-dc-show_bfd_sess.png" /></p>
-<p>--
-This concludes this task to verify the full mesh topology</p>
+<hr />
+<p>This concludes this task to verify the full mesh topology</p>
               
             </div>
           </div>

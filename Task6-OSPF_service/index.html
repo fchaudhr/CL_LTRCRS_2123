@@ -165,11 +165,21 @@
 <ul>
 <li>Log on to the vManage from a web browser (if not already open) and use credentials of <code>admin</code> and <code>admin</code>:</li>
 </ul>
-<p>~~~
-  https://198.18.1.10
-  ~~~</p>
-<pre><code>&gt; **Note:** if `admin/admin` credentials do not work then you may try using `cisco/cisco` or `cisco1/cisco1`
+<pre><code>https://198.18.1.10
 </code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>
 <p>On the vManage GUI, navigate to <strong>Configuration &gt; Templates &gt; Device</strong>.  </p>
@@ -189,10 +199,11 @@
 <ul>
 <li><strong>Scroll</strong> all the way to the end of existing template, </li>
 <li>Then you can <strong>add</strong>  (copy &amp; paste) the below configuration at the end of the exiting template,</li>
-<li>
-<p><strong>Note:</strong> Do not make any other changes to existing configurations in this template</p>
-<p>~~~
-vpn 10
+<li><strong>Note:</strong> Do not make any other changes to existing configurations in this template</li>
+</ul>
+</li>
+</ul>
+<pre><code>vpn 10
  router
   ospf
    default-information originate
@@ -201,13 +212,21 @@ vpn 10
     interface ge0/2
     exit
    exit
-~~~</p>
-</li>
-</ul>
-<blockquote>
-<p><strong>Note</strong>: above configs perform OSPF configuration as well as redistribution of OMP routes into OSPF with "redistribute omp" command</p>
-</blockquote>
-</li>
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Above configs perform OSPF configuration as well as redistribution of OMP routes into OSPF with "redistribute omp" command</td>
+</tr>
+</tbody>
+</table>
+<ul>
 <li>
 <p>Click <strong>Update</strong> to save the new configurations in the template.</p>
 </li>
@@ -233,9 +252,18 @@ vpn 10
 <p>On the next screen, <strong>Click</strong> on <code>BR2-vEdge</code> (with <em>uuid</em> of <code>ddd801b2-8cbe-4394-abd1-3b71e39886e3</code>) on left section and <strong>Click</strong> on <code>Config Preview</code> and <code>Config Diff</code> options on the right side of window to confirm correct configurations are pushed to this BR2-vEdge.  </p>
 </li>
 </ul>
-<blockquote>
-<p><strong>Important Note</strong>: Be very careful in making configuration changes on vEdge.  <strong>Do NOT change</strong> any <strong>configuration</strong> of VPN 512 as it can result in loss of connectivity to the vEdge - which can not be restored.   You will have to start the lab again from Task #1 if you loose network connectivity to a vEdge. </p>
-</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Important Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Be very careful in making configuration changes on vEdge.  <strong>Do NOT change</strong> any <strong>configuration</strong> of VPN 512 as it can result in loss of connectivity to the vEdge - which can not be restored.   You will have to start the lab again from Task #1 if you loose network connectivity to a vEdge.</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>Next <strong>Click</strong> on the <code>Configure Devices</code> button on bottom of the screen.  On the subsequent screen verify that the template is attached successfully to BR2-vEdge</li>
 </ul>
@@ -252,36 +280,41 @@ vpn 10
 </ul>
 </li>
 </ul>
-<blockquote>
-<p><strong>Note:</strong> if <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></p>
-</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></td>
+</tr>
+</tbody>
+</table>
 </li>
 <li>
 <p>Next, <strong>execute</strong> the below commands to verify that OSPF configuration on the vEdge-1 in Branch-1:</p>
-<p>~~~
-show run vpn 10
+</li>
+</ul>
+<pre><code>show run vpn 10
 show ospf neighbor
 show ospf routes
 show ip routes vpn 10
-~~~</p>
+</code></pre>
+
 <p>Below screenshot shows the output of of above commands on BR2-vEdge:</p>
 <p><img alt="OSPF on BR2" src="../pics/t6-br2-showrunvpn10-ospf-routes.png" /></p>
-</li>
-</ul>
-<p>From the output of above commands, confirm that vEdge-1 in Branch #1 shows that:</p>
+<p>From the output of above commands, <strong>confirm</strong> that vEdge-1 in Branch #1 shows that:</p>
 <ul>
 <li><strong>OSPF</strong> configurations <strong>under VPN 10</strong> exist on the vEdge,</li>
 <li><strong>OSPF neighbor</strong> with the <strong>10.4.254.254</strong> exists,</li>
-<li>
-<p>below <strong>OSPF routes</strong> are learned from this neighbor:</p>
-<ul>
+<li>below <strong>OSPF routes</strong> are learned from this neighbor:<ul>
 <li>prefix: <strong>10.4.0.0/24</strong></li>
 <li>prefix: <strong>10.4.254.0/24</strong></li>
 </ul>
 </li>
-<li>
-<p>these OSPF routes are installed in the routing table.</p>
-</li>
+<li>these OSPF routes are installed in the routing table.</li>
 </ul>
 <h2 id="step-3-verify-ospf-routes-redistribution">Step 3: Verify OSPF routes redistribution</h2>
 <p>In the previous step, we configured the OSPF peering between BR2-vEdge and a neigbouring router on the LAN of this Branch2.  </p>
@@ -292,23 +325,23 @@ show ip routes vpn 10
 </li>
 <li>
 <p>Execute below commands on <strong>BR1-vEdge</strong> to verify that OSPF routes are learned from BR2:</p>
-<p>~~~
-show ip routes vpn 10
+</li>
+</ul>
+<pre><code>show ip routes vpn 10
 show omp routes
-~~~</p>
+</code></pre>
+
 <p>Below screenshot shows the output of of above commands on BR1-vEdge:</p>
 <p><img alt="OSPF on BR1" src="../pics/t6-br1-show-route-omp.png" /></p>
 <p>From the output of above commands, verify that OSPF routes of <strong>10.4.0.0</strong> has been <strong>redistributed via OMP</strong> by BR2-vEdge</p>
-</li>
-<li>
-<p>On <strong>BR1-vEdge</strong>, we can get more details (attributes learned via OMP) about the routes by using below command:</p>
-<p>~~~
-show omp routes vpn 10 10.4.0.0/24 detail
-~~~ </p>
+<ul>
+<li>On <strong>BR1-vEdge</strong>, we can get more details (attributes learned via OMP) about the routes by using below command:</li>
+</ul>
+<pre><code>show omp routes vpn 10 10.4.0.0/24 detail
+</code></pre>
+
 <p>Below screenshot shows the output of of above commands on BR1-vEdge:</p>
 <p><img alt="OSPF on BR1" src="../pics/t6-br1-show-omp-det.png" /></p>
-</li>
-</ul>
 <p>From the output of above command you can verify the attributes for <code>10.4.0.0/24</code> route such as:</p>
 <ul>
 <li><code>origin-proto</code> is <code>OSPF-intra-area</code> (so route is originated by OSPF)</li>
@@ -321,13 +354,15 @@ show omp routes vpn 10 10.4.0.0/24 detail
 </li>
 <li>
 <p>In contrast you may run below command to see the <code>origin-proto</code> for route <code>10.4.254.0</code>:</p>
-<p>~~~
-show omp routes vpn 10 10.4.254.0/24 detail
-~~~</p>
 </li>
 </ul>
+<pre><code>show omp routes vpn 10 10.4.254.0/24 detail
+</code></pre>
+
 <p>Does the above output <code>10.4.254.0</code> makes sense?
  It basically shows that the route was directly connected on BR2! </p>
+<hr />
+<p>You have successfully finished this task of configuring OSPF on Service side of a branch</p>
               
             </div>
           </div>

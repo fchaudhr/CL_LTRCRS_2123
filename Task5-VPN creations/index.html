@@ -172,15 +172,12 @@
 <h2 id="step-1-create-vpn-10-on-branch-1-br1">Step 1: Create VPN 10 on Branch 1 (BR1)</h2>
 <p>A new VPN (number 10) will be used to pass traffic between Applications between Branches, the Data Centers and subsequently to the application hosted on AWS Cloud. </p>
 <ul>
-<li>
-<p>Log on to the vManage from a web browser (if not already open) and use credentials of <code>admin</code> and <code>admin</code>:</p>
-<p>~~~
-https://198.18.1.10
-~~~</p>
-<ul>
-<li>Enter the admin credentials for authentication</li>
+<li>Log on to the vManage from a web browser (if not already open) and use credentials of <code>admin</code> and <code>admin</code>:</li>
 </ul>
-</li>
+<pre><code>https://198.18.1.10
+</code></pre>
+
+<ul>
 <li>
 <p>On the vManage GUI, navigate to <strong>Configuration &gt; Templates &gt; Device</strong>.  </p>
 </li>
@@ -195,18 +192,40 @@ https://198.18.1.10
 <li>Then you can <strong>add</strong>  (copy &amp; paste will work) the below configuration at the end of the exiting template,</li>
 <li>Do not make any other changes to existing configurations in this template</li>
 </ul>
-<p>~~~
-vpn 10
+</li>
+</ul>
+<pre><code>vpn 10
  name AppVPN
  interface ge0/3
   ip address {{vpn10-IP-address}}/24
   no shutdown
-~~~</p>
-<blockquote>
-<p><strong>Note</strong>: above configuration must include <code>{{vpn10-IP-address}}</code> syntax.  Double curly brackets are interpreted as variable and this will be used to fill out IP addresses of each vEdge in the branch in subsequent bullet (during deployment of template).</p>
-<p><strong>Important Note</strong>: Be very careful in making configuration changes on vEdge.  <strong>Do NOT change</strong> any <strong>configuration</strong> of VPN 512 as it can result in loss of connectivity to the vEdge - which can not be restored.   You will have to start the lab again from Task #1 if you loose network connectivity to a vEdge. </p>
-</blockquote>
-</li>
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Above configuration must include <code>{{vpn10-IP-address}}</code> syntax.  Double curly brackets are interpreted as variable and this will be used to fill out IP addresses of each vEdge in the branch in subsequent bullet (during deployment of template)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">Important Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Be very careful in making configuration changes on vEdge.  <strong>Do NOT change</strong> any <strong>configuration</strong> of VPN 512 as it can result in loss of connectivity to the vEdge - which can not be restored.   You will have to start the lab again from Task #1 if you loose network connectivity to a vEdge.</td>
+</tr>
+</tbody>
+</table>
+<ul>
 <li>
 <p>After adding above configuration to this Template, <strong>Click</strong> on <code>Update</code> button.  </p>
 </li>
@@ -220,9 +239,18 @@ vpn 10
 <li><strong>Select</strong> the <code>BR1-vEdge</code> under the <strong>Device list</strong> section (left part of screen).  </li>
 <li>
 <p>Then <strong>Select</strong> both <code>"Config Preview"</code> and <code>"Config Diff"</code> options to verify that VPN 10 related configurations are added to this vEdge, and no changes to VPN 512 (or other interfaces) are done.</p>
-<blockquote>
-<p><strong>Important Note</strong>: Be very careful in making configuration changes on vEdge.  <strong>Do NOT change</strong> any <strong>configuration</strong> of VPN 512 as it can result in loss of connectivity to the vEdge - which can not be restored.   You will have to start the lab again from Task #1 if you loose network connectivity to a vEdge.</p>
-</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Important Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Be very careful in making configuration changes on vEdge.  <strong>Do NOT change</strong> any <strong>configuration</strong> of VPN 512 as it can result in loss of connectivity to the vEdge - which can not be restored.   You will have to start the lab again from Task #1 if you loose network connectivity to a vEdge.</td>
+</tr>
+</tbody>
+</table>
 </li>
 <li>
 <p>Once you have verifed the config changes <strong>Click</strong> on <code>Configure Devices</code> button on the lower section of screen, as shown in below screenshot:</p>
@@ -247,9 +275,18 @@ vpn 10
 <li><strong>SSH</strong> to OOB Management IP address of <strong>BR1-vEdge</strong>:  <code>198.18.134.105</code></li>
 <li>Use credentials of <code>admin</code> and <code>admin</code> for  authentication</li>
 </ul>
-<blockquote>
-<p><strong>Note:</strong> if <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></p>
-</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></td>
+</tr>
+</tbody>
+</table>
 </li>
 <li>
 <p>On the SSH connection to vEdge, execute the below commands to:</p>
@@ -257,17 +294,26 @@ vpn 10
 <li>verify that VPN 10 has been successfully configured by vManage</li>
 <li>verify vEdge has connectivity to local device (on the LAN of vEdge) in VPN 10 by initiating a ping to a host on LAN :</li>
 </ul>
-<p>~~~
-show run vpn 10
-ping vpn 10 10.3.0.10 
-~~~</p>
-<blockquote>
-<p><strong>Note:</strong> you can enter Control-C (Ctrl-C) to stop the ping</p>
-</blockquote>
-<p>Below screenshot shows the output of above command:</p>
-<p><img alt="VPN 10" src="../pics/t5-br1-showrun-vpn10ge03-ping.png" /></p>
 </li>
 </ul>
+<pre><code>show run vpn 10
+ping vpn 10 10.3.0.10 
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">you can enter Control-C (Ctrl-C) to stop the ping</td>
+</tr>
+</tbody>
+</table>
+<p>Below screenshot shows the output of above command:</p>
+<p><img alt="VPN 10" src="../pics/t5-br1-showrun-vpn10ge03-ping.png" /></p>
 <p>This successfully adds VPN 10 to Branch 1</p>
 <h2 id="step-3-create-vpn-10-on-branch-2-br2">Step 3: Create VPN 10 on Branch 2 (BR2)</h2>
 <p>Now lets create VPN 10 on BR2 vEdge.  </p>
@@ -278,66 +324,73 @@ ping vpn 10 10.3.0.10
 </li>
 <li>
 <p>VPN 10 will be configured on port <strong>ge0/2</strong> on vEdge in Branch-2.  Hence the below vpn 10 configuration will be added at the end of CLI template named <code>CL-BR2-vEdge1</code>:</p>
-<p>~~~
-vpn 10
+</li>
+</ul>
+<pre><code>vpn 10
  name AppVPN
  interface ge0/2
   ip address {{vpn10-IP-address}}/24
   no shutdown
-~~~</p>
-</li>
-</ul>
-<blockquote>
-<p><strong>Important Note</strong>: Be very careful in making configuration changes on vEdge.  <strong>Do NOT change</strong> any other <strong>configuration</strong> on the template.  Changing other config, such as VPN 512 related configs, can result in loss of connectivity to the vEdge - which can not be restored.   You will have to start the lab again from Task #1 if you loose network connectivity to a vEdge.</p>
-</blockquote>
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">Important Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Be very careful in making configuration changes on vEdge.  <strong>Do NOT change</strong> any <strong>configuration</strong> of VPN 512 as it can result in loss of connectivity to the vEdge - which can not be restored.   You will have to start the lab again from Task #1 if you loose network connectivity to a vEdge.</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>vEgde in Branch-2 will be configured for IP address of <code>10.4.254.10</code> on the <strong>ge0/2</strong></li>
 </ul>
 <p>Once the new template with VPN10 has been deployed then:</p>
 <ul>
-<li>
-<p>Using <strong>MPutty</strong>, initiate a <strong>SSH</strong> connection to <strong>BR2-vEdge</strong>, and execute the below commands to:</p>
-<ul>
+<li>Using <strong>MPutty</strong>, initiate a <strong>SSH</strong> connection to <strong>BR2-vEdge</strong>, and execute the below commands to:<ul>
 <li>verify that VPN 10 has been successfully configured by vManage</li>
 <li>verify vEdge has connectivity to local device (on the LAN of vEdge) in VPN 10 by initiating a ping to a host on LAN:</li>
 </ul>
-<p>~~~
-show run vpn 10
-ping vpn 10 10.4.254.254
-~~~</p>
-<p>This will successfully add VPN 10 to vEdge in Branch 2.  Below screenshot shows a successful test for BR2-vEdge:</p>
-<p><img alt="VPN 10" src="../pics/t5-br2-showvpn10ge02-ping.png" /></p>
 </li>
 </ul>
+<pre><code>show run vpn 10
+ping vpn 10 10.4.254.254
+</code></pre>
+
+<p>This will successfully add VPN 10 to vEdge in Branch 2.  Below screenshot shows a successful test for BR2-vEdge:</p>
+<p><img alt="VPN 10" src="../pics/t5-br2-showvpn10ge02-ping.png" /></p>
 <h2 id="step-4-verify-vpn-10-routing-on-br1-br2">Step 4: Verify VPN 10 routing on BR1 &amp; BR2</h2>
 <p>Now we can verify the IP connectivity between vEdge in Branch-1 and Branch-2 on the VPN 10.</p>
 <ul>
 <li>
-<p>Using MPutty, initiate SSH connections to <strong>BR1-vEdge</strong> and <strong>BR2-vEdge</strong></p>
+<p>Using MTPutty, initiate SSH connections to <strong>BR1-vEdge</strong> and <strong>BR2-vEdge</strong></p>
 </li>
 <li>
 <p>Execute below commands on <strong>both</strong> <strong>BR1-vEdge</strong> and <strong>BR2-vEdge</strong></p>
-<p>~~~
-show ip route 
+</li>
+</ul>
+<pre><code>show ip route 
 show ip route vpn 10
 show omp routes
 show omp routes vpn 10
-~~~</p>
+</code></pre>
+
 <p>You should verify that each vEdge has learned the LAN segment IP address of remote vEdge (within VPN 10) </p>
 <p>Below screenshot shows an example of partial execution of above commands from BR2-vEdge:</p>
 <p><img alt="VPN 10" src="pics/.png" /></p>
-</li>
-</ul>
 <p>This confirms that VPN 10 is routed properly between BR1 and BR2</p>
 <h2 id="step-5-create-vpn-10-on-data-center-dc">Step 5: Create VPN 10 on Data Center (DC)</h2>
 <p>Now lets configure this new VPN (number 1) on the vEdge in Data Center (DC). </p>
 <ul>
-<li>
-<p>Log on to the vManage from a web browser (if not already open) and use credentials of <code>admin</code> and <code>admin</code>:</p>
-<p>~~~
-https://198.18.1.10
-~~~</p>
-</li>
+<li>Log on to the vManage from a web browser (if not already open) and use credentials of <code>admin</code> and <code>admin</code>:</li>
+</ul>
+<pre><code>https://198.18.1.10
+</code></pre>
+
+<ul>
 <li>
 <p>Enter the <code>admin/admin</code> credentials for authentication</p>
 </li>
@@ -349,20 +402,23 @@ https://198.18.1.10
 </li>
 <li>
 <p>Next the configuration below at the end of the template. </p>
-<p>~~~
-!
+</li>
+</ul>
+<pre><code>!
 vpn 10
  interface ge0/0
   ip address 198.18.133.211/18
   no shutdown
  !
-~~~</p>
+</code></pre>
+
+<ul>
+<li>
+<p>After adding above configuration to Template, Click on <strong>Update &gt; Next &gt; Complete</strong> </p>
 </li>
 <li>
-<p>After adding above configuration to Template, Click on <strong>Update &gt; Next &gt; Complete</strong> 
-*</p>
+<p>Subsequently, <strong>confirm</strong> in the Tasks on vManage that the configurations are pushed to DC1-vEdge1</p>
 </li>
-<li>Subsequently, confirm in the Tasks that the configurations are pushed to DC1-vEdge1</li>
 </ul>
 <h2 id="step-6-validate-vpn-10-config-on-dc">Step 6: Validate VPN 10 config on DC</h2>
 <p>In this step we will confirm that DC1-vEdge has been provisioned for VPN #10 (as executed in the previous step).  There are multiple ways to access the configuration of vEdge, such as:</p>
@@ -379,27 +435,49 @@ vpn 10
 <li><strong>SSH</strong> to OOB Management IP address of <strong>BR1-vEdge</strong>:  <code>198.18.134.100</code></li>
 <li>Use credentials of <code>admin</code> and <code>admin</code> for  authentication</li>
 </ul>
-<blockquote>
-<p><strong>Note:</strong> if <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></p>
-</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></td>
+</tr>
+</tbody>
+</table>
 </li>
 <li>
 <p>On the SSH connection to vEdge, <strong>execute</strong> the below commands:</p>
-<p>~~~
-show run vpn 10
-ping vpn 10 198.18.128.1 
-~~~</p>
-<blockquote>
-<p><strong>Note:</strong> you can enter Control-C (Ctrl-C) to stop the ping</p>
-</blockquote>
-<p>These commands <strong>verify</strong> that:
-<em> VPN 10 has been successfully configured by vManage,
-</em> vEdge has connectivity to local device (on the LAN of vEdge) in VPN 10 by initiating a ping to a host on LAN </p>
-<p>Below screenshot shows the output of above command:</p>
-<p><img alt="VPN 10" src="../pics/t5-dc-showrun-vpn10-ping.png" /></p>
 </li>
 </ul>
+<pre><code>show run vpn 10
+ping vpn 10 198.18.128.1 
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">you can enter Control-C (Ctrl-C) to stop the ping</td>
+</tr>
+</tbody>
+</table>
+<p>These commands <strong>verify</strong> that:</p>
+<ul>
+<li>VPN 10 has been successfully configured by vManage,</li>
+<li>vEdge has connectivity to local device (on the LAN of vEdge) in VPN 10 by initiating a ping to a host on LAN </li>
+</ul>
+<p>Below screenshot shows the output of above command:</p>
+<p><img alt="VPN 10" src="../pics/t5-dc-showrun-vpn10-ping.png" /></p>
 <p>This successfully adds VPN 10 to Branch 1</p>
+<hr />
+<p>You have now completed this task of adding VPN on the SD-WAN Fabric</p>
               
             </div>
           </div>
