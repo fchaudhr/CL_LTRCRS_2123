@@ -55,7 +55,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../.md">Task 2 Control Plane</a>
+    <a class="" href="../Task2-Exploring Control Plane/">Task 2 Control Plane</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -109,7 +109,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../Task8a-HubnSpoke_VPN20/">Task 8 Hub & Spoke Topology</a>
+    <a class="" href="../Task8-HubnSpoke_VPN20.md">Task 8 Hub & Spoke Topology</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -172,9 +172,8 @@
 <li>The <strong>Control Status</strong> should show that all of the control connections are up for all vEdge routers and vSmart controllers, and the <strong>Site Health View</strong> should show Full Connectivity to all sites, the data center, branches and public cloud (AWS). </li>
 </ul>
 <p><img alt="AWS Devices" src="../pics/t7-AWS_Dashboard.png" /></p>
-<ul>
-<li>On the vManage GUI, navigate to <strong>Configuration &gt; Devices</strong> to view running configuration on vEdge1. </li>
-</ul>
+<p><a name="vEdge2"></a>
+* On the vManage GUI, navigate to <strong>Configuration &gt; Devices</strong> to view running configuration on <strong>vEdge1</strong>. </p>
 <p><img alt="AWS Devices" src="../pics/t7-AWS_Devices.png" /></p>
 <ul>
 <li>Make sure <code>WAN Edge List</code>is selected in Devices GUI. <strong>Select</strong> <code>vEdge1</code> then <strong>Click</strong> the three dots <strong><code>...</code></strong> on the right side of this device and <strong>Select</strong>  <code>Running Configuration</code> option from the drop down menu as shown in the below screenshot.</li>
@@ -208,19 +207,32 @@
 </ul>
 <p><img alt="AWS Certification" src="../pics/t7-AWS_Certificates2.png" /></p>
 <ul>
-<li>On the vManage GUI, navigate to <strong>Monitor &gt; Network</strong>.  <ul>
-<li>You can verify that vEdge1 is reachable and has a total of two (2) control connections. In order to visualize the control connections that have been established you need to navigate to <strong>vManage &gt; Monitor &gt; Network &gt; vEdge1 &gt; Control Connections</strong>.</li>
-<li><strong>Click</strong> <code>vEdge1</code>.</li>
-</ul>
-</li>
+<li>
+<p>On the vManage GUI, navigate to <strong>Monitor &gt; Network</strong>.  </p>
+<ul>
+<li>You can verify that <strong>vEdge1</strong> is reachable and has a total of two (2) control connections. In order to visualize the control connections that have been established you need to navigate to <strong>vManage &gt; Monitor &gt; Network &gt; vEdge1 &gt; Control Connections</strong>.</li>
 </ul>
 <p><img alt="AWS Monitor" src="../pics/t7-AWS_Monitor.png" /></p>
 <ul>
-<li>To view the state of all of the IPSec tunnel or data plane connections, select <strong>Tunnel</strong> under the <strong>WAN category</strong>  in the left column.</li>
+<li>Click <strong>vEdge1</strong> and then <strong>Control Connections</strong> to verify that <strong>vEdge1</strong> has established two (2) connections to the Control Plane. </li>
 </ul>
-<blockquote>
-<p><strong>Note:</strong> You will see</p>
-</blockquote>
+<p><img alt="AWS Monitor" src="../pics/t7-AWS_ControlConn.png" /></p>
+</li>
+<li>
+<p>From the screenshot you can;</p>
+<ul>
+<li>Confirm that valid System IP addresses, Protocols, Private and Public ports of vSmart and vManage</li>
+<li>Confirm two(2) control connections<ul>
+<li>validate <strong>vEdge1</strong> has one (1) control connection established to vSmart controller</li>
+<li>validate <strong>vEdge1</strong> has one (1) control connection established to vManage</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>To view the state of all of the IPSec tunnel or data plane connections, select <strong>Tunnel</strong> under the <strong>WAN</strong> menu in the left column.</p>
+</li>
+</ul>
 <p><img alt="AWS Monitor" src="../pics/t7-AWS_IPsec.png" /></p>
 <ul>
 <li>Click <strong>Real Time</strong></li>
@@ -236,24 +248,10 @@
 </ul>
 <p><img alt="AWS Monitor" src="../pics/t7-AWS_IPRoutes.png" /></p>
 <ul>
-<li>Click <strong>Control Connections</strong> to verify that vEdge has established two (2) connections to the Control Plane. </li>
-</ul>
-<p><img alt="AWS Monitor" src="../pics/t7-AWS_ControlConn.png" /></p>
-<ul>
-<li>
-<p>From the screenshot you can;</p>
-<ul>
-<li>confirm that valid System IP addresses, Protocols, Private and Public ports etc of vSmart and vManage</li>
-<li>validate vEdge has one (1) control connection established to vSmart controller</li>
-<li>validate vEdge has one (1) control connection established to vManage</li>
-</ul>
-</li>
-<li>
-<p>Execute same verification steps for <strong>vEdge2</strong>.</p>
-</li>
+<li>Execute same verification steps for <a href="#vEdge2"><strong>vEdge2</strong></a>.</li>
 </ul>
 <h2 id="step-2-verify-vedge-cloud-devices-connectivity-using-vmanage-ssh-terminal">Step 2: Verify vEdge Cloud Devices Connectivity using vManage SSH Terminal</h2>
-<p>In this step we will use SSH terminal screen to establish an SSH session to the vEdge1 and verify that it has established connection to the Control Plane using CLI commands.</p>
+<p>In this step we will use SSH terminal screen to establish an SSH session to the <strong>vEdge1</strong> and <strong>vEdge2</strong> then verify Control Plane connections using CLI commands.</p>
 <ul>
 <li>Log on the vManage from a web browser (if not already open) and use credentials of <code>admin</code> and <code>admin</code>:</li>
 </ul>
@@ -265,34 +263,29 @@
 <ul>
 <li>On the vManage GUI, navigate to <strong>Tools &gt; SSH Terminal</strong>. From the left pane, select the device group to which the device belongs.</li>
 </ul>
-<p><img alt="AWS Devices" src="../pics/t7-AWS_Devices.png" /></p>
+<p><img alt="AWS Devices" src="pics/t7-AWS_SSH.png" /></p>
+<p><a name="vEdge2SSH"></a>
+* Click on <strong>vEdge1</strong> and on the right pane.</p>
+<p><center><img src="pics/t7-AWS_SSH2.png" width="250"></center></p>
 <ul>
 <li>
-<p>Click on <strong>vEdge1</strong> and on the right pane, enter the <strong>SSH credentials</strong> (username and password) as follows: <code>admin</code> and <code>admin</code> respectively to log in to the device.</p>
+<p>Enter the <strong>SSH credentials</strong> (username and password) as follows: <code>admin</code> and <code>admin</code> respectively to log in to the device.</p>
 <blockquote>
 <p><strong>Note:</strong> if <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></p>
 </blockquote>
 </li>
 <li>
-<p>On the <strong>SSH</strong> connection, <strong>execute</strong> the below <strong>command</strong> to view the Out-of-Band (OOB) management VPN 512 related configurations on this vEdge: </p>
-<p>~~~
-show run vpn 512
-~~~ </p>
-<p>Below screenshot shows VPN 512 configs:</p>
-<p><img alt="VPN 512" src="../pics/t3-br1-showvpn512.png" /></p>
-</li>
-<li>
-<p><strong>Execute</strong> the below <strong>command</strong> to verify that system related configurations on this vEdge: </p>
+<p>On the <strong>SSH</strong> connection, <strong>execute</strong> the below <strong>command</strong> to verify that system related configurations on this vEdge: </p>
 <p>~~~
 show run system
 ~~~ </p>
 <p>As shown in the partial output in the below screenshot, the vEdge has been pre-configured with below system related configurations:
 <em>  hostname
-</em>  system-id 
+</em>  system-ip
 <em>  site-id
 </em>  organization name
 *  vBond DNS name of <code>vbond.cisco.com</code> </p>
-<p><img alt="Mputty" src="../pics/t3-br1-showsystem.png" /></p>
+<p><img alt="AWS Devices" src="pics/t7-AWS-vEdge1showsystem.png" /></p>
 <blockquote>
 <p><strong>Note:</strong> A static DNS entry for the hostname <strong><em>vbond.cisco.com</em></strong> has been configured under <code>vpn 0</code> (it will be visible in subsequent bullet)</p>
 </blockquote>
@@ -303,13 +296,9 @@ show run system
 show run vpn 0 
 ~~~</p>
 <p>Below screenshot shows the partial output of this command.  This command will confirm that:
-<em> vEdge has two WAN links (under VPN 0) as per interface ge0/0 &amp;  ge0/2 configurations,
-</em> default routes are configured for both links,
-* Each WAN link is also configured with appropriate <code>color</code> tag:</p>
-<p><img alt="VPN 0" src="../pics/t3-br1-showvpn0.png" /></p>
-<blockquote>
-<p>Note: this <strong><em>color</em></strong> tag is used to set up the appropriate IPSec tunnels.   With <strong><em>restrict</em></strong> option, IPSec tunnels between vEdges that have MPLS color will be created.</p>
-</blockquote>
+<em> vEdge has one WAN link (under VPN 0) as per interface ge0/0 configuration
+</em> WAN link tunnel interface is configured with color public-internet which is a public color</p>
+<p><img alt="AWS Devices" src="pics/t7-AWS-vEdge1showvpn0.png" /></p>
 </li>
 <li>
 <p>You may also execute <code>show run</code> command to view the full configuration of this vEdge</p>
@@ -321,34 +310,32 @@ show certificate serial
 show certificate installed<br />
 ~~~</p>
 <p>Below screenshot shows the partial output of the above command.  Note that Issuer of the certificate is vManage</p>
-<p><img alt="VPN 0" src="../pics/t3-br1-showcert.png" /></p>
+<p><img alt="AWS Devices" src="pics/t7-AWS-vEdge1showcert.png" /></p>
 </li>
 <li>
 <p><strong>Run</strong> the below <strong>command</strong> to see the list of control connections of this vEdge to the Control Plane (vManage, vSmart)</p>
 <p>~~~
 show control connections
 ~~~</p>
-<p>Below screenshot shows the output of this command.  Note it validates that vEdge has:
-<em> Two (2) control connections established to vSmart Controller
+<p>Below screenshot shows the output of this command.  Note it validates that <strong>vEdge1</strong> has:
+<em> One (1) control connections established to vSmart Controller
 </em> One (1) control connection established to vManage</p>
-<p><img alt="Control on vEdge" src="../pics/t3-br1-controlconnection.png" /></p>
+<p><img alt="AWS Devices" src="pics/t7-AWS-vEdge1showconn.png" /></p>
 </li>
-</ul>
-<p>In addition to option of configuring a vEdge using local CLI, centralized configuration/management of vEdges can be done from the vManage using "CLI Template" or "Feature Template".  In this lab, "CLI Template" has already been configured for vEdge Cloud Devices (i.e. vEdge1).  Hence this vEdge is managed/provisioned centrally via vManage.</p>
-<ul>
 <li>
-<p>On the <strong>Mputty</strong> client with <strong>SSH</strong> session to <code>vEdge1</code> verify that template is successfully attached by running below <strong>command</strong>:</p>
+<p>In order to verify that related template is successfully attached,  execute below <strong>command</strong>:</p>
 <p>~~~
 show system status
 ~~~ </p>
-<p>The output of above command should show that it is is centrally configured by vManage and also provides the name of Template:</p>
+<p>The output of above command should show that it is centrally configured by vManage and also provides the name of Template:</p>
 <ul>
 <li><code>vManaged: true</code></li>
-<li><code>Configuration template: CL-branch-1-vedge</code></li>
+<li><code>Configuration template: CL-AWS_template</code></li>
 </ul>
-<p>Below screenshot shows the partial output of above command:
-<img alt="CLI Template" src="../pics/t3-br1-show-system-status.png" /></p>
+<p>Below screenshot shows the partial output of above command:</p>
+<p><img alt="AWS Devices" src="pics/t7-AWS-vEdge1showstatus.png" /></p>
 <p><strong>Note:</strong> you can also verify the Mode (vManaged or CLI) on vManage GUI by navigating to <strong>Configuration &gt; Devices</strong> and under <strong>WAN Edge List</strong> tab scrolling to the right will show the <code>Mode</code> option for each device.  If there are any discrepancies then refer to the instructor.</p>
+<p><img alt="AWS Devices" src="pics/t7-AWS-vEdge1Mode.png" /></p>
 </li>
 <li>
 <p>You can run various other commands to verify the updated configurations (such as DHCP on interface ge0/0, control connections to Controllers on this new interface etc)  as reflected in "CLI Template":</p>
@@ -360,7 +347,9 @@ show run
 ~~~</p>
 </li>
 <li>
-<p>Execute same verification steps for <strong>vEdge2</strong>.</p>
+<ul>
+<li>Execute same verification steps for <a href="#vEdge2SSH"><strong>vEdge2</strong></a>.</li>
+</ul>
 </li>
 </ul>
 <p>--</p>
@@ -372,7 +361,7 @@ show run
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Task8a-HubnSpoke_VPN20/" class="btn btn-neutral float-right" title="Task 8 Hub & Spoke Topology">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Task9-AAR/" class="btn btn-neutral float-right" title="Task 9 AAR">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../Task7b-Cloud onRamp for IaaS/" class="btn btn-neutral" title="Task 7b Cloud onRamp for Iaas (AWS)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -406,7 +395,7 @@ show run
         <span><a href="../Task7b-Cloud onRamp for IaaS/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../Task8a-HubnSpoke_VPN20/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../Task9-AAR/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

@@ -55,7 +55,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../.md">Task 2 Control Plane</a>
+    <a class="" href="../Task2-Exploring Control Plane/">Task 2 Control Plane</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -109,7 +109,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../Task8a-HubnSpoke_VPN20/">Task 8 Hub & Spoke Topology</a>
+    <a class="" href="../Task8-HubnSpoke_VPN20.md">Task 8 Hub & Spoke Topology</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -169,13 +169,13 @@
 <p><strong>Important Note</strong>: Be very careful in making configuration changes on vEdge.  <strong>Do NOT change</strong> any <strong>configuration</strong> of VPN 512 as it can result in loss of connectivity to the vEdge - which can not be restored.   You will have to start the lab again from Task #1 if you loose network connectivity to a vEdge. </p>
 </blockquote>
 <ul>
-<li>On the vManage GUI, navigate to <strong>Configuration &gt;  Devices &gt; Templates</strong>.  Under <strong>Device</strong> tab click <strong>Create Template</strong> and then select <code>CLI Template</code> as shown in the below screenshot:</li>
+<li>On the vManage GUI, navigate to <strong>Configuration &gt; Templates</strong>.  Under <strong>Device</strong> tab click <strong>Create Template</strong> and then select <code>CLI Template</code> as shown in the below screenshot:</li>
 </ul>
 <p><img alt="AWS CLITemplate" src="../pics/t7-AWS_CLITemplate.png" /></p>
 <ul>
 <li>Next, from the <strong>Device Model</strong> dropdown menu select <code>vEdge-Cloud</code></li>
 <li>Enter <strong>Template Name</strong> of <code>CL-AWS_template</code></li>
-<li>Enter <strong>Description</strong> of <code>AWS Template</code></li>
+<li>Enter <strong>Description</strong> of <code>vEdge AWS Template</code></li>
 <li>In the <strong>CLI Configuration</strong> section copy and paste the  below configs:</li>
 </ul>
 <pre><code>system
@@ -221,7 +221,7 @@ omp
 !
 
 vpn 0
- host vbond.cisco.com ip 128.107.222.47
+ host vbond.cisco.com ip {{vbond-public-ip}}
  interface ge0/0
   ip dhcp-client
   tunnel-interface
@@ -268,6 +268,9 @@ vpn 20
 !
 </code></pre>
 
+<blockquote>
+<p><strong>Note:</strong> Double curly brackets with <code>{{vbond-public-ip}}</code> must be entered as above.  Double curly brackets are interpreted as a variable by vManage and the appropriate IP address of vbond for your pod must be configured in subsequent bullets </p>
+</blockquote>
 <ul>
 <li>Next <strong>Click</strong> <code>Add</code> as shown in the below screenshot:</li>
 </ul>
@@ -299,7 +302,7 @@ vpn 20
 <p><img alt="AWS AttachDevices" src="../pics/t7-AWS_AttachDevices.png" /></p>
 <ul>
 <li>On the <strong>Attach Devices</strong> window: <ul>
-<li>Under the <strong>Available Devices</strong> tab, <strong>Click</strong> on two (2) available uuid of <code>X</code> and <code>X</code> (without <strong>Device IP</strong>)</li>
+<li>Under the <strong>Available Devices</strong> tab, <strong>Click</strong> on two (2) available uuid (without <strong>Device IP</strong>)</li>
 <li><strong>Click</strong> on the <code>Right Arrow icon</code> as shown in below screenshot.   At this point the vEdge should move to the <strong>Selected Devices</strong> tab</li>
 <li><strong>Click</strong> on the <code>Attach</code> button as shown in below screenshot</li>
 </ul>
@@ -308,7 +311,7 @@ vpn 20
 <p><img alt="AWS AttachDevices" src="../pics/t7-AWS_AttachDevices2.png" /></p>
 <ul>
 <li>
-<p>On the next screen, <strong>Select</strong> the first vEdge with uuid of <code>X</code></p>
+<p>On the next screen, <strong>Select</strong> the first vEdge.</p>
 </li>
 <li>
 <p><strong>Click</strong> the three dots <strong><code>...</code></strong> on the right side of this vEdge and  <strong>Select</strong>  <code>Edit Device Template</code> option from the drop down menu as shown in the below screenshot:</p>
@@ -320,6 +323,9 @@ vpn 20
 <li>Enter <strong>hostname</strong> of <code>vedge1</code></li>
 <li>Enter <strong>systemip</strong> of <code>66.66.66.1</code></li>
 <li>Enter <strong>siteid</strong> of <code>66</code></li>
+<li>Enter provided  <strong>vbond-public-ip</strong></li>
+<li>Enter <strong>vpn30-IP-address</strong> of <code>10.20.66.1</code></li>
+<li>Enter <strong>vpn20-IP-address</strong> of <code>10.30.66.1</code></li>
 <li>Click on the <code>Update</code> button</li>
 </ul>
 </li>
@@ -327,7 +333,7 @@ vpn 20
 <p><img alt="AWS AttachDevices" src="../pics/t7-AWS_EditDeviceTemplate2.png" /></p>
 <ul>
 <li>
-<p><strong>Select</strong> the second vEdge with uuid of <code>X</code> and <strong>Click</strong> the three dots <strong><code>...</code></strong> on the right side of this vEdge and  <strong>Select</strong>  <code>Edit Device Template</code> option from the drop down menu.</p>
+<p><strong>Select</strong> the second vEdge and <strong>Click</strong> the three dots <strong><code>...</code></strong> on the right side of this vEdge and  <strong>Select</strong>  <code>Edit Device Template</code> option from the drop down menu.</p>
 </li>
 <li>
 <p>Next, from the <strong>Update Device Template</strong> menu </p>
@@ -335,6 +341,9 @@ vpn 20
 <li>Enter <strong>hostname</strong> of <code>vedge2</code></li>
 <li>Enter <strong>systemip</strong> of <code>66.66.66.2</code></li>
 <li>Enter <strong>siteid</strong> of <code>66</code></li>
+<li>Enter provided  <strong>vbond-public-ip</strong></li>
+<li>Enter <strong>vpn30-IP-address</strong> of <code>10.20.66.2</code></li>
+<li>Enter <strong>vpn20-IP-address</strong> of <code>10.30.66.2</code></li>
 <li>Click on the <code>Update</code> button</li>
 </ul>
 </li>
@@ -344,19 +353,19 @@ vpn 20
 </ul>
 <p><img alt="AWS AttachDevices" src="../pics/t7-AWS_AttachDevices3.png" /></p>
 <ul>
-<li>On the next screen, <strong>Click</strong> on first vEdge with <em>uuid</em> of <code>X</code> on left section and <strong>Click</strong> on <code>Config Preview</code> and <code>Config Diff</code> options on the right side of window to review and confirm correct configurations are pushed to this vEdge Cloud.  </li>
+<li>On the next screen, <strong>Click</strong> on first vEdge on left section and <strong>Click</strong> on <code>Config Preview</code> and <code>Config Diff</code> options on the right side of window to review and confirm correct configurations are pushed to this vEdge Cloud.  </li>
 </ul>
 <p><img alt="AWS EditTemplate" src="../pics/t7-AWS_ConfigureDevices1.png" /></p>
 <ul>
-<li>Do the same for second vEdge with <em>uuid</em> of <code>X</code>.</li>
+<li>Do the same for second vEdge as shown below.</li>
 </ul>
 <p><img alt="AWS EditTemplate" src="../pics/t7-AWS_ConfigureDevices2.png" /></p>
 <ul>
-<li><strong>Select</strong> <code>Confirm configuration changes on 2 devices</code> on <strong>Configure Devices</strong> pop-up window and <strong>Click</strong> <code>OK</code>.</li>
+<li><strong>CLick</strong> <code>Configure Devices</code> and <strong>Select</strong> <code>Confirm configuration changes on 2 devices</code> on <strong>Configure Devices</strong> pop-up window and then <strong>Click</strong> <code>OK</code>.</li>
 </ul>
 <p><img alt="AWS EditTemplate" src="../pics/t7-AWS_ConfigureDevices3.png" /></p>
 <ul>
-<li>On the subsequent screen verify that the template is attached successfully to vEdge Cloud Devices.</li>
+<li>Once device configurations are completed, on the subsequent screen verify that the template is attached successfully to vEdge Cloud Devices.</li>
 </ul>
 <p><img alt="AWS EditTemplate" src="../pics/t7-AWS_ConfigureDevices4.png" /></p>
 <p>--

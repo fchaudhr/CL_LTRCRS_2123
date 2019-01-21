@@ -55,7 +55,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../.md">Task 2 Control Plane</a>
+    <a class="" href="../Task2-Exploring Control Plane/">Task 2 Control Plane</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -113,7 +113,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../Task8a-HubnSpoke_VPN20/">Task 8 Hub & Spoke Topology</a>
+    <a class="" href="../Task8-HubnSpoke_VPN20.md">Task 8 Hub & Spoke Topology</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -197,7 +197,7 @@
 <p><img alt="AWS hostVPC" src="../pics/t7-AWS_AMI5.png" /></p>
 <p><a name="Step2"></a></p>
 <h2 id="step-2-create-host-vpc-in-aws">Step 2: Create host VPC in AWS</h2>
-<p>In this step we will create host VPC (Virtual Private Cloud) in AWS US East (Ohio) region.</p>
+<p>In this step we will create host VPC (Virtual Private Cloud) in respective AWS region which will be identified in next steps.</p>
 <p>Log on to AWS from a web browser (if not already open) and click on <strong>Sign In to the Console</strong> </p>
 <pre><code>https://aws.amazon.com/console
 </code></pre>
@@ -244,8 +244,11 @@ Region Code= eu-west-3
 </code></pre>
 
 <blockquote>
-<p><strong>Note:</strong> If you have created AWS resources, but you don’t see those resources in the console, the console might be displaying resources from a different Region. Please make sure to select the assigned region. As an example, CLEUR_User1 is to select <strong>US East (Ohio)</strong> region.</p>
+<p><strong>Note:</strong> If you have created AWS resources, but you don’t see those resources in the console, the console might be displaying resources from a different Region. Please make sure to select the assigned region. As an example, CLEUR_User1 is to select <strong>US East (Ohio)</strong> region. Otherwise for any activity you try to execute, <code>You are not authorized to perform this operation.</code> message will pop-up.</p>
 </blockquote>
+<ul>
+<li>Select region list from up-right corner of the console as shown below and select your respective region. As an example, CLEUR_User1 is to select US East (Ohio) region.</li>
+</ul>
 <p><img alt="AWS Region" src="../pics/t7-AWS_region_verfication.png" /></p>
 <p>Then click on <code>Services</code> on the navigation pane and select <strong>VPC</strong> from <strong>Network &amp; Content Delivery</strong> menu.</p>
 <p><img alt="AWS hostVPC" src="../pics/t7-AWS_select_VPC.png" /></p>
@@ -257,10 +260,10 @@ Region Code= eu-west-3
 <ul>
 <li>Name the host VPC as <code>SDWAN-hostVPC#</code> </li>
 <li>Specify IPv4 CIDR block as <code>10.#.0.0/16</code></li>
-<li>Leave rest of the options as default and click on <code>Create</code></li>
+<li>Leave rest of the options as default and click on <code>Create</code> and then <code>Close</code></li>
 </ul>
 <p><img alt="AWS hostVPC" src="../pics/t7-AWS_createVPC2.png" /></p>
-<p>Verify host VPC <strong>SDWAN_hostVPC1</strong> is created.</p>
+<p>Verify host VPC <strong>SDWAN_hostVPC#</strong> is created.</p>
 <p><img alt="AWS hostVPC" src="../pics/t7-AWS_createVPC3.png" /></p>
 <p><a name="Step3"></a></p>
 <h2 id="step-3-generate-aws-api-and-secret-keys">Step 3: Generate AWS API and Secret Keys</h2>
@@ -319,11 +322,12 @@ Region Code= eu-west-3
 <p>On the vManage GUI, navigate to <strong>Configuration &gt; Cloud onRamp for IaaS</strong>.  </p>
 </li>
 <li>
-<p>We will use a configuration wizard in vManage that automates to bring-up vEdge Cloud routers using your AWS public cloud user account and automates the connections between public cloud and branches &amp; DC in the SDWAN overlay network. Click on <strong>Add New Cloud Instance</strong>.</p>
+<p>We will use a configuration wizard in vManage that automates to bring-up vEdge Cloud routers using your AWS public cloud user account and automates the connections between public cloud and branches &amp; DC in the SDWAN overlay network. Click on <strong>Add New Cloud Instance</strong> as shown below.</p>
 </li>
-<li>
-<p>In the <strong>Add Cloud Instance-Log In to a Cloud Server</strong> popup:</p>
+</ul>
+<p><img alt="AWS CloudonRamp" src="pics/t7-AWS_CloudonRamp.png" /></p>
 <ul>
+<li>In the <strong>Add Cloud Instance-Log In to a Cloud Server</strong> popup:<ul>
 <li>Select <strong>amazon web services</strong> and Click on <strong>Login</strong></li>
 </ul>
 </li>
@@ -396,15 +400,27 @@ Region Code= eu-west-3
 <p><strong>Note:</strong> The mapping process establishes IPsec and BGP connections between the transit VPC and host VPC. The IPsec tunnel that connects the transit and host VPC runs IKE to provide security for the connection. For AWS, the IPsec tunnel runs IKE Version 1. The BGP connection that is established over the secure IPsec tunnel allows the transit and host VPC to exchange routes so that the transit VPC can direct traffic from the branch to the proper host VPC, and hence to the proper cloud-based application.</p>
 </blockquote>
 <ul>
-<li>Creating AWS resources such as Transit VPC, Internet Gateway, vEdge Cloud pair as well setting up the infrastructure will take some time. Progress can be tracked <strong>Status</strong> and <strong>Message</strong> sections as shown below:</li>
+<li>Creating AWS resources such as Transit VPC, Internet Gateway, vEdge Cloud pair and setting up the infrastructure will take 10-15 minutes time. Progress can be tracked through <strong>Status</strong> and <strong>Message</strong> updates on vManage as shown below:</li>
 </ul>
 <p><img alt="AWS CloudonRamp" src="../pics/t7-AWS_CloudonRamp_CreateAWS.png" /></p>
 <ul>
-<li>You can also verify from AWS Management Console. As shown below Transit VPC is now created on AWS of <code>SDWAN-transitVPC1</code> during <strong>Cloud onRamp for IaaS</strong> task is still running.</li>
+<li>In order to verify the progress from AWS Management Console, Click <strong>Services</strong>.</li>
+</ul>
+<p><img alt="AWS CloudonRamp" src="pics/t7-AWS_CloudonRampVerify.png" /></p>
+<ul>
+<li>Then select <strong>VPC</strong> from <strong>Networking &amp; Content Delivery</strong> menu.</li>
+</ul>
+<p><img alt="AWS CloudonRamp" src="pics/t7-AWS_CloudonRampVerify2.png" /></p>
+<ul>
+<li>You will see <strong>VPC Dasboard</strong> which provides a summary of provisioned resources by your region. Click <strong>VPCs</strong></li>
+</ul>
+<p><img alt="AWS CloudonRamp" src="pics/t7-AWS_CloudonRampVerify3.png" /></p>
+<ul>
+<li>As shown below Transit VPC is now created on AWS of <code>SDWAN-transitVPC1</code> during <strong>Cloud onRamp for IaaS</strong> task is still running.</li>
 </ul>
 <p><img alt="AWS CloudonRamp" src="../pics/t7-AWS_CloudonRamp_CreateAWS2.png" /></p>
 <ul>
-<li>Review provisioning vEdge Cloud routers for Transit VPC.</li>
+<li>on vManage GUI, review provisioning vEdge Cloud routers for Transit VPC.</li>
 </ul>
 <p><img alt="AWS CloudonRamp" src="../pics/t7-AWS_CloudonRamp_CreateAWS3.png" /></p>
 <ul>
@@ -461,6 +477,9 @@ Region Code= eu-west-3
 [12-Jan-2019 15:25:01 UTC] Completed mapping host vpc(s)
 </code></pre>
 
+<ul>
+<li><strong>Configuration &gt; Cloud onRamp for Iaas</strong> GUI final view will be as shown below.</li>
+</ul>
 <p><img alt="AWS CloudonRamp" src="../pics/t7-AWS_CloudonRamp_CreateAWS10.png" /></p>
 <p>--
 This concludes the process to onboard two (2) vEdge Cloud routers in AWS and configure <strong>Cloud onRamp for Iaas for AWS</strong>.</p>

@@ -55,7 +55,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../.md">Task 2 Control Plane</a>
+    <a class="" href="../Task2-Exploring Control Plane/">Task 2 Control Plane</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -95,7 +95,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../Task8a-HubnSpoke_VPN20/">Task 8 Hub & Spoke Topology</a>
+    <a class="" href="../Task8-HubnSpoke_VPN20.md">Task 8 Hub & Spoke Topology</a>
 	    </li>
           
             <li class="toctree-l1 current">
@@ -163,6 +163,7 @@
 <th>Lantency</th>
 <th>loss</th>
 <th>Jitter</th>
+<th>Link used during Congestion</th>
 </tr>
 </thead>
 <tbody>
@@ -171,24 +172,28 @@
 <td>200</td>
 <td>20</td>
 <td></td>
+<td>Both (mpls and private1)</td>
 </tr>
 <tr>
 <td>Critical Data</td>
 <td>80</td>
 <td>5</td>
 <td>5</td>
+<td>private1</td>
 </tr>
 <tr>
 <td>VoiceSLA</td>
 <td>50</td>
 <td>2</td>
 <td>5</td>
+<td>private1</td>
 </tr>
 <tr>
 <td>Voice/Video</td>
 <td>50</td>
 <td>2</td>
 <td>1</td>
+<td>private1</td>
 </tr>
 </tbody>
 </table>
@@ -199,7 +204,7 @@
 <p><img alt="" src="pics/t9-vmanage-policy.png" /></p>
 <ul>
 <li>
-<p>On the upper right hand side click <strong>Custom Option</strong>, under <strong>Centralized Policy</strong> select <strong> CLI Policy</strong></p>
+<p>On the upper right hand side click <strong>Custom Option</strong>, under <strong>Centralized Policy</strong> select <strong>CLI Policy</strong></p>
 <p><img alt="" src="../pics/t9-CLI-Policy.png" /></p>
 </li>
 <li>
@@ -226,119 +231,111 @@
 </ul>
 <p><img alt="" src="../pics/t9-CLI-Policy-6.png" /></p>
 <ul>
-<li>Click <strong>...</strong> and select Activate</li>
+<li>Click <strong>...</strong> and select <strong>Activate</strong></li>
 </ul>
 <p><img alt="" src="../pics/t9-CLI-Policy-7.png" /></p>
 <ul>
-<li>Click <strong>Activate</strong></li>
+<li>Click <strong>Activate</strong> again</li>
 </ul>
 <p><img alt="" src="../pics/t9-CLI-Policy-8.png" /></p>
 <ul>
-<li>Policy Activation Process will start and you will <strong>Sucess</strong> Status</li>
+<li>Policy Activation Process will start and you will see <strong>Success</strong> Status</li>
 </ul>
 <p><img alt="" src="../pics/t9-CLI-Policy-9.png" /></p>
 <h2 id="step-2-policy-verification">Step 2: Policy Verification</h2>
 <ul>
-<li>
-<p>Log into BR2-vEdge and check if policy is applied. Issue the following command.</p>
-<p>~~~
-show policy from-vsmart 
-~~~</p>
-<p>You will see the following output</p>
-<p>~~~
-BR2-vEdge# show policy from-vsmart 
-from-vsmart sla-class BestEffort
- loss    20
-latency 200
-from-vsmart sla-class CriticalData
- loss    5
- latency 80
- jitter  5
-from-vsmart sla-class VoiceSLA
-  loss    2
-  latency 50
-  jitter  5
-from-vsmart sla-class VoiceVideoSLA
-  loss    1
-  latency 50
-  jitter  2
-from-vsmart data-policy Data-Policy
-  direction from-service
-from-vsmart app-route-policy _AppVPN_AppRoutePolicyVPN10
-  vpn-list AppVPN
-   sequence 1
-       match
-          dscp 46
-       action
-          sla-class VoiceSLA
-          no sla-class strict
-          sla-class preferred-color mpls
-   sequence 11
-       match
-         dscp 24
-      action
-        sla-class       CriticalData
-        no sla-class strict
-        sla-class preferred-color mpls
-   sequence 21
-       match
-         dscp 0
-       action
-         sla-class       BestEffort
-         no sla-class strict
-         sla-class preferred-color private1
-   sequence 31
-       match
-         app-list Lync
-       action
-         sla-class       VoiceSLA
-         no sla-class strict
-         sla-class preferred-color mpls
-   sequence 41
-       match
-         app-list Office365
-      action
-        sla-class       CriticalData
-        no sla-class strict
-        sla-class preferred-color mpls
-   sequence 51
-       match
-         app-list YouTube
-       action
-         sla-class       VoiceVideoSLA
-         no sla-class strict
-         sla-class preferred-color private1
-    sequence 61
-        match
-          app-list HTTPS
-          dscp     46
-        action
-          sla-class       BestEffort
-          no sla-class strict
-          sla-class preferred-color private1
-    default-action sla-class BestEffort
-from-vsmart lists vpn-list AppVPN
- vpn 10
-from-vsmart lists app-list HTTPS
- app-family web
- app-family webmail
-from-vsmart lists app-list Lync
- app lync
-from-vsmart lists app-list Office365
- app office365
-from-vsmart lists app-list YouTube
- app youtube_hd</p>
-</li>
+<li>Log into <strong>BR2-vEdge</strong> and check if policy is applied. Issue the following command.</li>
 </ul>
-<pre><code>
-* Under normal conditions, both BR2-vEdge is using both interfaces to send traffic as show in the output.
-
-    ~~~
-show app-route stats
-</code></pre>
-
-<pre><code>![](pics/t9-AAR-policyverfication1.png)
-</code></pre>
+<p><code>show policy from-vsmart</code></p>
+<p>You will see the following output
+<pre><code>BR2-vEdge# show policy from-vsmart
+from-vsmart sla-class BestEffort
+     loss    20
+    latency 200
+from-vsmart sla-class CriticalData
+     loss    5
+     latency 80
+     jitter  5
+from-vsmart sla-class VoiceSLA
+      loss    2
+      latency 50
+      jitter  5
+from-vsmart sla-class VoiceVideoSLA
+      loss    1
+      latency 50
+      jitter  2
+from-vsmart data-policy Data-Policy
+      direction from-service
+from-vsmart app-route-policy _AppVPN_AppRoutePolicyVPN10
+      vpn-list AppVPN
+       sequence 1
+           match
+              dscp 46
+           action
+              sla-class VoiceSLA
+              no sla-class strict
+              sla-class preferred-color mpls
+       sequence 11
+           match
+             dscp 24
+          action
+            sla-class       CriticalData
+            no sla-class strict
+            sla-class preferred-color mpls
+       sequence 21
+           match
+             dscp 0
+           action
+             sla-class       BestEffort
+             no sla-class strict
+             sla-class preferred-color private1
+       sequence 31
+           match
+             app-list Lync
+           action
+             sla-class       VoiceSLA
+             no sla-class strict
+             sla-class preferred-color mpls
+       sequence 41
+           match
+             app-list Office365
+          action
+            sla-class       CriticalData
+            no sla-class strict
+            sla-class preferred-color mpls
+       sequence 51
+           match
+             app-list YouTube
+           action
+             sla-class       VoiceVideoSLA
+             no sla-class strict
+             sla-class preferred-color private1
+        sequence 61
+            match
+              app-list HTTPS
+              dscp     46
+            action
+              sla-class       BestEffort
+              no sla-class strict
+              sla-class preferred-color private1
+        default-action sla-class BestEffort
+from-vsmart lists vpn-list AppVPN
+     vpn 10
+from-vsmart lists app-list HTTPS
+     app-family web
+     app-family webmail
+from-vsmart lists app-list Lync
+     app lync
+from-vsmart lists app-list Office365
+     app office365
+from-vsmart lists app-list YouTube
+     app youtube_hd
+</code></pre></p>
+<ul>
+<li>Under normal conditions, both BR2-vEdge is using both interfaces to send traffic as show in the output.</li>
+</ul>
+<p><strong><code>show app-route stats</code></strong></p>
+<p><img alt="" src="../pics/t9-AAR-policyverfication1.png" /></p>
 <ul>
 <li>
 <p>Lets inject delay using traffic generator on <strong>BR2-vEdge Internet (color private1)</strong> link.</p>
@@ -352,11 +349,11 @@ show app-route stats
 <p><img alt="" src="../pics/t9-AAR-policyverfication3.png" /></p>
 </li>
 <li>
-<p>Under <strong>Bridges</strong> ensure <strong>br1</strong> is selected. Under <strong>Interface eth2</strong> enter delay <strong>200</strong> and <strong>Apply settings</strong></p>
+<p>Under <strong>Bridges</strong> ensure <strong>br1</strong> is selected. Under <strong>Interface eth2</strong> enter delay <strong>300</strong> and <strong>Apply settings</strong></p>
 <p><img alt="" src="../pics/t9-AAR-policyverfication4.png" /></p>
 </li>
 <li>
-<p>Lets verify the policy out again on BR2-vEdge by using command <strong> show app-route stats</strong></p>
+<p>Lets verify the policy out again on BR2-vEdge by using command <strong><code>show app-route stats</code></strong></p>
 <p><img alt="" src="../pics/t9-AAR-policyverfication6.png" /></p>
 </li>
 </ul>
@@ -370,7 +367,7 @@ show app-route stats
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../Task8a-HubnSpoke_VPN20/" class="btn btn-neutral" title="Task 8 Hub & Spoke Topology"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Task7c-Verify vEdge Cloud Connectivity/" class="btn btn-neutral" title="Task 7c Verify vEdge Cloud connectivity"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -398,7 +395,7 @@ show app-route stats
           <a href="https://github.com/fchaudhr/CL_LTRCRS_2123.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../Task8a-HubnSpoke_VPN20/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../Task7c-Verify vEdge Cloud Connectivity/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>
