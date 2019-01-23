@@ -109,7 +109,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../Task8-HubnSpoke_VPN20.md">Task 8 Hub & Spoke Topology</a>
+    <a class="" href="../Task8-HubnSpoke_VPN20/">Task 8 Hub & Spoke Topology</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -263,7 +263,7 @@
 <ul>
 <li>On the vManage GUI, navigate to <strong>Tools &gt; SSH Terminal</strong>. From the left pane, select the device group to which the device belongs.</li>
 </ul>
-<p><img alt="AWS Devices" src="pics/t7-AWS_SSH.png" /></p>
+<p><img alt="AWS Devices" src="../pics/t7-AWS_SSH.png" /></p>
 <p><a name="vEdge2SSH"></a>
 * Click on <strong>vEdge1</strong> and on the right pane.</p>
 <p><center><img src="pics/t7-AWS_SSH2.png" width="250"></center></p>
@@ -285,7 +285,7 @@ show run system
 <em>  site-id
 </em>  organization name
 *  vBond DNS name of <code>vbond.cisco.com</code> </p>
-<p><img alt="AWS Devices" src="pics/t7-AWS-vEdge1showsystem.png" /></p>
+<p><img alt="AWS Devices" src="../pics/t7-AWS-vEdge1showsystem.png" /></p>
 <blockquote>
 <p><strong>Note:</strong> A static DNS entry for the hostname <strong><em>vbond.cisco.com</em></strong> has been configured under <code>vpn 0</code> (it will be visible in subsequent bullet)</p>
 </blockquote>
@@ -298,7 +298,7 @@ show run vpn 0
 <p>Below screenshot shows the partial output of this command.  This command will confirm that:
 <em> vEdge has one WAN link (under VPN 0) as per interface ge0/0 configuration
 </em> WAN link tunnel interface is configured with color public-internet which is a public color</p>
-<p><img alt="AWS Devices" src="pics/t7-AWS-vEdge1showvpn0.png" /></p>
+<p><img alt="AWS Devices" src="../pics/t7-AWS-vEdge1showvpn0.png" /></p>
 </li>
 <li>
 <p>You may also execute <code>show run</code> command to view the full configuration of this vEdge</p>
@@ -310,7 +310,7 @@ show certificate serial
 show certificate installed<br />
 ~~~</p>
 <p>Below screenshot shows the partial output of the above command.  Note that Issuer of the certificate is vManage</p>
-<p><img alt="AWS Devices" src="pics/t7-AWS-vEdge1showcert.png" /></p>
+<p><img alt="AWS Devices" src="../pics/t7-AWS-vEdge1showcert.png" /></p>
 </li>
 <li>
 <p><strong>Run</strong> the below <strong>command</strong> to see the list of control connections of this vEdge to the Control Plane (vManage, vSmart)</p>
@@ -320,7 +320,7 @@ show control connections
 <p>Below screenshot shows the output of this command.  Note it validates that <strong>vEdge1</strong> has:
 <em> One (1) control connections established to vSmart Controller
 </em> One (1) control connection established to vManage</p>
-<p><img alt="AWS Devices" src="pics/t7-AWS-vEdge1showconn.png" /></p>
+<p><img alt="AWS Devices" src="../pics/t7-AWS-vEdge1showconn.png" /></p>
 </li>
 <li>
 <p>In order to verify that related template is successfully attached,  execute below <strong>command</strong>:</p>
@@ -333,9 +333,9 @@ show system status
 <li><code>Configuration template: CL-AWS_template</code></li>
 </ul>
 <p>Below screenshot shows the partial output of above command:</p>
-<p><img alt="AWS Devices" src="pics/t7-AWS-vEdge1showstatus.png" /></p>
+<p><img alt="AWS Devices" src="../pics/t7-AWS-vEdge1showstatus.png" /></p>
 <p><strong>Note:</strong> you can also verify the Mode (vManaged or CLI) on vManage GUI by navigating to <strong>Configuration &gt; Devices</strong> and under <strong>WAN Edge List</strong> tab scrolling to the right will show the <code>Mode</code> option for each device.  If there are any discrepancies then refer to the instructor.</p>
-<p><img alt="AWS Devices" src="pics/t7-AWS-vEdge1Mode.png" /></p>
+<p><img alt="AWS Devices" src="../pics/t7-AWS-vEdge1Mode.png" /></p>
 </li>
 <li>
 <p>You can run various other commands to verify the updated configurations (such as DHCP on interface ge0/0, control connections to Controllers on this new interface etc)  as reflected in "CLI Template":</p>
@@ -361,7 +361,7 @@ show run
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Task9-AAR/" class="btn btn-neutral float-right" title="Task 9 AAR">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Task8-HubnSpoke_VPN20/" class="btn btn-neutral float-right" title="Task 8 Hub & Spoke Topology">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../Task7b-Cloud onRamp for IaaS/" class="btn btn-neutral" title="Task 7b Cloud onRamp for Iaas (AWS)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -395,7 +395,7 @@ show run
         <span><a href="../Task7b-Cloud onRamp for IaaS/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../Task9-AAR/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../Task8-HubnSpoke_VPN20/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
