@@ -8,7 +8,7 @@
   
   <meta name="author" content="CX Team">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Task 1 Remote Connection - LTRCRS-2123</title>
+  <title>Task 11 - Additional Task for creating Partial Hub and Spoke - LTRCRS-2123</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Task 1 Remote Connection";
-    var mkdocs_page_input_path = "Task1-Connect.md";
+    var mkdocs_page_name = "Task 11 - Additional Task for creating Partial Hub and Spoke";
+    var mkdocs_page_input_path = "Task11-Additional_PHB.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -48,21 +48,9 @@
 	<ul class="current">
 	  
           
-            <li class="toctree-l1 current">
+            <li class="toctree-l1">
 		
-    <a class="current" href="./">Task 1 Remote Connection</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#step-1-connect-to-lab-using-anyconnect-vpn">Step 1: Connect to lab using anyconnect VPN</a></li>
-    
-
-    <li class="toctree-l2"><a href="#step-2-rdp-to-workstation">Step 2: RDP to workstation</a></li>
-    
-
-    <li class="toctree-l2"><a href="#step-3-mtputty-and-browser">Step 3: MTPutty and Browser</a></li>
-    
-
-    </ul>
+    <a class="" href="../Task1-Connect/">Task 1 Remote Connection</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -147,10 +135,10 @@
     
       
     
-    <li>Task 1 Remote Connection</li>
+    <li>Task 11 - Additional Task for creating Partial Hub and Spoke</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/fchaudhr/CL_LTRCRS_2123.git/edit/master/docs/Task1-Connect.md"
+        <a href="https://github.com/fchaudhr/CL_LTRCRS_2123.git/edit/master/docs/Task11-Additional_PHB.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -160,54 +148,121 @@
           <div role="main">
             <div class="section">
               
-                <p>Your first task will log on to remote lab using VPN.  At the end of this task, you will have a fully network connectivity to a remote server using Remote Desktop.</p>
-<h2 id="step-1-connect-to-lab-using-anyconnect-vpn">Step 1: Connect to lab using anyconnect VPN</h2>
-<p>You will connect to remote Lab using Cisco VPN AnyConnect client, as shown in below picture.</p>
+                <h1 id="task-11-additional-task-for-creating-partial-hub-and-spoke">Task 11 - Additional Task for creating Partial Hub and Spoke</h1>
+<p>In this task, you will partial hub and spoke topology, where VPN 10 and 20 will be reachable via DC vEdge while VPN 30 is Full mesh.</p>
+<h2 id="step-1-open-vmanage-and-deactivate-existing-aar-pplicy">Step 1: Open vManage and Deactivate Existing AAR pplicy</h2>
 <ul>
-<li><strong>Launch</strong> the Cisco VPN AnyConnect client from your PC</li>
-<li>Enter <code>dcloud-sjc-anyconnect.cisco.com</code> as the remote server</li>
+<li>Click <strong>Configuration&gt;Policy</strong> </li>
+</ul>
+<p><img alt="" src="../pics/t9-vmanage-policy.png" /></p>
+<ul>
 <li>
-<p>The <code>username</code> and <code>password</code> credentials for this VPN connection will be provided by the lab admin </p>
-<p><strong>Note:</strong> lab admin will furnish the credentials information to each participant.  If you don't have this information please ask the lab speakers.</p>
-<p><img alt="" src="../pics/t1-1-1.png" /></p>
-<p>Below is an example of user logging into a reference pod:</p>
-<p><img alt="" src="../pics/t1-2-vpn-credentials.png" /></p>
+<p>On the upper right hand, click <strong>Custom Options</strong> and select <strong>CLI Policy</strong></p>
+<p><img alt="" src="../pics/t9-CLI-Policy.png" /></p>
 </li>
 <li>
-<p>Hit accept when the prompt appears to accept the VPN connection login    </p>
-<p><img alt="" src="../pics/t1-2-vpn-accept.png" /></p>
+<p>Select AAR-Policy and click <strong>...</strong> then select <strong>Deactivate</strong>,</p>
+<p><img alt="" src="pics/t11-Deactivate.png" /></p>
+</li>
+<li>
+<p>Confirm deactivation by clicking <strong>Deactivate</strong> again</p>
+<p><img alt="" src="pics/t11-Deactivate2.png" /></p>
 </li>
 </ul>
-<blockquote>
-<p><strong>Note:</strong> credentials used in above screenshot are provided as an example only.  Credentials for each pod will be provided by the lab speakers.</p>
-</blockquote>
-<h2 id="step-2-rdp-to-workstation">Step 2: RDP to workstation</h2>
-<p>In this step, you will connect to the workstation with Remote Desktop (<strong>RDP</strong>) client on your machines.  Use below details for this RDP session:</p>
+<h2 id="step-2-creating-new-custom-topology">Step 2: Creating New Custom Topology</h2>
 <ul>
-<li><strong>Workstation/Computer</strong>: <code>198.18.133.36</code></li>
-<li><strong>Username</strong>: <code>Administrator</code></li>
-<li><strong>Password</strong>: <code>C1sco12345</code></li>
+<li>
+<p>Create another customs CLI topology by clicking <strong>Custom Options</strong> &gt; <strong>Topology</strong></p>
+<p><img alt="" src="pics/t11-Edit-Topology1.png" /></p>
+</li>
+<li>
+<p>Click <strong>...</strong> &gt; <strong>Copy</strong> next to <strong>Hub and Spoke</strong> policy</p>
+<p><img alt="" src="pics/t11-Copy-topology1.png" /></p>
+</li>
+<li>
+<p>Enter new <strong>Topology Name</strong> and <strong>Description</strong></p>
+<p><strong>Policy Name</strong> <code>Partial-Hub-Spoke</code>
+<br/><strong>Description</strong> <code>Hub and Spoke for VPN 10, 20 while Full Mesh for VPN30</code></p>
+<p><img alt="" src="pics/t11-Copy-topology2.png" /></p>
+</li>
+<li>
+<p>Edit <strong>Hub-Spoke Topology</strong> to create topology rules by selecting <strong>...</strong> &gt; <strong>Edit</strong> </p>
+<p><img alt="" src="pics/t11-Edit-Topology2.png" /></p>
+</li>
+<li>
+<p>Edit the Rule by clicking <strong>Pencil icon</strong></p>
+<p><img alt="" src="pics/t11-Edit-Topology3.png" /></p>
+</li>
+<li>
+<p>Select <strong>VPN</strong> and click <strong>New VPN List</strong> to exclude <strong>VPN 30</strong></p>
+<p><img alt="" src="pics/t11-Edit-Topology4.png" /></p>
+</li>
+<li>
+<p>Enter <strong>VPN List Name</strong> add <strong>VPNs 10,20</strong> and click <strong>Save</strong></p>
+<p><img alt="" src="pics/t11-Edit-Topology5.png" /></p>
+</li>
+<li>
+<p>Select newly created VPN list <strong>VPN10-20</strong> and click <strong>Save Match And Actions</strong></p>
+<p><img alt="" src="pics/t11-Edit-Topology6.png" /></p>
+</li>
 </ul>
-<p>Below screenshot is only an example for this RDP connection:</p>
-<p><img alt="" src="../pics/t1-3-RDP.png" /></p>
-<blockquote>
-<p><strong>Note:</strong>  above screenshot is provided as an example only.  </p>
-</blockquote>
-<h2 id="step-3-mtputty-and-browser">Step 3: MTPutty and Browser</h2>
-<p>Once you have the RDP session to the remote workstation, then you will use MTputty client (pre-installed on the remote workstation) and Chrome Browser to connect to all devices in this lab. </p>
-<p>MTputty is already installed on the Desktop of the workstation where you connected using RDP.  Run this application by clicking on the icon on the desktop:</p>
-<p><img alt="" src="../pics/t3-mputty.png" /></p>
+<h2 id="step-3-importing-new-custom-topology-to-main-policy">Step 3: Importing New Custom Topology to Main Policy</h2>
+<ul>
+<li>
+<p>Click <strong>Centralized Policy</strong></p>
+<p><img alt="" src="pics/t11-Import-Topology1.png" />
+x   </p>
+</li>
+<li>
+<p>Click <strong>Next</strong> on the Lists screen.</p>
+<p><img alt="" src="pics/t11-Import-Topology-list.png" /></p>
+</li>
+<li>
+<p>Click <strong>Add Topology</strong> then select <strong>Import Existing Topology</strong></p>
+<p><img alt="" src="pics/t11-Import-Topology3.png" /></p>
+</li>
+<li>
+<p>On Policy Type select <strong>Custom Control (Route and TLOC</strong> and on <strong>Policy</strong> select the new created <strong>Partial-Hub-Spoke</strong> topology</p>
+<p><img alt="" src="pics/t11-Import-Topology5.png" /></p>
+</li>
+<li>
+<p>Click <strong>Next</strong></p>
+<p><img alt="" src="pics/t11-Import-Topology5ab.png" /></p>
+</li>
+<li>
+<p>Click <strong>Next</strong> again</p>
+<p><img alt="" src="pics/t11-Import-Topology5abc.png" /></p>
+</li>
+<li>
+<p>On <strong>Policy Application</strong> enter new policy name description page click <strong>New Site List</strong></p>
+<p><img alt="" src="pics/t11-Import-Topology6.png" /></p>
+</li>
+<li>
+<p>On <strong>Outbound Site List</strong> select <strong>AllBranches</strong> then click <strong>Add</strong></p>
+<p><img alt="" src="pics/t11-Import-Topology7.png" /></p>
+</li>
+<li>
+<p>Save Policy by clicking <strong>Save Policy Changes</strong> </p>
+<p><img alt="" src="pics/t11-Import-Topology8.png" /></p>
+</li>
+<li>
+<p>Activate policy by selecting <strong>...</strong> then <strong>Activate Policy</strong></p>
+<p><img alt="" src="pics/t11-Import-Topology9.png" /></p>
+</li>
+</ul>
+<h2 id="step-4-verification">Step 4: Verification</h2>
+<ul>
+<li>
+<p>Once the process shows <strong>Sucess</strong> as below. Verify the connectivity using following commands on DC1-vEdge, BR1-vEdge and BR2-vEdge <br/></p>
+<p><code>show ip route vpn 10</code> <br/>
+<code>show ip route vpn 20</code> <br/>
+<code>show ip route vpn 30</code> <br/></p>
+</li>
+</ul>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../Task2-Exploring Control Plane/" class="btn btn-neutral float-right" title="Task 2 Control Plane">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-    </div>
   
 
   <hr/>
@@ -233,8 +288,6 @@
           <a href="https://github.com/fchaudhr/CL_LTRCRS_2123.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-      
-        <span style="margin-left: 15px"><a href="../Task2-Exploring Control Plane/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

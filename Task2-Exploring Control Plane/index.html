@@ -98,7 +98,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../Task7a-Add and Attach AWS Template for vEdge Cloud Devices/">Task 7a AWS vEdge Template</a>
+    <a class="" href="../Task7a-Add and Attach AWS Template for vEdge Cloud Devices/">Task 7a Cloud onramp - AWS vEdge Template</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -108,7 +108,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../Task7c-Verify vEdge Cloud Connectivity/">Task 7c Verify vEdge Cloud connectivity</a>
+    <a class="" href="../Task7c-Verify vEdge Cloud Connectivity/">Task 7c Cloud onramp - Verify vEdge Cloud connectivity</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -119,6 +119,16 @@
             <li class="toctree-l1">
 		
     <a class="" href="../Task9-AAR/">Task 9 AAR</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Task10-Delete Cloud onRamp for IaaS/">Task 10 Optional - Delete Cloud Onramp</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Additional_PHB.md">Task 11 Optional - Partial Hub and Spoke</a>
 	    </li>
           
         </ul>
@@ -265,9 +275,6 @@ show run vpn 0
 <p>Below screenshot shows <code>VPN 0</code> configuration and pre-configured <strong>vBond IP address</strong> as <strong>128.107.66.118</strong>.</p>
 <p><img alt="vManage" src="pics/t2-vManage_vBondIP.png" /></p>
 <p>Reconfigure vBond IP address from vManage by executing below command;</p>
-<blockquote>
-<p><strong>Note:</strong> Double curly brackets with <code>{{vbond-public-ip}}</code> are interpreted as a variable by vManage. The appropriate IP address of vbond for your pod will be provided to you and must be configured in subsequent bullets. </p>
-</blockquote>
 <p>~~~
 config t
 vpn 0
@@ -276,9 +283,12 @@ vpn 0
 commit and-quit
 ~~~</p>
 <blockquote>
-<p><strong>Note:</strong> Below screenshot shows <code>{{vbond-public-ip}}</code> as <strong>128.107.222.5</strong> with the purpose of showing an example only, the appropriate IP address of vbond for your pod will be provided to you. Use given vbond IP address while executing above commands</p>
+<p><strong>Note:</strong> Double curly brackets with <code>{{vbond-public-ip}}</code> are interpreted as a variable by vManage. The appropriate IP address of vbond for your pod will be provided to you and must be configured in subsequent bullets. </p>
 </blockquote>
 <p><img alt="vManage" src="pics/t2-vManage_vBondIP2.png" /></p>
+<blockquote>
+<p><strong>Note:</strong> Above screenshot shows<code>{{vbond-public-ip}}</code> as <strong>128.107.222.5</strong> with the purpose of showing an example only, the appropriate IP address of vbond for your pod will be provided to you. Use given vbond IP address while executing above commands</p>
+</blockquote>
 </li>
 </ul>
 <p>Navigate to Dashboard and check the vBond orchestrators' status is updated with a green up arrow (indicating reachable).</p>
@@ -309,8 +319,7 @@ commit and-quit
 <li>
 <p>Change vBond IP address to <code>{{vbond-public-ip}}</code> and click <strong>Update</strong>.</p>
 <blockquote>
-<p><strong>Note:</strong> Double curly brackets with <code>{{vbond-public-ip}}</code> are interpreted as a variable by vManage. The appropriate IP address of vbond for your pod will be provided to you and must be configured in subsequent bullets. 
-Below screenshot shows <code>{{vbond-public-ip}}</code> as <strong>128.107.222.5</strong> with the purpose of showing an example only, the appropriate IP address of vbond for your pod will be provided to you. Use given vbond IP address while changing vBond IP address.</p>
+<p><strong>Note:</strong> Below screenshot shows <strong>128.107.222.5</strong> with the purpose of showing an example only, the appropriate IP address of vbond for your pod will be provided to you. Use given vbond IP address while changing vBond IP address.</p>
 </blockquote>
 </li>
 </ul>
@@ -350,21 +359,20 @@ show run vpn 0
 <p>Below screenshot shows <code>VPN 0</code> configuration and pre-configured <strong>vBond IP address</strong> as <strong>128.107.66.118</strong>.</p>
 <p><img alt="vManage" src="pics/t2-vManage_vSmart.png" /></p>
 <p>Reconfigure vBond IP address from vManage by executing below command;</p>
-<blockquote>
-<p><strong>Note:</strong> Double curly brackets with <code>{{vbond-public-ip}}</code> are interpreted as a variable by vManage. The appropriate IP address of vbond for your pod will be provided to you and must be configured in subsequent bullets. </p>
-</blockquote>
 <p>~~~
 config t
 vpn 0
  no host vbond.cisco.com ip 128.107.66.118
  host vbond.cisco.com ip {{vbond-public-ip}}
-commit
-yes
+commit and-quit
 ~~~</p>
 <blockquote>
-<p><strong>Note:</strong> Below screenshot shows <code>{{vbond-public-ip}}</code> as <strong>128.107.222.5</strong> with the purpose of showing an example only, the appropriate IP address of vbond for your pod will be provided to you. Use given vbond IP address while executing above commands</p>
+<p><strong>Note:</strong> Double curly brackets with <code>{{vbond-public-ip}}</code> are interpreted as a variable by vManage. The appropriate IP address of vbond for your pod will be provided to you and must be configured in subsequent bullets. </p>
 </blockquote>
 <p><img alt="vManage" src="pics/t2-vManage_vSmart2.png" /></p>
+<blockquote>
+<p><strong>Note:</strong> Above screenshot shows <code>{{vbond-public-ip}}</code> as <strong>128.107.222.5</strong> with the purpose of showing an example only, the appropriate IP address of vbond for your pod will be provided to you. Use given vbond IP address while executing above commands</p>
+</blockquote>
 </li>
 <li>
 <p>Navigate to Dashboard and check the vBond orchestrators' status is updated with a green up arrow (indicating reachable).</p>
