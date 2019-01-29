@@ -188,7 +188,7 @@
 <li>IAM user name = <code>CLEUR_User#</code> <code>#=1,2,3,...,16</code></li>
 <li>Password = <code>CLEUR19</code></li>
 </ul>
-<p><center><img src="pics/t7-AWS_login.png" width="250"></center></p>
+<p><img alt="AWS hostVPC" src="../pics/t7-AWS_login.png" /></p>
 <ul>
 <li>Search <code>Cisco SDWAN</code> and click <strong>Cisco vEdge Cloud Router</strong> from the list of results.</li>
 </ul>
@@ -218,7 +218,7 @@
 <li>IAM user name = <code>CLEUR_User#</code> <code>#=1,2,3,...,16</code></li>
 <li>Password = <code>CLEUR19</code></li>
 </ul>
-<p><center><img src="pics/t7-AWS_login.png" width="250"></center></p>
+<p><img alt="AWS Login" src="../pics/t7-AWS_login.png" /></p>
 <p>Once connected to AWS Management Console, verify assigned region is selected on the navigation bar for your given number. Please see below for details:</p>
 <pre><code>#= 1-2 
 Region Name= US East (Ohio)
@@ -253,34 +253,64 @@ Region Name= EU (Paris)
 Region Code= eu-west-3
 </code></pre>
 
-<blockquote>
-<p><strong>Note:</strong> If you have created AWS resources, but you don’t see those resources in the console, the console might be displaying resources from a different Region. Please make sure to select the assigned region. As an example, CLEUR_User1 is to select <strong>US East (Ohio)</strong> region. Otherwise for any activity you try to execute, <code>You are not authorized to perform this operation.</code> message will pop-up.</p>
-</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If you have created AWS resources, but you don’t see those resources in the console, the console might be displaying resources from a different Region. Please make sure to select the assigned region. As an example, CLEUR_User1 is to select <strong>US East (Ohio)</strong> region. Otherwise for any activity you try to execute, <code>You are not authorized to perform this operation.</code> message will pop-up.</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>Select region list from up-right corner of the console as shown below and select your respective region. As an example, CLEUR_User1 is to select US East (Ohio) region.</li>
 </ul>
 <p><img alt="AWS Region" src="../pics/t7-AWS_region_verfication.png" /></p>
-<p>Then click on <code>Services</code> on the navigation pane and select <strong>VPC</strong> from <strong>Network &amp; Content Delivery</strong> menu.</p>
-<p><img alt="AWS hostVPC" src="../pics/t7-AWS_select_VPC.png" /></p>
-<p>Click on <strong>Your VPCs</strong> on the VPC navigation pane.</p>
-<p><center><img src="pics/t7-AWS_yourVPCs.png" width="250"></center></p>
-<p>and then click on <code>Create VPC</code></p>
-<p><center><img src="pics/t7-AWS_createVPC.png" width="400"></center></p>
-<p>Using <code>#=1,2,3,...,16</code> create host VPC with following settings:</p>
 <ul>
-<li>Name the host VPC as <code>SDWAN-hostVPC#</code> </li>
+<li>Then click on <code>Services</code> on the navigation pane and select <strong>VPC</strong> from <strong>Network &amp; Content Delivery</strong> menu.</li>
+</ul>
+<p><img alt="AWS hostVPC" src="../pics/t7-AWS_select_VPC.png" /></p>
+<ul>
+<li>Click on <strong>Your VPCs</strong> on the VPC navigation pane.</li>
+</ul>
+<p><img alt="AWS hostVPC" src="../pics/t7-AWS_yourVPCs.png" /></p>
+<ul>
+<li>and then click on <code>Create VPC</code></li>
+</ul>
+<p><img alt="AWS hostVPC" src="../pics/t7-AWS_createVPC.png" /></p>
+<ul>
+<li>
+<p>Using <code>#=1,2,3,...,16</code> create host VPC with following settings:</p>
+</li>
+<li>
+<p>Name the host VPC as <code>SDWAN-hostVPC#</code> </p>
+</li>
 <li>Specify IPv4 CIDR block as <code>10.#.0.0/16</code></li>
 <li>Leave rest of the options as default and click on <code>Create</code> and then <code>Close</code></li>
 </ul>
 <p><img alt="AWS hostVPC" src="../pics/t7-AWS_createVPC2.png" /></p>
-<p>Verify host VPC <strong>SDWAN_hostVPC#</strong> is created.</p>
+<ul>
+<li>Verify host VPC <strong>SDWAN_hostVPC#</strong> is created.</li>
+</ul>
 <p><img alt="AWS hostVPC" src="../pics/t7-AWS_createVPC3.png" /></p>
 <p><a name="Step3"></a></p>
 <h2 id="step-3-generate-aws-api-and-secret-keys">Step 3: Generate AWS API and Secret Keys</h2>
 <p>Different types of security credentials are used depending on how you interact with AWS. For example, you use a user name and password to sign in to the AWS Management Console. You use access keys to make programmatic calls to AWS API operations or to use AWS CLI commands. We will generate access keys in this step.</p>
-<blockquote>
-<p><strong>Important Note:</strong> Do not provide your access keys to a third party. By doing this, you might give someone full access to your account.</p>
-</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Important Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Do not provide your access keys to a third party. By doing this, you might give someone full access to your account.</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>Log on to AWS from a web browser (if not already open) and click on <strong>Sign In to the Console</strong> </li>
 </ul>
@@ -322,11 +352,21 @@ Region Code= eu-west-3
 <ul>
 <li>Log on the vManage from a web browser (if not already open) and use credentials of <code>admin</code> and <code>admin</code>:</li>
 </ul>
-<p>~~~
-  https://198.18.1.10
-  ~~~</p>
-<pre><code>&gt; **Note:** if `admin/admin` credentials do not work then you may try using `cisco/cisco` or `cisco1/cisco1`
+<pre><code>https://198.18.1.10
 </code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>
 <p>On the vManage GUI, navigate to <strong>Configuration &gt; Cloud onRamp for IaaS</strong>.  </p>
@@ -342,7 +382,7 @@ Region Code= eu-west-3
 </ul>
 </li>
 </ul>
-<p><center><img src="pics/t7-AWS_CloudLogin.png" width="350"></center></p>
+<p><img alt="AWS CloudonRamp" src="../pics/t7-AWS_CloudLogin.png" /></p>
 <ul>
 <li>Select <strong>Key</strong> and open <code>accessKeys.csv</code> file.<ul>
 <li>Copy <strong>Access key ID</strong> from <code>accessKeys.csv</code> file and paste as <strong>API Key</strong>.</li>
@@ -352,17 +392,35 @@ Region Code= eu-west-3
 </ul>
 </li>
 </ul>
-<blockquote>
-<p><strong>Important Note:</strong> If you can not locate <code>accessKeys.csv</code> in your PC, then please complete <a href="#Step3">Step 3</a> first.</p>
-</blockquote>
-<p><center><img src="pics/t7-AWS_CloudLogin2.png" width="350"></center></p>
+<table>
+<thead>
+<tr>
+<th align="left">Important Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If you can not locate <code>accessKeys.csv</code> in your PC, then please complete <a href="#Step3">Step 3</a> first.</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="AWS CloudonRamp" src="../pics/t7-AWS_CloudLogin2.png" /></p>
 <p><a name="selectregionCloudonRamp"></a></p>
 <ul>
 <li>Next, select your AWS region from <strong>Choose Region</strong> drop down menu in <strong>Select a Region and Create Transit VPCs</strong> step. A graphic on the right side of the screen illustrates the steps in the cloud instance configuration process. Steps not yet completed are shown in light gray. Completed steps are indicated with a green checkmark and are shown in light orange.</li>
 </ul>
-<blockquote>
-<p><strong>Important Note:</strong> Please make sure to select the right AWS region as verified in <a href="#Step2">Step 2</a>. As an example, CLEUR_User1 is to select <strong>US East (Ohio)</strong> region with <strong>Region Code</strong> of <code>us-east-2</code>. If you are not sure which AWS region you are working in, then please complete <a href="#Step2">Step 2</a> first.</p>
-</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Important Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Please make sure to select the right AWS region as verified in <a href="#Step2">Step 2</a>. As an example, CLEUR_User1 is to select <strong>US East (Ohio)</strong> region with <strong>Region Code</strong> of <code>us-east-2</code>. If you are not sure which AWS region you are working in, then please complete <a href="#Step2">Step 2</a> first.</td>
+</tr>
+</tbody>
+</table>
 <p><img alt="AWS CloudonRamp" src="../pics/t7-AWS_CloudonRamp_Region.png" /></p>
 <ul>
 <li>Next, enter Transit VPC and Device Information parameters as below:<ul>
@@ -383,11 +441,24 @@ Region Code= eu-west-3
 <ul>
 <li>On the next screen, please verify desired Host VPC in <strong>Discovered Host VPCs</strong> step which has been created in <a href="#Step2">Step 2</a>. Please see below screenshot for <code>CLEUR_User1</code> and discovered Host VPC is <code>SDWAN-hostVPC1</code>. Checkmark it and then click <code>Next</code>.</li>
 </ul>
-<blockquote>
-<p><strong>Important Note 1:</strong> Please make sure to select the right AWS region assigned to your AWS user name as verified in <a href="#Step2">Step 2</a>. As an example, <code>CLEUR_User1</code> is to select <strong>US East (Ohio)</strong> region with <strong>Region Code</strong> of <code>us-east-2</code>. If you are not sure which AWS region you are working in, then please complete <a href="#Step2">Step 2</a> first.</p>
-<p><strong>Important Note 2:</strong> If you don't see Host VPC discovered in the list, please make sure to select the right region assigned to your AWS user name in <a href="#selectregionCloudonRamp">Step 4</a>.</p>
-<p><strong>Important Note 3:</strong> If you have created Host VPC in <a href="#Step2">Step 2</a> but you don’t see those resources in the console, then please complete the <a href="#Step2">Step 2</a> first.</p>
-</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Important Notes:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Please make sure to select the right AWS region assigned to your AWS user name as verified in <a href="#Step2">Step 2</a>. As an example, <code>CLEUR_User1</code> is to select <strong>US East (Ohio)</strong> region with <strong>Region Code</strong> of <code>us-east-2</code>. If you are not sure which AWS region you are working in, then please complete <a href="#Step2">Step 2</a> first</td>
+</tr>
+<tr>
+<td align="left">If you don't see Host VPC discovered in the list, please make sure to select the right region assigned to your AWS user name in <a href="#selectregionCloudonRamp">Step 4</a>.</td>
+</tr>
+<tr>
+<td align="left">If you have created Host VPC in <a href="#Step2">Step 2</a> but you don’t see those resources in the console, then please complete the <a href="#Step2">Step 2</a> first.</td>
+</tr>
+</tbody>
+</table>
 <p><img alt="AWS CloudonRamp" src="../pics/t7-AWS_CloudonRamp_HostVPC.png" /></p>
 <ul>
 <li>Next, Click <code>Map VPCs</code>in <strong>Map Host VPCs to Transit VPCs</strong> step.</li>
@@ -401,14 +472,23 @@ Region Code= eu-west-3
 </ul>
 </li>
 </ul>
-<p><center><img src="pics/t7-AWS_CloudonRamp_MapVPC2.png" width="400"></center></p>
+<p><img alt="AWS CloudonRamp" src="../pics/t7-AWS_CloudonRamp_MapVPC2.png" /></p>
 <ul>
 <li>Now, you will see <code>SDWAN-hostVPC1</code> is not checkmarked anymore, this is because Host VPC and Transit VPC are successfully mapped. To verify, make sure <strong>Mapping Status</strong> is green and then click <code>Save and Complete</code>. </li>
 </ul>
 <p><img alt="AWS CloudonRamp" src="../pics/t7-AWS_CloudonRamp_MapVPC3.png" /></p>
-<blockquote>
-<p><strong>Note:</strong> The mapping process establishes IPsec and BGP connections between the transit VPC and host VPC. The IPsec tunnel that connects the transit and host VPC runs IKE to provide security for the connection. For AWS, the IPsec tunnel runs IKE Version 1. The BGP connection that is established over the secure IPsec tunnel allows the transit and host VPC to exchange routes so that the transit VPC can direct traffic from the branch to the proper host VPC, and hence to the proper cloud-based application.</p>
-</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">The mapping process establishes IPsec and BGP connections between the transit VPC and host VPC. The IPsec tunnel that connects the transit and host VPC runs IKE to provide security for the connection. For AWS, the IPsec tunnel runs IKE Version 1. The BGP connection that is established over the secure IPsec tunnel allows the transit and host VPC to exchange routes so that the transit VPC can direct traffic from the branch to the proper host VPC, and hence to the proper cloud-based application.</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>Creating AWS resources such as Transit VPC, Internet Gateway, vEdge Cloud pair and setting up the infrastructure will take 10-15 minutes time. Progress can be tracked through <strong>Status</strong> and <strong>Message</strong> updates on vManage as shown below:</li>
 </ul>
@@ -444,14 +524,25 @@ Region Code= eu-west-3
 <ul>
 <li>Select <strong>Instances</strong></li>
 </ul>
-<p><center><img src="pics/t7-AWS_CloudonRamp_CreateAWS6.png" width="400"></center></p>
+<p><img alt="AWS CloudonRamp" src="../pics/t7-AWS_CloudonRamp_CreateAWS6.png" /></p>
 <ul>
 <li>Verify vEdge Cloud instances are <strong>Initializing</strong> status meaning that vEDge Cloud instances status checks are still in progress.</li>
 </ul>
-<blockquote>
-<p><strong>Note:</strong> There are two types of status checks: system status checks and instance status checks.
-<strong>System Status Checks</strong> detect underlying problems with your instance. <strong>Instance Status Checks</strong> monitor the software and network configuration of your individual instance. </p>
-</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">There are two types of status checks: system status checks and instance status checks.</td>
+</tr>
+<tr>
+<td align="left"><strong>System Status Checks</strong> detect underlying problems with your instance. <strong>Instance Status Checks</strong> monitor the software and network configuration of your individual instance.</td>
+</tr>
+</tbody>
+</table>
 <p><img alt="AWS CloudonRamp" src="../pics/t7-AWS_CloudonRamp_CreateAWS7.png" /></p>
 <ul>
 <li>Once <strong>Status Checks</strong> are updated as <strong>2/2 checks passed</strong>, this means vEdge Cloud router provisioning is completed successfully.</li>

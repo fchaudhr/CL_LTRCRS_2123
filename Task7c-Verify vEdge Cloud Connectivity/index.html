@@ -172,11 +172,21 @@
 <ul>
 <li>Log on the vManage from a web browser (if not already open) and use credentials of <code>admin</code> and <code>admin</code>:</li>
 </ul>
-<p>~~~
-  https://198.18.1.10
-  ~~~</p>
-<pre><code>&gt; **Note:** if `admin/admin` credentials do not work then you may try using `cisco/cisco` or `cisco1/cisco1`
+<pre><code>https://198.18.1.10
 </code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>The <strong>vManage dashboard</strong> will be displayed. At the top, a status indicating reachability will be displayed for any vSmart controllers, vEdge routers, and vBond orchestrators that are installed and have been added to vManage. Verify the vEdges are all showing up before moving on. The number of controllers will be shown with a green up arrow (indicating reachable), or a red down arrow (indicating unreachable).</li>
 <li>The <strong>Control Status</strong> should show that all of the control connections are up for all vEdge routers and vSmart controllers, and the <strong>Site Health View</strong> should show Full Connectivity to all sites, the data center, branches and public cloud (AWS). </li>
@@ -202,7 +212,18 @@
 </li>
 </ul>
 <p><img alt="AWS Devices" src="../pics/t7-AWS_RunningConfig2.png" /></p>
-<p><strong>Note:</strong> A static DNS entry for the hostname <strong><em>vbond.cisco.com</em></strong> has been configured under <code>vpn 0</code> (<strong>vbond Public IP address</strong> will be visible when you scroll down). <code>vpn 0</code> is the WAN Transport VPN.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">A static DNS entry for the hostname <strong><em>vbond.cisco.com</em></strong> has been configured under <code>vpn 0</code> (<strong>vbond Public IP address</strong> will be visible when you scroll down). <code>vpn 0</code> is the WAN Transport VPN.</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>Below screenshot shows <code>vpn 0</code> configuration and confirm that:<ul>
 <li>vEdge has one WAN link (interface ge0/0)</li>
@@ -265,30 +286,48 @@
 <ul>
 <li>Log on the vManage from a web browser (if not already open) and use credentials of <code>admin</code> and <code>admin</code>:</li>
 </ul>
-<p>~~~
-  https://198.18.1.10
-  ~~~</p>
-<pre><code>&gt; **Note:** if `admin/admin` credentials do not work then you may try using `cisco/cisco` or `cisco1/cisco1`
+<pre><code>https://198.18.1.10
 </code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>On the vManage GUI, navigate to <strong>Tools &gt; SSH Terminal</strong>. From the left pane, select the device group to which the device belongs.</li>
 </ul>
 <p><img alt="AWS Devices" src="../pics/t7-AWS_SSH.png" /></p>
 <p><a name="vEdge2SSH"></a>
 * Click on <strong>vEdge1</strong> and on the right pane.</p>
-<p><center><img src="pics/t7-AWS_SSH2.png" width="250"></center></p>
+<p><img alt="AWS Devices" src="../pics/t7-AWS_SSH2.png" /></p>
+<ul>
+<li>Enter the <strong>SSH credentials</strong> (username and password) as follows: <code>admin</code> and <code>admin</code> respectively to log in to the device.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>
-<p>Enter the <strong>SSH credentials</strong> (username and password) as follows: <code>admin</code> and <code>admin</code> respectively to log in to the device.</p>
-<blockquote>
-<p><strong>Note:</strong> if <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></p>
-</blockquote>
-</li>
-<li>
 <p>On the <strong>SSH</strong> connection, <strong>execute</strong> the below <strong>command</strong> to verify that system related configurations on this vEdge: </p>
-<p>~~~
-show run system
-~~~ </p>
+<pre><code>show run system
+</code></pre>
 <p>As shown in the partial output in the below screenshot, the vEdge has been pre-configured with below system related configurations:
 <em>  hostname
 </em>  system-ip
@@ -296,15 +335,25 @@ show run system
 </em>  organization name
 *  vBond DNS name of <code>vbond.cisco.com</code> </p>
 <p><img alt="AWS Devices" src="../pics/t7-AWS-vEdge1showsystem.png" /></p>
-<blockquote>
-<p><strong>Note:</strong> A static DNS entry for the hostname <strong><em>vbond.cisco.com</em></strong> has been configured under <code>vpn 0</code> (it will be visible in subsequent bullet)</p>
-</blockquote>
 </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">A static DNS entry for the hostname <strong><em>vbond.cisco.com</em></strong> has been configured under <code>vpn 0</code> (it will be visible in subsequent bullet)</td>
+</tr>
+</tbody>
+</table>
+<ul>
 <li>
 <p><strong>Execute</strong> the below <strong>command</strong> to see the configuration related to WAN connections or Transport connections on this vEdge.  In Cisco SD-WAN, VPN 0 is allocated for Transport/WAN links:</p>
-<p>~~~
-show run vpn 0 
-~~~</p>
+<pre><code>show run vpn 0
+</code></pre>
 <p>Below screenshot shows the partial output of this command.  This command will confirm that:
 <em> vEdge has one WAN link (under VPN 0) as per interface ge0/0 configuration
 </em> WAN link tunnel interface is configured with color public-internet which is a public color</p>
@@ -315,18 +364,16 @@ show run vpn 0
 </li>
 <li>
 <p><strong>Run</strong> the below <strong>commands</strong> to verify that certificate has been installed and view the details of certificate respectively  </p>
-<p>~~~
-show certificate serial
-show certificate installed<br />
-~~~</p>
+<pre><code>show certificate serial
+show certificate installed
+</code></pre>
 <p>Below screenshot shows the partial output of the above command.  Note that Issuer of the certificate is vManage</p>
 <p><img alt="AWS Devices" src="../pics/t7-AWS-vEdge1showcert.png" /></p>
 </li>
 <li>
 <p><strong>Run</strong> the below <strong>command</strong> to see the list of control connections of this vEdge to the Control Plane (vManage, vSmart)</p>
-<p>~~~
-show control connections
-~~~</p>
+<pre><code>show control connections
+</code></pre>
 <p>Below screenshot shows the output of this command.  Note it validates that <strong>vEdge1</strong> has:
 <em> One (1) control connections established to vSmart Controller
 </em> One (1) control connection established to vManage</p>
@@ -349,12 +396,11 @@ show system status
 </li>
 <li>
 <p>You can run various other commands to verify the updated configurations (such as DHCP on interface ge0/0, control connections to Controllers on this new interface etc)  as reflected in "CLI Template":</p>
-<p>~~~
-show interface 
+<pre><code>show interface 
 show ip route
 show control connections
 show run
-~~~</p>
+</code></pre>
 </li>
 <li>
 <ul>
@@ -362,7 +408,7 @@ show run
 </ul>
 </li>
 </ul>
-<p>--</p>
+<hr />
 <p>This concludes the process to verify the two (2) vEdge Cloud devices in Public Cloud using two options; vManage GUI and vManage SSH Terminal.</p>
               
             </div>

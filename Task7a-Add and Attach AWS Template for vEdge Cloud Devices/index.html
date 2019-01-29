@@ -167,17 +167,36 @@
 <p><a name="Step1"></a></p>
 <h2 id="step-1-add-aws-template-for-vedge-cloud-devices">Step 1: Add AWS Template for vEdge Cloud Devices</h2>
 <ul>
-<li>Log on the vManage from a web browser (if not already open) and use credentials of <code>admin</code> and <code>admin</code>:</li>
+<li>
+<p>Log on the vManage from a web browser (if not already open) and use credentials of <code>admin</code> and <code>admin</code>:</p>
+<p>https://198.18.1.10</p>
+</li>
 </ul>
-<p>~~~
-  https://198.18.1.10
-  ~~~</p>
-<pre><code>&gt; **Note:** if `admin/admin` credentials do not work then you may try using `cisco/cisco` or `cisco1/cisco1`
-</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></td>
+</tr>
+</tbody>
+</table>
 <p>In order to add AWS Template a <strong>CLI Template</strong> will be added so configurations of vEdge Cloud in AWS will be done via vManage directly. Use of "Feature Templates" on vManage is an alternate mechanism for centralization configurations from vManage, but it will not be used in this lab.</p>
-<blockquote>
-<p><strong>Important Note</strong>: Be very careful in making configuration changes on vEdge.  <strong>Do NOT change</strong> any <strong>configuration</strong> of VPN 512 as it can result in loss of connectivity to the vEdge - which can not be restored.   You will have to start the lab again from Task #1 if you loose network connectivity to a vEdge. </p>
-</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Important Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Be very careful in making configuration changes on vEdge.  <strong>Do NOT change</strong> any <strong>configuration</strong> of VPN 512 as it can result in loss of connectivity to the vEdge - which can not be restored.   You will have to start the lab again from Task #1 if you loose network connectivity to a vEdge.</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>On the vManage GUI, navigate to <strong>Configuration &gt; Templates</strong>.  Under <strong>Device</strong> tab click <strong>Create Template</strong> and then select <code>CLI Template</code> as shown in the below screenshot:</li>
 </ul>
@@ -278,9 +297,18 @@ vpn 20
 !
 </code></pre>
 
-<blockquote>
-<p><strong>Note:</strong> Double curly brackets with <code>{{vbond-public-ip}}</code> must be entered as above.  Double curly brackets are interpreted as a variable by vManage and the appropriate IP address of vbond for your pod must be configured in subsequent bullets </p>
-</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Note:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Double curly brackets with <code>{{vbond-public-ip}}</code> must be entered as above.  Double curly brackets are interpreted as a variable by vManage and the appropriate IP address of vbond for your pod must be configured in subsequent bullets</td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>Next <strong>Click</strong> <code>Add</code> as shown in the below screenshot:</li>
 </ul>
@@ -378,8 +406,8 @@ vpn 20
 <li>Once device configurations are completed, on the subsequent screen verify that the template is attached successfully to vEdge Cloud Devices.</li>
 </ul>
 <p><img alt="AWS EditTemplate" src="../pics/t7-AWS_ConfigureDevices4.png" /></p>
-<p>--
-This concludes the process to add and attach AWS Template for vEdge Cloud Devices using <strong>vManage</strong>.</p>
+<hr />
+<p>This concludes the process to add and attach AWS Template for vEdge Cloud Devices using <strong>vManage</strong>.</p>
               
             </div>
           </div>
