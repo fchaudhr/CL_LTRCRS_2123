@@ -96,7 +96,7 @@
         
             <li><a class="toctree-l3" href="#step-2-create-host-vpc-in-aws">Step 2: Create host VPC in AWS</a></li>
         
-            <li><a class="toctree-l3" href="#step-3-generate-aws-api-and-secret-keys">Step 3: Generate AWS API and Secret Keys</a></li>
+            <li><a class="toctree-l3" href="#step-3-aws-api-and-secret-keys">Step 3: AWS API and Secret Keys</a></li>
         
             <li><a class="toctree-l3" href="#step-4-configuring-cloud-onramp-for-iaas-for-aws">Step 4: Configuring Cloud onRamp for IaaS for AWS</a></li>
         
@@ -297,8 +297,8 @@ Region Code= eu-west-3
 </ul>
 <p><img alt="AWS hostVPC" src="../pics/t7-AWS_createVPC3.png" /></p>
 <p><a name="Step3"></a></p>
-<h2 id="step-3-generate-aws-api-and-secret-keys">Step 3: Generate AWS API and Secret Keys</h2>
-<p>Different types of security credentials are used depending on how you interact with AWS. For example, you use a user name and password to sign in to the AWS Management Console. You use access keys to make programmatic calls to AWS API operations or to use AWS CLI commands. We will generate access keys in this step.</p>
+<h2 id="step-3-aws-api-and-secret-keys">Step 3: AWS API and Secret Keys</h2>
+<p>Different types of security credentials are used depending on how you interact with AWS. For example, you use a user name and password to sign in to the AWS Management Console. You use access keys to make programmatic calls to AWS API operations or to use AWS CLI commands. We will use below access keys in this step.</p>
 <table>
 <thead>
 <tr>
@@ -311,44 +311,16 @@ Region Code= eu-west-3
 </tr>
 </tbody>
 </table>
+<p>For the sake of this lab we will use following API and Secret keys:</p>
 <ul>
-<li>Log on to AWS from a web browser (if not already open) and click on <strong>Sign In to the Console</strong> </li>
-</ul>
-<pre><code>https://aws.amazon.com/console
-</code></pre>
-
-<p>Use credentials of the following:</p>
-<ul>
-<li>Account ID = <code>807272386705</code></li>
-<li>IAM user name = <code>CLEUR_User#</code> <code>#=1,2,3,...,16</code></li>
-<li>
-<p>Password = <code>CLEUR19</code></p>
-</li>
-<li>
-<p>Click on <strong>Services</strong> and select <strong>IAM</strong> under <strong>Security, Identity, &amp; Compliance</strong> menu</p>
-</li>
-</ul>
-<p><img alt="AWS Credentials" src="../pics/t7-AWS_UserSecurity.png" /></p>
-<ul>
-<li>Expand <strong>Rotate your access keys</strong> and <strong>Click</strong> on <code>Manage User Access Keys</code></li>
-</ul>
-<p><img alt="AWS Credentials" src="../pics/t7-AWS_UserSecurity2.png" /></p>
-<ul>
-<li>Select <strong>Security credentials</strong> tab and <strong>Click</strong> on <code>Create access key</code></li>
-</ul>
-<p><img alt="AWS Credentials" src="../pics/t7-AWS_UserSecurity3.png" /></p>
-<ul>
-<li>On the <strong>Create access key</strong> window <strong>Click</strong> on <code>Download .csv file</code> to download <strong>Access key ID</strong> and <strong>Secret access key</strong> to your desktop and <strong>Click</strong> <code>Close</code></li>
-</ul>
-<p><img alt="AWS Credentials" src="../pics/t7-AWS_UserSecurity4.png" /></p>
-<ul>
-<li>Make sure .csv file name is saved as <code>accessKeys.csv</code> in your desktop.</li>
+<li><strong>API Key:</strong> <code>AKIAJ3JC5KEMWJUSOYIQ</code></li>
+<li><strong>Secret Key:</strong> <code>TqT5JJBZ7tn9JUVH3YsK5ZP2kGlRNWP1alJBf5vw</code></li>
 </ul>
 <p><a name="Step4"></a></p>
 <h2 id="step-4-configuring-cloud-onramp-for-iaas-for-aws">Step 4: Configuring Cloud onRamp for IaaS for AWS</h2>
 <p>In this step we will configure Cloud OnRamp for IaaS through vManage for AWS and create AWS transit VPC, which consists of a pair of vEdge routers. You then map the transit VPC to host VPC that already exists in the AWS cloud created in <a href="#Step2">Step 2</a>.</p>
 <p><strong>Pre-requisite 1</strong>  At least 2 unused vEdge devices with templates attached should be available in vManage. This is to add new cloud instances. If those are not attached then please complete Task 7a first.</p>
-<p><strong>Pre-requisite 2</strong> <code>accessKeys.csv</code> file is to be located in your desktop with your AWS user account <strong>Access key ID</strong> and <strong>Secret access key</strong>. If this file is not created then please complete the previous step first.</p>
+<p><strong>Pre-requisite 2</strong> AWS API and Secret Keys should be known at this step. If not then please complete the previous step first.</p>
 <ul>
 <li>Log on the vManage from a web browser (if not already open) and use credentials of <code>admin</code> and <code>admin</code>:</li>
 </ul>
