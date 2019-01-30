@@ -176,20 +176,36 @@
 </ul>
 <p><img alt="vManage" src="../pics/t2-vManage_Access2vManage.png" /></p>
 <ul>
-<li>
-<p>Log on to the vManage using credentials of <code>admin</code> and <code>admin</code></p>
-<blockquote>
-<p><strong>Note:</strong> if <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></p>
-</blockquote>
-</li>
+<li>Log on to the vManage using credentials of <code>admin</code> and <code>admin</code></li>
 </ul>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Note:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></td>
+</tr>
+</tbody>
+</table>
 <p><img alt="vManage" src="../pics/t2-vManage_Login.png" /></p>
 <p>The vManage dashboard will be displayed. The dashboard provides a quick summary of the network. At the top, a status indicating reachability will be displayed for any vSmart controllers, vEdge routers, and vBond orchestrators that are installed and have been added to vManage. Here, at a glance, you can view the health of the entire network including the operational state of any device, total number of reboots and crashes, and the state of all controller certificates. This visibility into the network eases the task of managing the SDWAN devices. </p>
 <p>The number of controllers will be shown with a green up arrow (indicating reachable), or a red down arrow (indicating unreachable).</p>
 <p><img alt="vManage" src="../pics/t2-vManage_Dashboard.png" /></p>
-<blockquote>
-<p><strong>Note:</strong> On the next steps, we will verify the controllers are all showing up before moving on to the next task.</p>
-</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Note:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">On the next steps, we will verify the controllers are all showing up before moving on to the next task.</td>
+</tr>
+</tbody>
+</table>
 <p>The menu is located to the left of the Dashboard screen. The following lists each menu and sub-menu item and provides a brief description.</p>
 <ul>
 <li><strong>Monitor</strong><ul>
@@ -202,7 +218,7 @@
 </ul>
 </li>
 </ul>
-<p><center><img src="pics/t2-vManage_Monitor.png" width="250"></center></p>
+<p><img alt="vManage" src="../pics/t2-vManage_Monitor.png" /> </p>
 <ul>
 <li><strong>Configuration</strong><ul>
 <li><strong>Devices:</strong> Add or delete devices from the overlay network.</li>
@@ -215,7 +231,7 @@
 </ul>
 </li>
 </ul>
-<p><center><img src="pics/t2-vManage_Configuration.png" width="250"></center></p>
+<p><img alt="vManage" src="../pics/t2-vManage_Configuration.png" /></p>
 <ul>
 <li><strong>Tools</strong><ul>
 <li><strong>SSH Terminal:</strong> Establish an SSH session to a SDWAN device.</li>
@@ -224,7 +240,7 @@
 </ul>
 </li>
 </ul>
-<p><center><img src="pics/t2-vManage_Tools.png" width="250"></center></p>
+<p><img alt="vManage" src="../pics/t2-vManage_Tools.png" /></p>
 <ul>
 <li><strong>Maintenance</strong><ul>
 <li><strong>Software Repository:</strong></li>
@@ -233,7 +249,7 @@
 </ul>
 </li>
 </ul>
-<p><center><img src="pics/t2-vManage_Maintenance.png" width="250"></center></p>
+<p><img alt="vManage" src="../pics/t2-vManage_Maintenance.png" /></p>
 <ul>
 <li><strong>Administration</strong><ul>
 <li><strong>Settings:</strong> Configure organization name and certificate authorization settings.</li>
@@ -242,14 +258,14 @@
 </ul>
 </li>
 </ul>
-<p><center><img src="pics/t2-vManage_Administration.png" width="250"></center></p>
+<p><img alt="vManage" src="../pics/t2-vManage_Administration.png" /></p>
 <ul>
 <li><strong>vAnalytics</strong><ul>
 <li><strong>Launch vAnalytics:</strong> View, at a glance, the performance and availability of the Viptela overlay network, including metrics for carriers, tunnels, and applications.</li>
 </ul>
 </li>
 </ul>
-<p><center><img src="pics/t2-vManage_vAnalytics.png" width="250"></center></p>
+<p><img alt="vManage" src="../pics/t2-vManage_vAnalytics.png" /></p>
 <h2 id="step-2-changing-vbond-ip-address-on-vmanage">Step 2: Changing vBond IP Address on vManage</h2>
 <p>In this step, you will change vBond IP Address on vManage. </p>
 <ul>
@@ -263,46 +279,80 @@
 <li>If prompted for "Putty Security Alert" then Trust the host by clicking "Yes" on dialog box.  </li>
 <li>The <strong>SSH credentials</strong> (username and password) are <code>admin</code> and <code>admin</code> respectively</li>
 </ul>
-<blockquote>
-<p><strong>Note:</strong> if <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></p>
-</blockquote>
 </li>
-<li>
-<p>On the <strong>SSH</strong> connection, <strong>execute</strong> below <strong>command</strong> to view the <code>VPN 0</code> related configurations on vManage: </p>
-<p>~~~
-show run vpn 0
-~~~ </p>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Note:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>On the <strong>SSH</strong> connection, <strong>execute</strong> below <strong>command</strong> to view the <code>VPN 0</code> related configurations on vManage: <pre><code>show run vpn 0
+</code></pre>
+</li>
+</ul>
 <p>Below screenshot shows <code>VPN 0</code> configuration and pre-configured <strong>vBond IP address</strong> as <strong>128.107.66.118</strong>.</p>
 <p><img alt="vManage" src="../pics/t2-vManage_vBondIP.png" /></p>
 <p>Reconfigure vBond IP address from vManage by executing below command;</p>
-<p>~~~
-config t
+<pre><code>config t
 vpn 0
  no host vbond.cisco.com ip 128.107.66.108
- host vbond.cisco.com ip {{vbond-public-ip}}
+ host vbond.cisco.com ip {vbond-public-ip}
 commit and-quit
-~~~</p>
-<blockquote>
-<p><strong>Note:</strong> Double curly brackets with <code>{{vbond-public-ip}}</code> are interpreted as a variable by vManage. The appropriate IP address of vbond for your pod will be provided to you and must be configured in subsequent bullets. </p>
-</blockquote>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Note</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Curly brackets with <code>{vbond-public-ip}</code> needs to be replaced by appropriate IP address of vbond for your pod.  This IP address will be provided to you lab instructor.  If you don't have it please lab instructors</td>
+</tr>
+</tbody>
+</table>
 <p><img alt="vManage" src="../pics/t2-vManage_vBondIP2.png" /></p>
-<blockquote>
-<p><strong>Note:</strong> Above screenshot shows<code>{{vbond-public-ip}}</code> as <strong>128.107.222.5</strong> with the purpose of showing an example only, the appropriate IP address of vbond for your pod will be provided to you. Use given vbond IP address while executing above commands</p>
-</blockquote>
-</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Note:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Above screenshot shows<code>{vbond-public-ip}</code> as <strong>128.107.222.5</strong> with the purpose of showing an example only, the appropriate IP address of vbond for your pod will be provided to you. Use given vbond IP address while executing above commands</td>
+</tr>
+</tbody>
+</table>
 <p>Navigate to Dashboard and check the vBond orchestrators' status is updated with a green up arrow (indicating reachable).</p>
 <p><img alt="vManage" src="../pics/t2-vManage_vBondIP3.png" /></p>
 <h2 id="step-3-changing-vbond-ip-address-on-vsmart-and-exploring-vsmart">Step 3: Changing vBond IP Address on vSmart and Exploring vSmart</h2>
 <p>In this step we will update vSmart template on vManage, and change vBond IP address on VSmart. Then we will verify control connections on vSmart, and status of vSmart on vManage Dashboard.</p>
 <ul>
-<li>Log on the vManage from a web browser (if not already open) and use credentials of <code>admin</code> and <code>admin</code>:</li>
-</ul>
-<p>~~~
-  https://198.18.1.10
-  ~~~</p>
-<pre><code>&gt; **Note:** if `admin/admin` credentials do not work then you may try using `cisco/cisco` or `cisco1/cisco1`
+<li>Log on the vManage from a web browser (if not already open) and use credentials of <code>admin</code> and <code>admin</code>:<pre><code>https://198.18.1.10
 </code></pre>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Note:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>On the vManage GUI, navigate to <strong>Configuration &gt; Templates</strong>.  </li>
 </ul>
@@ -317,10 +367,19 @@ commit and-quit
 <p><img alt="vManage" src="../pics/t2-vManage_vSmartTemplate3.png" /></p>
 <ul>
 <li>
-<p>Change vBond IP address to <code>{{vbond-public-ip}}</code> and click <strong>Update</strong>.</p>
-<blockquote>
-<p><strong>Note:</strong> Below screenshot shows <strong>128.107.222.5</strong> with the purpose of showing an example only, the appropriate IP address of vbond for your pod will be provided to you. Use given vbond IP address while changing vBond IP address.</p>
-</blockquote>
+<p>Replace <code>{vbond-public-ip}</code> with vBond IP address of your pod and click <strong>Update</strong>.</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Note:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Below screenshot shows <strong>128.107.222.5</strong> with the purpose of showing an example only, the appropriate IP address of vbond for your pod will be provided to you. Use given vbond IP address while changing vBond IP address.</td>
+</tr>
+</tbody>
+</table>
 </li>
 </ul>
 <p><img alt="vManage" src="../pics/t2-vManage_vSmartTemplate4.png" /></p>
@@ -342,47 +401,75 @@ commit and-quit
 </li>
 <li>
 <p>Launch <strong>Mputty</strong> application from the Remote desktop by clicking on it's icon on the desktop to initiate a <strong>SSH</strong> session to the <strong>vSmart</strong>.  You can use credentials of <code>admin</code> and <code>admin</code> for  authentication.</p>
+</li>
+</ul>
 <p><img alt="Mputty" src="../pics/t3-mputty.png" /></p>
 <ul>
 <li>If prompted for "Putty Security Alert" then Trust the host by clicking "Yes" on dialog box.  </li>
-<li>The <strong>SSH credentials</strong> (username and password) are <code>admin</code> and <code>admin</code> respectively</li>
-</ul>
-<blockquote>
-<p><strong>Note:</strong> if <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></p>
-</blockquote>
+<li>
+<p>The <strong>SSH credentials</strong> (username and password) are <code>admin</code> and <code>admin</code> respectively</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Note:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></td>
+</tr>
+</tbody>
+</table>
 </li>
 <li>
 <p>On the <strong>SSH</strong> connection, <strong>execute</strong> below <strong>command</strong> to view the <code>VPN 0</code> related configurations on vSmart: </p>
-<p>~~~
-show run vpn 0
-~~~ </p>
+<pre><code>show run vpn 0
+</code></pre>
+</li>
+</ul>
 <p>Below screenshot shows <code>VPN 0</code> configuration and pre-configured <strong>vBond IP address</strong> as <strong>128.107.66.118</strong>.</p>
 <p><img alt="vManage" src="../pics/t2-vManage_vSmart.png" /></p>
 <p>Reconfigure vBond IP address from vManage by executing below command;</p>
-<p>~~~
-config t
-vpn 0
- no host vbond.cisco.com ip 128.107.66.118
- host vbond.cisco.com ip {{vbond-public-ip}}
-commit and-quit
-~~~</p>
-<blockquote>
-<p><strong>Note:</strong> Double curly brackets with <code>{{vbond-public-ip}}</code> are interpreted as a variable by vManage. The appropriate IP address of vbond for your pod will be provided to you and must be configured in subsequent bullets. </p>
-</blockquote>
+<pre><code>    config t
+    vpn 0
+     no host vbond.cisco.com ip 128.107.66.118
+     host vbond.cisco.com ip {vbond-public-ip}}
+    commit and-quit
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Note</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Curly brackets with <code>{vbond-public-ip}</code> needs to be replaced by appropriate IP address of vbond for your pod.  This IP address will be provided to you lab instructor.  If you don't have it please lab instructors</td>
+</tr>
+</tbody>
+</table>
 <p><img alt="vManage" src="../pics/t2-vManage_vSmart2.png" /></p>
-<blockquote>
-<p><strong>Note:</strong> Above screenshot shows <code>{{vbond-public-ip}}</code> as <strong>128.107.222.5</strong> with the purpose of showing an example only, the appropriate IP address of vbond for your pod will be provided to you. Use given vbond IP address while executing above commands</p>
-</blockquote>
-</li>
-<li>
-<p>Navigate to Dashboard and check the vBond orchestrators' status is updated with a green up arrow (indicating reachable).</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Note:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Above screenshot shows <code>{vbond-public-ip}}</code> as <strong>128.107.222.5</strong> with the purpose of showing an example only, the appropriate IP address of vbond for your pod will be provided to you. Use given vbond IP address while executing above commands</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Navigate to Dashboard and check the vBond orchestrators' status is updated with a green up arrow (indicating reachable).</li>
+</ul>
 <p><img alt="vManage" src="../pics/t2-vManage_vSmart3.png" /></p>
-</li>
+<ul>
 <li>
 <p>On the <strong>Mputty</strong> client with <strong>SSH</strong> session to <code>vSmart</code> verify that template is successfully attached by running below <strong>command</strong>:</p>
-<p>~~~
-show system status
-~~~ </p>
+<pre><code>show system status
+</code></pre>
 </li>
 <li>
 <p>The output of above command should show that vManage is now centrally maintained by vManage and also provides the name of template attached as shown below screenshot:</p>
@@ -390,61 +477,87 @@ show system status
 <li><code>vManaged: true</code></li>
 <li><code>Configuration template: CL-vSmart-NATvbond</code></li>
 </ul>
+</li>
+</ul>
 <p><img alt="vManage" src="../pics/t2-vManage_vSmart4.png" /></p>
+<ul>
+<li><strong>Execute</strong> the below <strong>command</strong> to verify that system related configurations on vSmart: <pre><code>show run system
+</code></pre>
 </li>
-<li>
-<p><strong>Execute</strong> the below <strong>command</strong> to verify that system related configurations on vSmart: </p>
-<p>~~~
-show run system
-~~~ </p>
+</ul>
 <p>As shown in the partial output in the below screenshot, the vSmart has been pre-configured with below system related configurations:
-<em>  hostname
-</em>  system-ip 
-<em>  site-id
-</em>  organization name
-*  vBond DNS name of <code>vbond.cisco.com</code> </p>
-<p><center><img src="pics/t2-vManage_vSmart5.png" width="500"></center></p>
-<blockquote>
-<p><strong>Note:</strong> A static DNS entry for the hostname <strong><em>vbond.cisco.com</em></strong> has been configured under <code>vpn 0</code> in previous steps (it will be visible in subsequent bullet)</p>
-</blockquote>
+    *  hostname
+    *  system-ip 
+    *  site-id
+    *  organization name
+    *  vBond DNS name of <code>vbond.cisco.com</code> </p>
+<p><img alt="vManage" src="../pics/t2-vManage_vSmart5.png" /> </p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Note:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">A static DNS entry for the hostname <strong><em>vbond.cisco.com</em></strong> has been configured under <code>vpn 0</code> in previous steps (it will be visible in subsequent bullet)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Execute</strong> the below <strong>command</strong> to see the configuration related to <code>vpn 0</code>:<pre><code>show run vpn 0
+</code></pre>
 </li>
-<li>
-<p><strong>Execute</strong> the below <strong>command</strong> to see the configuration related to <code>vpn 0</code>:</p>
-<p>~~~
-show run vpn 0 
-~~~</p>
-<p><center><img src="pics/t2-vManage_vSmart6.png" width="500"></center></p>
-</li>
+</ul>
+<p><img alt="vManage" src="../pics/t2-vManage_vSmart6.png" /> </p>
+<ul>
 <li>
 <p>You may also execute <code>show run</code> command to view the full configuration of vSmart</p>
 </li>
 <li>
 <p><strong>Run</strong> the below <strong>commands</strong> to verify that certificate has been installed and view the details of certificate respectively  </p>
-<p>~~~
-show certificate serial
-show certificate installed<br />
-~~~</p>
-<p>Below screenshot shows the partial output of the above command. </p>
-<p><center><img src="pics/t2-vManage_vSmart7.png" width="700"></center></p>
-</li>
-<li>
-<p><strong>Run</strong> the below <strong>command</strong> to see the list of control connections of vSmart</p>
-<p>~~~
-show control connections
-~~~</p>
-<p><center><img src="pics/t2-vManage_vSmart8.png" width="700"></center></p>
+<pre><code>show certificate serial
+show certificate installed
+</code></pre>
 </li>
 </ul>
+<p>Below screenshot shows the partial output of the above command. </p>
+<p><img alt="vManage" src="../pics/t2-vManage_vSmart7.png" /> </p>
+<ul>
+<li><strong>Run</strong> the below <strong>command</strong> to see the list of control connections of vSmart<pre><code>show control connections
+</code></pre>
+</li>
+</ul>
+<p><img alt="vManage" src="../pics/t2-vManage_vSmart8.png" /> </p>
 <p>From the above output you can:</p>
 <ul>
 <li>confirm that <strong>State</strong> of control plane connection to vManage is <strong>up</strong></li>
 <li>confirm that <strong>State</strong> of control plane connections to vBond are <strong>up</strong></li>
 </ul>
-<blockquote>
-<p><strong>Note</strong>: If the <strong>State</strong> of any control connection is <strong>down</strong>, then you can execute <code>clear control connections</code> command.  And check the control status again by executing <code>show control connections</code> command multiple times. If still there are issues then kindly check with Lab instructor.</p>
-</blockquote>
-<pre><code>&gt; **Note:** Above screenshot shows the Public IP address of the vBond for a reference pod.  It will be different for your pod.  The Private IP addresses for vManage and vSmart should be same.
-</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Note</strong>:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If the <strong>State</strong> of any control connection is <strong>down</strong>, then you can execute <code>clear control connections</code> command.  And check the control status again by executing <code>show control connections</code> command multiple times. If still there are issues then kindly check with Lab instructor.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Note</strong>:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Above screenshot shows the Public IP address of the vBond for a reference pod.  It will be different for your pod.  The Private IP addresses for vManage and vSmart should be same.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="step-4-exploring-vbond">Step 4: Exploring vBond</h2>
 <ul>
 <li>
@@ -454,36 +567,45 @@ show control connections
 <li>If prompted for "Putty Security Alert" then Trust the host by clicking "Yes" on dialog box.  </li>
 <li>The <strong>SSH credentials</strong> (username and password) are <code>admin</code> and <code>admin</code> respectively</li>
 </ul>
-<blockquote>
-<p><strong>Note:</strong> if <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></p>
-</blockquote>
 </li>
-<li>
-<p>On the <strong>SSH</strong> connection, <strong>execute</strong> the below <strong>command</strong> to verify that system related configurations on vSmart: </p>
-<p>~~~
-show run system
-~~~ </p>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Note</strong>:</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">If <code>admin/admin</code> credentials do not work then you may try using <code>cisco/cisco</code> or <code>cisco1/cisco1</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>On the <strong>SSH</strong> connection, <strong>execute</strong> the below <strong>command</strong> to verify that system related configurations on vSmart: <pre><code>show run system
+</code></pre>
+</li>
+</ul>
 <p>As shown in the partial output in the below screenshot, the vSmart has been pre-configured with below system related configurations:
-<em>  hostname
-</em>  system-ip 
-<em>  organization name
-</em>  vBond private IP of <code>198.18.1.11</code> </p>
-<p><center><img src="pics/t2-vManage_vBond.png" width="400"></center></p>
-</li>
+    *  hostname
+    *  system-ip 
+    *  organization name
+    *  vBond private IP of <code>198.18.1.11</code> </p>
+<p><img alt="Mputty" src="../pics/t2-vManage_vBond.png" />    </p>
+<ul>
 <li>
 <p>You may also execute <code>show run</code> command to view the full configuration of vBond</p>
 </li>
 <li>
 <p><strong>Run</strong> the below <strong>commands</strong> to verify that certificate has been installed and view the details of certificate respectively  </p>
-<p>~~~
-show certificate serial
-show certificate installed<br />
-~~~</p>
-<p>Below screenshot shows the partial output of the above command. </p>
-<p><center><img src="pics/t2-vManage_vBond2.png" width="700"></center></p>
+<pre><code>show certificate serial
+show certificate installed
+</code></pre>
 </li>
 </ul>
-<p>--</p>
+<p>Below screenshot shows the partial output of the above command. </p>
+<p><img alt="Mputty" src="../pics/t2-vManage_vBond2.png" />       </p>
+<hr />
 <p>This concludes the process to explore SDWAN Control Plane (vManage GUI, vSmart and vBond) and change vBond IP address on vManage and vSmart.</p>
               
             </div>

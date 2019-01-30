@@ -169,9 +169,8 @@
 <ul>
 <li>
 <p>Log on the vManage from a web browser (if not already open) and use credentials of <code>admin</code> and <code>admin</code>:</p>
-<p>https://198.18.1.10</p>
-</li>
-</ul>
+<pre><code>  https://198.18.1.10
+</code></pre>
 <table>
 <thead>
 <tr>
@@ -197,12 +196,14 @@
 </tr>
 </tbody>
 </table>
-<ul>
-<li>On the vManage GUI, navigate to <strong>Configuration &gt; Templates</strong>.  Under <strong>Device</strong> tab click <strong>Create Template</strong> and then select <code>CLI Template</code> as shown in the below screenshot:</li>
-</ul>
+</li>
+<li>
+<p>On the vManage GUI, navigate to <strong>Configuration &gt; Templates</strong>.  Under <strong>Device</strong> tab click <strong>Create Template</strong> and then select <code>CLI Template</code> as shown in the below screenshot:</p>
 <p><img alt="AWS CLITemplate" src="../pics/t7-AWS_CLITemplate.png" /></p>
-<ul>
-<li>Next, from the <strong>Device Model</strong> dropdown menu select <code>vEdge-Cloud</code></li>
+</li>
+<li>
+<p>Next, from the <strong>Device Model</strong> dropdown menu select <code>vEdge-Cloud</code></p>
+</li>
 <li>Enter <strong>Template Name</strong> of <code>CL-AWS_template</code></li>
 <li>Enter <strong>Description</strong> of <code>vEdge AWS Template</code></li>
 <li>In the <strong>CLI Configuration</strong> section copy and paste the  below configs:</li>
@@ -281,40 +282,34 @@ vpn 512
    no shutdown
  !
 !
-vpn 30
- name MarketingVPN
- interface loopback30
-  ip address {{vpn30-IP-address}}/32
-  no shutdown
-!
 vpn 20
  name BusinessVPN
  interface loopback20
   ip address {{vpn20-IP-address}}/32
   no shutdown
 !
+vpn 30
+ name MarketingVPN
+ interface loopback30
+  ip address {{vpn30-IP-address}}/32
+  no shutdown
+!
 !
 !
 </code></pre>
 
-<table>
-<thead>
-<tr>
-<th align="left">Note:</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">Double curly brackets with <code>{{vbond-public-ip}}</code> must be entered as above.  Double curly brackets are interpreted as a variable by vManage and the appropriate IP address of vbond for your pod must be configured in subsequent bullets</td>
-</tr>
-</tbody>
-</table>
+<pre><code>| Note:             |
+|:--------------|
+| Double curly brackets with `{{vbond-public-ip}}` must be entered as above.  Double curly brackets are interpreted as a variable by vManage and the appropriate IP address of vbond for your pod must be configured in subsequent bullets |
+</code></pre>
 <ul>
-<li>Next <strong>Click</strong> <code>Add</code> as shown in the below screenshot:</li>
-</ul>
+<li>
+<p>Next <strong>Click</strong> <code>Add</code> as shown in the below screenshot:</p>
 <p><img alt="AWS Template" src="../pics/t7-AWS_CLITemplate2.png" /></p>
-<ul>
-<li>On the screen, verify that this Template has been added successfully</li>
+</li>
+<li>
+<p>On the screen, verify that this Template has been added successfully</p>
+</li>
 </ul>
 <p><a name="Step2"></a></p>
 <h2 id="step-2-attach-aws-template-for-vedge-cloud-devices">Step 2: Attach AWS Template for vEdge Cloud Devices</h2>
@@ -362,8 +357,8 @@ vpn 20
 <li>Enter <strong>systemip</strong> of <code>66.66.66.1</code></li>
 <li>Enter <strong>siteid</strong> of <code>66</code></li>
 <li>Enter provided  <strong>vbond-public-ip</strong></li>
-<li>Enter <strong>vpn30-IP-address</strong> of <code>10.20.66.1</code></li>
-<li>Enter <strong>vpn20-IP-address</strong> of <code>10.30.66.1</code></li>
+<li>Enter <strong>vpn20-IP-address</strong> of <code>10.20.66.1</code></li>
+<li>Enter <strong>vpn30-IP-address</strong> of <code>10.30.66.1</code></li>
 <li>Click on the <code>Update</code> button</li>
 </ul>
 </li>
@@ -380,8 +375,8 @@ vpn 20
 <li>Enter <strong>systemip</strong> of <code>66.66.66.2</code></li>
 <li>Enter <strong>siteid</strong> of <code>66</code></li>
 <li>Enter provided  <strong>vbond-public-ip</strong></li>
-<li>Enter <strong>vpn30-IP-address</strong> of <code>10.20.66.2</code></li>
-<li>Enter <strong>vpn20-IP-address</strong> of <code>10.30.66.2</code></li>
+<li>Enter <strong>vpn20-IP-address</strong> of <code>10.20.66.2</code></li>
+<li>Enter <strong>vpn30-IP-address</strong> of <code>10.30.66.2</code></li>
 <li>Click on the <code>Update</code> button</li>
 </ul>
 </li>
